@@ -6,15 +6,23 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --theme: "";
+  --footer: #96CDEB;
+  --header: rgba(0, 0, 0, 0.1);
+  --primary: #00A693;
 }
 
 /* Dark Theme */
 .dark {
   --background: #171717;
   --foreground: #ffffff;
+  --footer: #153243;
+  --header: rgba(255, 255, 255, 0.1);
+  --primary: #00FA9A;
 }
 
-body{
-background-color: var(--background);
-color: var(--foreground);
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
 }
