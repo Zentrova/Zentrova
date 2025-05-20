@@ -33,7 +33,7 @@ export default function Header() {
         >
             <div className=
                 {` mx-auto flex justify-between items-center px-10 py-5 transition-all duration-300 ${scrolled
-                    ? 'backdrop-blur-sm bg-header sm shadow-md w-11/12 rounded-lg'
+                    ? 'backdrop-blur bg-header sm shadow-md w-11/12 rounded-lg'
                     : 'shadow-md w-full'
                     }`}>
                 <Link href="/">
