@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
   --background: #ffffff;
@@ -9,7 +10,7 @@
   --theme: "";
   --footer: #96CDEB;
   --header: rgba(0, 0, 0, 0.1);
-  --primary: #00A693;
+ --primary: #0099ff;
 }
 
 /* Dark Theme */
@@ -18,11 +19,12 @@
   --foreground: #ffffff;
   --footer: #153243;
   --header: rgba(255, 255, 255, 0.1);
-  --primary: #00FA9A;
+  --primary: #05b572;
 }
 
 
 body {
   background-color: var(--background);
   color: var(--foreground);
+  font-family: "Urbanist", sans-serif;
 }

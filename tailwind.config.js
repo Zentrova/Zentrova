@@ -9,6 +9,9 @@ module.exports = {
         footer: "var(--footer)",
         header: "var(--header)",
         primary: "var(--primary)"
+      },
+      height:{
+        mainSection: "calc(100vh - 12vh)"
       }
     },
   },
