@@ -11,7 +11,7 @@ module.exports = {
         primary: "var(--primary)"
       },
       height:{
-        mainSection: "calc(100vh - 12vh)"
+        mainSection: "calc(100vh - 20vh)"
       }
     },
   },
