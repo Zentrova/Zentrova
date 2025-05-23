@@ -5,6 +5,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import ThemeButton from './themeButton';
 
 export default function HomeProjects() {
     const mockProjects = [
@@ -46,7 +47,7 @@ export default function HomeProjects() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="text-4xl md:text-5xl font-extrabold text-gray-900"
+                    className="text-4xl md:text-5xl font-extrabold text-primary"
                 >
                     Our Featured Work
                 </motion.h2>
@@ -56,7 +57,7 @@ export default function HomeProjects() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                     viewport={{ once: true }}
-                    className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mt-4"
+                    className="text-lg md:text-xl text-secondary max-w-2xl mx-auto mt-4"
                 >
                     Handpicked projects that represent our creativity, tech, and strategy.
                 </motion.p>
@@ -96,9 +97,7 @@ export default function HomeProjects() {
                                 {project.description}
                             </p>
                             <Link href={`/projects/${project.slug}`}>
-                                <button className="px-6 py-2 bg-black text-white rounded-xl hover:bg-gray-800 transition">
-                                    View Case Study →
-                                </button>
+                                  <ThemeButton text="View Case Study"/>
                             </Link>
                         </div>
                     </motion.div>

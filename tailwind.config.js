@@ -13,7 +13,8 @@ module.exports = {
         footer: "var(--footer)",
         header: "var(--header)",
         primary: "var(--primary)",
-        background : "var(--background)"
+        background : "var(--background)",
+        secondary: "var(--secondary)"
       },
       height:{
         mainSection: "calc(100vh - 20vh)"

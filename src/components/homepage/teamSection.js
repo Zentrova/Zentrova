@@ -39,7 +39,7 @@ export default function TeamSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="text-4xl md:text-5xl font-extrabold text-gray-900 text-center"
+                    className="text-4xl md:text-5xl font-extrabold text-primary text-center"
                 >
                     Meet Our Team
                 </motion.h2>
@@ -49,7 +49,7 @@ export default function TeamSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                     viewport={{ once: true }}
-                    className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mt-4 text-center"
+                    className="text-lg md:text-xl text-secondary max-w-3xl mx-auto mt-4 text-center"
                 >
                     A group of passionate experts dedicated to crafting exceptional digital experiences.
                 </motion.p>

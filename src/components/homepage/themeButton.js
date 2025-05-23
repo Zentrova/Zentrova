@@ -1,10 +1,10 @@
 'use client';
 
-export default function CtcButton() {
+export default function ThemeButton({text = "button"}) {
   return (
     <>
       <button className="relative flex items-center justify-center gap-2.5 px-5 py-2 rounded-full bg-primary text-white font-bold text-base border-3 border-white/30 shadow-[0_10px_20px_rgba(0,0,0,0.2)] outline-none overflow-hidden transition-transform duration-300 ease-in-out hover:scale-105 hover:border-white/60 cursor-pointer">
-        Hire us
+       {text}
         <svg
           className="w-6 h-6 transition-transform duration-300 ease-in-out hover:translate-x-1"
           viewBox="0 0 24 24"
