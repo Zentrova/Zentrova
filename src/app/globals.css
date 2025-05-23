@@ -10,7 +10,8 @@
   --theme: "";
   --footer: #96CDEB;
   --header: rgba(0, 0, 0, 0.1);
- --primary: #0099ff;
+  --primary: #0099ff;
+  --secondary: "#000"
 }
 
 /* Dark Theme */
@@ -33,6 +34,7 @@ body {
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-50%);
   }

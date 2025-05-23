@@ -69,7 +69,7 @@ export default function CreativeWorkflow() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="text-4xl md:text-5xl font-extrabold text-gray-900"
+                    className="text-4xl md:text-5xl font-extrabold text-primary"
                 >
                     Our Creative Journey
                 </motion.h2>
@@ -80,7 +80,7 @@ export default function CreativeWorkflow() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                     viewport={{ once: true }}
-                    className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mt-4"
+                    className="text-lg md:text-xl text-secondary max-w-2xl mx-auto mt-4"
                 >
                     Every project is a unique adventure. Here's how we transform your vision into reality.
                 </motion.p>

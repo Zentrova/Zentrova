@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="min-h-screen flex flex-col ">
+      <body className="min-h-screen flex flex-col dark">
         {/* add "dark" class to body to change theme to Dark theme */}
       <Header/>
       <div className="fixed bottom-0 w-full sm:hidden">
