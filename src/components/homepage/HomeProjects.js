@@ -40,14 +40,29 @@ export default function HomeProjects() {
 
     return (
         <section className="py-20 px-6 md:px-20 bg-white dark:bg-[#0f0f0f]">
-            <div className="text-center mb-16">
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            <div className="text-center mb-24 px-4">
+                <motion.h2
+                    initial={{ opacity: 0, y: -30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                    className="text-4xl md:text-5xl font-extrabold text-gray-900"
+                >
                     Our Featured Work
-                </h2>
-                <p className="text-gray-600 dark:text-gray-300 max-w-xl mx-auto">
+                </motion.h2>
+
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    viewport={{ once: true }}
+                    className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mt-4"
+                >
                     Handpicked projects that represent our creativity, tech, and strategy.
-                </p>
+                </motion.p>
             </div>
+
+
 
             <div className="space-y-24">
                 {mockProjects.map((project, index) => (
