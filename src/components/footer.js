@@ -1,9 +1,11 @@
 "use client";
 
 import { Instagram, Facebook, Twitter, Youtube, Phone, Mail, ChevronRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import logo from "../../public/logo.png"; // Adjust the path as necessary
 
 const Footer = () => {
     const pathname = usePathname();
@@ -29,10 +31,9 @@ const Footer = () => {
                     {/* Company Info */}
                     <div>
                         <Link href="/" className="block mb-4">
-                            <p className="text-3xl font-bold tracking-widest">Zentrova</p>
+                            <Image src={logo} className="footerLogo" alt="footerImage"/>
                         </Link>
 
-                        <p className="text-base mb-6 leading-relaxed">Tag Line</p>
                         <div className="flex flex-wrap gap-4">
                             {socialIcons.map(({ icon, href }, i) => (
                                 <a

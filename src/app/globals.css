@@ -2,16 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
   --theme: "";
-  --footer: #96CDEB;
+  --footer: #96cdeb;
   --header: rgba(0, 0, 0, 0.1);
   --primary: #0099ff;
-  --secondary: "#000"
+  --secondary: "#000";
 }
 
 /* Dark Theme */
@@ -22,7 +22,6 @@
   --header: rgba(255, 255, 255, 0.1);
   --primary: #05b572;
 }
-
 
 body {
   background-color: var(--background);
@@ -43,4 +42,16 @@ body {
 .animate-marquee {
   animation: marquee linear infinite;
   padding-left: 100%;
+}
+
+.headerLogoClass {
+  height: 56px;
+  width: 100%;
+  object-fit: contain;
+}
+
+.footerLogo {
+  height: 150px;
+  width: 150px;
+  object-fit: contain;
 }

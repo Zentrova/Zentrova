@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
       <body className="min-h-screen flex flex-col dark">
         {/* add "dark" class to body to change theme to Dark theme */}
       <Header/>
-      <div className="fixed bottom-0 w-full sm:hidden">
+      <div className="fixed bottom-0 z-10 w-full sm:hidden">
         <MobileNav/>
       </div>
       <main className="flex-grow">

@@ -32,8 +32,8 @@ const teamMembers = [
 
 export default function TeamSection() {
     return (
-        <div className="py-12 px-6 ">
-            <div className="text-center mb-12 px-4">
+        <div className="py-20 px-6 ">
+            <div className="text-center mb-24 px-4">
                 <motion.h2
                     initial={{ opacity: 0, y: -30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -54,7 +54,7 @@ export default function TeamSection() {
                     A group of passionate experts dedicated to crafting exceptional digital experiences.
                 </motion.p>
             </div>
-            <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-12">
                 {teamMembers.map((member, index) => (
                     <div key={index} className="relative group overflow-hidden rounded-xl shadow-md">
                         <Image

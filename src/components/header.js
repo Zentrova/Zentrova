@@ -1,8 +1,10 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import headerLogo from '../../public/headerLogo.png';
 
 export default function Header() {
     const pathname = usePathname();
@@ -27,7 +29,7 @@ export default function Header() {
     return (
         <header
             className={`sticky top-0 w-full z-50 transition-all duration-300 ${scrolled
-                ? 'pt-3'
+                ? 'pt-6'
                 : ''
                 }`}
         >
@@ -37,11 +39,13 @@ export default function Header() {
                     : 'shadow-md w-full'
                     }`}>
                 <Link href="/">
-                    <p className="text-2xl font-bold tracking-wider">MyLogo</p>
+                    {/* <p className="text-2xl font-bold tracking-wider">MyLogo</p> */}
+                    {/* <Image src="/headerLogo.png" width={100} height={10}/> */}
+                    <Image src={headerLogo} className='headerLogoClass' alt='headerImage'/>
                 </Link>
 
                 <nav className="hidden sm:block">
-                    <ul className="flex space-x-8 font-medium text-lg">
+                    <ul className="flex space-x-10 font-medium text-lg">
                         {navLinks.map((link) => {
                             const isActive = pathname === link.href;
                             return (
