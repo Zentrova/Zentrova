@@ -42,9 +42,9 @@ export default function ContactUs() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen ">
       {/* Hero Section */}
-      <section className="relative bg-gray-900 text-white py-36 overflow-hidden">
+      {/* <section className="relative  text-white py-36 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 to-gray-800/90"></div>
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-30"
@@ -58,74 +58,74 @@ export default function ContactUs() {
             Lorem sit amet cursus sit amet dictum sit amet justo
           </p>
         </div>
-      </section>
+      </section> */}
 
       {/* Main Content */}
-      <section className="py-16 bg-black">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left Column - Info */}
-            <div className="space-y-8 bg-gray-900 p-8">
+            <div className="space-y-8 p-8">
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                <h2 className="text-3xl md:text-4xl font-bold  mb-6">
                   Get Your Instant Free Quote Now
                 </h2>
-                <p className="text-white  mb-4">
+                <p className="mb-4">
                   Quis placerat elit, sed do eiusmod tempor.
                 </p>
-                <p className="text-white ">
+                <p className=" ">
                   Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco.
                 </p>
               </div>
 
               {/* Contact Info */}
-              <div className="bg-black p-8 rounded-2xl shadow-lg">
+              <div className=" p-8 rounded-2xl shadow-lg">
                 <div className="flex items-center space-x-4 mb-6">
-                  <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
                     <Phone className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <div className="font-semibold text-white">Phone</div>
-                    <div className="text-lg font-bold text-green-600">0 800 555 44 33</div>
+                    <div className="font-semibold ">Phone</div>
+                    <div className="text-lg font-bold text-primary">0 800 555 44 33</div>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-4 mb-6">
-                  <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
                     <Mail className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <div className="font-semibold text-white">Email</div>
-                    <div className="text-lg text-white">example@gmail.com</div>
+                    <div className="font-semibold">Email</div>
+                    <div className="text-lg text-primary">example@gmail.com</div>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <div className="font-semibold text-white">Address</div>
-                    <div className="text-lg text-white">123 Green Street, Eco City</div>
+                    <div className="font-semibold">Address</div>
+                    <div className="text-lg text-primary">123 Green Street, Eco City</div>
                   </div>
                 </div>
               </div>
 
               {/* Social Media */}
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Follow Us</h3>
+                <h3 className="text-xl font-semibold  mb-4">Follow Us</h3>
                 <div className="flex space-x-4">
-                  <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-700 transition-colors cursor-pointer">
+                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center hover:bg-green-700 transition-colors cursor-pointer">
                     <Facebook className="w-6 h-6 text-white" />
                   </div>
-                  <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-700 transition-colors cursor-pointer">
+                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center hover:bg-green-700 transition-colors cursor-pointer">
                     <Twitter className="w-6 h-6 text-white" />
                   </div>
-                  <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-700 transition-colors cursor-pointer">
+                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center hover:bg-green-700 transition-colors cursor-pointer">
                     <Instagram className="w-6 h-6 text-white" />
                   </div>
-                  <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-700 transition-colors cursor-pointer">
+                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center hover:bg-green-700 transition-colors cursor-pointer">
                     <Linkedin className="w-6 h-6 text-white" />
                   </div>
                 </div>
@@ -133,8 +133,8 @@ export default function ContactUs() {
             </div>
 
             {/* Right Column - Form */}
-            <div className="bg-gray-900 p-8 rounded-2xl shadow-xl border border-gray-100">
-              <h3 className="text-2xl font-bold text-white mb-6">Send us a Message</h3>
+            <div className=" p-8 rounded-2xl shadow-xl border border-gray-100">
+              <h3 className="text-2xl font-bold  mb-6">Send us a Message</h3>
               <div className="space-y-6">
                 <div>
                   <input
@@ -193,7 +193,7 @@ export default function ContactUs() {
 
                 <button
                   onClick={handleSubmit}
-                  className="w-full bg-green-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-700 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                  className="w-full bg-primary text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-700 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
                 >
                   Learn More
                 </button>
@@ -204,7 +204,7 @@ export default function ContactUs() {
       </section>
 
       {/* Map Section */}
-      <section className="py-16 bg-gray-900">
+      {/* <section className="py-16 bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="bg-gray-300 rounded-2xl h-96 flex items-center justify-center">
             <div className="text-center text-gray-600">
@@ -214,7 +214,7 @@ export default function ContactUs() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       
     </div>

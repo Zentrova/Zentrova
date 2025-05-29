@@ -5,12 +5,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
-  --background: #ffffff;
+  --background: #EFF1F3  ;
   --foreground: #171717;
   --theme: "";
   --footer: #96cdeb;
   --header: rgba(0, 0, 0, 0.1);
-  --primary: #0099ff;
+  --primary: #05b572;
   --secondary: "#000";
 }
 
@@ -54,4 +54,54 @@ body {
   height: 150px;
   width: 150px;
   object-fit: contain;
+}
+
+.switch-container {
+  position: relative;
+  display: inline-block;
+  width: 2.6em;
+  height: 1.4em;
+}
+
+.switch-container input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-container .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, #facc15, #fbbf24); /* Day gradient */
+  transition: background 0.4s ease;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.switch-container .slider:before {
+  content: "";
+  position: absolute;
+  height: 1em;
+  width: 1em;
+  left: 0.2em;
+  bottom: 0.2em;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 3px #facc15;
+  transition: transform 0.4s ease, box-shadow 0.4s;
+}
+
+/* Night mode */
+.switch-container input:checked + .slider {
+  background: linear-gradient(to right, #0f172a, #1e293b);
+}
+
+.switch-container input:checked + .slider:before {
+  transform: translateX(1.2em);
+  background: #f1f5f9;
+  box-shadow: 0 0 5px #f1f5f9;
 }

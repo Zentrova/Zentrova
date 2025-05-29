@@ -9,6 +9,7 @@ import headerLogo from '../../public/headerLogo.png';
 export default function Header() {
     const pathname = usePathname();
     const [scrolled, setScrolled] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(false);
 
     useEffect(() => {
         const onScroll = () => {
@@ -17,6 +18,14 @@ export default function Header() {
         window.addEventListener('scroll', onScroll);
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
+
+    useEffect(() => {
+        if (isDarkMode) {
+            document.body.classList.add('dark');
+        } else {
+            document.body.classList.remove('dark');
+        }
+    }, [isDarkMode]);
 
     const navLinks = [
         { href: '/', label: 'Home' },
@@ -41,7 +50,7 @@ export default function Header() {
                 <Link href="/">
                     {/* <p className="text-2xl font-bold tracking-wider">MyLogo</p> */}
                     {/* <Image src="/headerLogo.png" width={100} height={10}/> */}
-                    <Image src={headerLogo} className='headerLogoClass' alt='headerImage'/>
+                    <Image src={headerLogo} className='headerLogoClass' alt='headerImage' />
                 </Link>
 
                 <nav className="hidden sm:block">
@@ -67,7 +76,14 @@ export default function Header() {
                         })}
                     </ul>
                 </nav>
+                <div>
+                    <label className="switch-container">
+                        <input type="checkbox" checked={isDarkMode} onChange={() => setIsDarkMode(!isDarkMode)} />
+                        <span className="slider"></span>
+                    </label>
+                </div>
             </div>
+
         </header>
     );
 }
