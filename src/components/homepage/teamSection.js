@@ -74,13 +74,14 @@ export default function TeamSection() {
                 className="w-full h-full object-cover sm:grayscale group-hover:grayscale-0 transition duration-500"
                 unoptimized
               />
-            </Link>
+          
             <div className="absolute bottom-0 bg-gradient-to-t from-black/80 to-transparent w-full p-4 text-white">
               <p className="text-xl font-semibold">{member.name}</p>
               <p className="text-sm text-primary">
                 {member.role} @{member.brand}
               </p>
             </div>
+            </Link>
           </div>
         ))}
       </section>
