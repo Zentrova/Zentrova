@@ -80,7 +80,7 @@ export default function CreativeWorkflow() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                     viewport={{ once: true }}
-                    className="text-xl md:text-xl text-secondary max-w-2xl mx-auto mt-4"
+                    className="text-xl md:text-xl  max-w-2xl mx-auto mt-4"
                 >
                     Every project is a unique adventure. Here's how we transform your vision into reality.
                 </motion.p>

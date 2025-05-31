@@ -44,7 +44,7 @@ export default function ContactUs() {
   return (
     <div className="min-h-screen ">
       {/* Hero Section */}
-      {/* <section className="relative  text-white py-36 overflow-hidden">
+      <section className="relative  text-white py-36 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 to-gray-800/90"></div>
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-30"
@@ -58,7 +58,7 @@ export default function ContactUs() {
             Lorem sit amet cursus sit amet dictum sit amet justo
           </p>
         </div>
-      </section> */}
+      </section>
 
       {/* Main Content */}
       <section className="py-16">
@@ -204,7 +204,7 @@ export default function ContactUs() {
       </section>
 
       {/* Map Section */}
-      {/* <section className="py-16 bg-gray-900">
+      <section className="py-16 bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="bg-gray-300 rounded-2xl h-96 flex items-center justify-center">
             <div className="text-center text-gray-600">
@@ -214,7 +214,7 @@ export default function ContactUs() {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       
     </div>
