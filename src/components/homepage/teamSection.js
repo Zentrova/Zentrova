@@ -53,7 +53,7 @@ export default function TeamSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-lg md:text-xl text-secondary max-w-3xl mx-auto mt-4 text-center"
+          className="text-lg md:text-xl max-w-3xl mx-auto mt-4 text-center"
         >
           A group of passionate experts dedicated to crafting exceptional
           digital experiences.

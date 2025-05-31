@@ -5,7 +5,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import ThemeButton from './themeButton';
+import CtcBtn from './ctcBtn';
 
 export default function HomeProjects() {
     const mockProjects = [
@@ -57,7 +57,7 @@ export default function HomeProjects() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                     viewport={{ once: true }}
-                    className="text-lg md:text-xl text-secondary max-w-2xl mx-auto mt-4"
+                    className="text-lg md:text-xl max-w-2xl mx-auto mt-4"
                 >
                     Handpicked projects that represent our creativity, tech, and strategy.
                 </motion.p>
@@ -97,7 +97,7 @@ export default function HomeProjects() {
                                 {project.description}
                             </p>
                             <Link href={`/projects/${project.slug}`}>
-                                  <ThemeButton text="View Case Study"/>
+                                  <CtcBtn text="View Case Study"/>
                             </Link>
                         </div>
                     </motion.div>

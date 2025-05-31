@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import ThemeButton from "./themeButton";
+import CtcBtn from "./ctcBtn";
 
 export default function HeroSection() {
   const users = [
@@ -42,7 +42,7 @@ export default function HeroSection() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
-          <ThemeButton text="Hire Us" />
+          <CtcBtn text="Hire Us" />
 
           <div className="flex items-center justify-center sm:justify-end -space-x-4">
             {users.map((user, index) => (
