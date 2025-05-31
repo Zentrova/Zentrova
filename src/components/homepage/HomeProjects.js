@@ -40,7 +40,7 @@ export default function HomeProjects() {
 
 
     return (
-        <section className="py-24 px-6 md:px-20 bg-white dark:bg-[#0f0f0f]">
+        <section className="py-24 px-6 md:px-20">
             <div className="text-center mb-24 px-4">
                 <motion.h2
                     initial={{ opacity: 0, y: -30 }}
