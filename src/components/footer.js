@@ -1,6 +1,6 @@
 "use client";
 
-import { Instagram, Facebook, Twitter, Youtube, Phone, Mail, ChevronRight } from "lucide-react";
+import { Instagram, Facebook, Twitter, Linkedin, Phone, Mail, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -20,7 +20,7 @@ const Footer = () => {
         { icon: <Instagram className="h-5 w-5" />, href: "#" },
         { icon: <Facebook className="h-5 w-5" />, href: "#" },
         { icon: <Twitter className="h-5 w-5" />, href: "#" },
-        { icon: <Youtube className="h-5 w-5" />, href: "#" },
+        { icon: <Linkedin className="h-5 w-5" />, href: "#" },
     ];
 
     return (

@@ -42,7 +42,9 @@ export default function HeroSection() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
+          <Link href="/contact">
           <CtcBtn text="Hire Us" />
+          </Link>
 
           <div className="flex items-center justify-center sm:justify-end -space-x-4">
             {users.map((user, index) => (

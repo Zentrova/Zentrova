@@ -27,8 +27,8 @@ export default function HomeServices() {
     ];
 
 
-    const minSpeed = 1200;
-    const speed = minSpeed / ourServices.length  ;
+    const minSpeed = 3;
+    const speed =  ourServices.length * minSpeed  ;
 
     return (
         <div className="space-y-4 pb-10 ">

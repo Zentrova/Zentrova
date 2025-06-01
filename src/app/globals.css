@@ -159,6 +159,7 @@ body {
   font-weight: bold;
   font-size: 16px;
   border: 2px solid var(--primary);
+  transition: all 0.3s;
 }
 
 .SecondaryBtn:hover {
