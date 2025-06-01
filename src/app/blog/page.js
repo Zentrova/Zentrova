@@ -59,19 +59,12 @@ const BlogsPage = () => {
   return (
     <div className="min-h-screen">
       {/* Header Section */}
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0"></div>
-        <div className="relative max-w-7xl mx-auto px-6 py-20">
-          <div className="text-center">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
-              Blog Posts
-            </h1>
-            <p className="text-xl max-w-3xl mx-auto leading-relaxed">
-              Discover insights, tutorials, and thoughts on web development, technology trends, 
-              and best practices from our community of developers and designers.
-            </p>
-          </div>
-        </div>
+      <div className="text-center py-20">
+        <h1 className="text-5xl font-bold mb-4">Blog Posts</h1>
+        <p className="text-lg max-w-2xl mx-auto">
+          Discover insights, tutorials, and thoughts on web development, technology trends,
+          and best practices from our community of developers and designers.
+        </p>
       </div>
 
       {/* Blogs Grid */}
@@ -80,9 +73,8 @@ const BlogsPage = () => {
           {blogs.map((blog, index) => (
             <article
               key={blog.id}
-              className={`group relative backdrop-blur-sm rounded-2xl overflow-hidden border-2 hover:border-primary shadow-lg transition-all duration-500 cursor-pointer ${
-                index % 2 === 0 ? 'animate-fade-in-up' : 'animate-fade-in-up delay-200'
-              }`}
+              className={`group relative backdrop-blur-sm rounded-2xl overflow-hidden border-2 hover:border-primary shadow-lg transition-all duration-500 cursor-pointer ${index % 2 === 0 ? 'animate-fade-in-up' : 'animate-fade-in-up delay-200'
+                }`}
               onMouseEnter={() => setHoveredBlog(blog.id)}
               onMouseLeave={() => setHoveredBlog(null)}
             >
@@ -94,7 +86,7 @@ const BlogsPage = () => {
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                
+
                 {/* Date badge */}
                 <div className="absolute top-3 left-3">
                   <span className="inline-flex items-center gap-1 px-2 py-1 bg-black/50 backdrop-blur-sm text-white text-xs rounded-full">
