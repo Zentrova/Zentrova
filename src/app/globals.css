@@ -13,6 +13,7 @@
   --footer: #96cdeb;
   --header: rgba(0, 0, 0, 0.1);
   --primary: #05b572;
+  --lightPrimary: #05b57226;
 }
 
 
@@ -210,4 +211,27 @@ body {
   100% {
     left: 100%;
   }
+}
+
+.content-List {
+  max-height: 40vh;
+  overflow: auto;
+  margin-bottom: 10px;
+}
+
+.content-List li {
+  cursor: pointer;
+  line-height: 2;
+  border-left: 4px transparent;
+  padding: 0px 8px;
+  margin: 2px 0px;
+}
+
+.content-List li.active {
+  border-left: 4px solid var(--primary);
+  background-color: var(--lightPrimary);
+}
+
+.content-List li:hover {
+  color: var(--primary);
 }
