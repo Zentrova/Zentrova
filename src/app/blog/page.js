@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { Calendar, User } from 'lucide-react';
+import Link from 'next/link';
 
 const BlogsPage = () => {
   const [hoveredBlog, setHoveredBlog] = useState(null);
@@ -71,50 +72,52 @@ const BlogsPage = () => {
       <div className="max-w-7xl mx-auto px-6 pb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogs.map((blog, index) => (
-            <article
-              key={blog.id}
-              className={`group relative backdrop-blur-sm rounded-2xl overflow-hidden border-2 hover:border-primary shadow-lg transition-all duration-500 cursor-pointer ${index % 2 === 0 ? 'animate-fade-in-up' : 'animate-fade-in-up delay-200'
-                }`}
-              onMouseEnter={() => setHoveredBlog(blog.id)}
-              onMouseLeave={() => setHoveredBlog(null)}
+            <Link href='/blog/preview' key={blog.id}
             >
-              {/* Blog Image */}
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={blog.image}
-                  alt={blog.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <article
+                className={`group relative backdrop-blur-sm rounded-2xl overflow-hidden border-2 hover:border-primary shadow-lg transition-all duration-500 cursor-pointer ${index % 2 === 0 ? 'animate-fade-in-up' : 'animate-fade-in-up delay-200'
+                  }`}
+                onMouseEnter={() => setHoveredBlog(blog.id)}
+                onMouseLeave={() => setHoveredBlog(null)}
+              >
+                {/* Blog Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={blog.image}
+                    alt={blog.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                {/* Date badge */}
-                <div className="absolute top-3 left-3">
-                  <span className="inline-flex items-center gap-1 px-2 py-1 bg-black/50 backdrop-blur-sm text-white text-xs rounded-full">
-                    <Calendar size={10} />
-                    {blog.date}
-                  </span>
+                  {/* Date badge */}
+                  <div className="absolute top-3 left-3">
+                    <span className="inline-flex items-center gap-1 px-2 py-1 bg-black/50 backdrop-blur-sm text-white text-xs rounded-full">
+                      <Calendar size={10} />
+                      {blog.date}
+                    </span>
+                  </div>
                 </div>
-              </div>
 
-              {/* Blog Content */}
-              <div className="p-4">
-                <h2 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors line-clamp-2 leading-tight">
-                  {blog.title}
-                </h2>
+                {/* Blog Content */}
+                <div className="p-4">
+                  <h2 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors line-clamp-2 leading-tight">
+                    {blog.title}
+                  </h2>
 
-                <p className="text-gray-600 text-sm mb-3 leading-relaxed line-clamp-2">
-                  {blog.description}
-                </p>
+                  <p className="text-gray-600 text-sm mb-3 leading-relaxed line-clamp-2">
+                    {blog.description}
+                  </p>
 
-                {/* Author */}
-                <div className="flex items-center gap-2 pt-2 border-t border-black/10">
-                  <User size={18} className="text-gray-500" />
-                  <span className="text-sm font-medium text-gray-700">
-                    {blog.author}
-                  </span>
+                  {/* Author */}
+                  <div className="flex items-center gap-2 pt-2 border-t border-black/10">
+                    <User size={18} className="text-gray-500" />
+                    <span className="text-sm font-medium text-gray-700">
+                      {blog.author}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </article>
+              </article>
+            </Link>
           ))}
         </div>
       </div>
