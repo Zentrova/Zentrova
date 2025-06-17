@@ -223,7 +223,7 @@ body {
   cursor: pointer;
   line-height: 2;
   border-left: 4px transparent;
-  padding: 0px 8px;
+  padding: 4px 8px;
   margin: 2px 0px;
 }
 
@@ -234,4 +234,8 @@ body {
 
 .content-List li:hover {
   color: var(--primary);
+}
+
+html {
+  scroll-behavior: smooth;
 }
