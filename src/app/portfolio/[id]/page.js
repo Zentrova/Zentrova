@@ -78,12 +78,6 @@ export default function PortfolioPage({ params }) {
     bio: "Passionate frontend developer with 4+ years of experience creating engaging user interfaces and seamless user experiences.",
     teamBio: "Lead frontend developer specializing in React and modern web technologies. Mentors junior developers and drives technical excellence.",
 
-    socialLinks: [
-      { icon: <Instagram className="h-5 w-5" />, href: "#" },
-      { icon: <Facebook className="h-5 w-5" />, href: "#" },
-      { icon: <Twitter className="h-5 w-5" />, href: "#" },
-      { icon: <Linkedin className="h-5 w-5" />, href: "#" },
-    ],
 
     skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "UI/UX Design"],
 
@@ -249,9 +243,14 @@ export default function PortfolioPage({ params }) {
             {/* Text Content */}
             <div className="lg:col-span-2 space-y-6">
               <div>
-                <h1 className="text-3xl lg:text-4xl font-bold text-primary">
-                  {data.name}
-                </h1>
+                <span className='flex items-end gap-2'>
+                  <h1 className="text-3xl lg:text-4xl font-bold text-primary">
+                    {data.name}
+                  </h1>
+                  <span className='bg-header hover:bg-primary p-2.5 rounded-full text-primary hover:text-white cursor-pointer'>
+                    <Linkedin className="h-5 w-5 " />
+                  </span>
+                </span>
                 <p className="text-xl mb-3">{data.role}</p>
                 <p className="leading-relaxed text-lg">{data.bio}</p>
               </div>
