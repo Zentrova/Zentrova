@@ -12,6 +12,7 @@ module.exports = {
         footer: "var(--footer)",
         header: "var(--header)",
         primary: "var(--primary)",
+        primaryLight: "var(--lightPrimary)",
         background: "var(--background)",
         background2: "var(--background2)",
         marquee: "#666666",

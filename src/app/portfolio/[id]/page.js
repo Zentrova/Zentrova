@@ -78,12 +78,6 @@ export default function PortfolioPage({ params }) {
     bio: "Passionate frontend developer with 4+ years of experience creating engaging user interfaces and seamless user experiences.",
     teamBio: "Lead frontend developer specializing in React and modern web technologies. Mentors junior developers and drives technical excellence.",
 
-    socialLinks: [
-      { icon: <Instagram className="h-5 w-5" />, href: "#" },
-      { icon: <Facebook className="h-5 w-5" />, href: "#" },
-      { icon: <Twitter className="h-5 w-5" />, href: "#" },
-      { icon: <Linkedin className="h-5 w-5" />, href: "#" },
-    ],
 
     skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "UI/UX Design"],
 
@@ -172,7 +166,7 @@ export default function PortfolioPage({ params }) {
   };
 
   const displayedProjects = activeTab === 'projects' ? portfolioData.projects : portfolioData.projects.filter(p => p.featured);
-  
+
   const ProjectCard = ({ project }) => (
     <div className="group cursor-pointer rounded-xl overflow-hidden shadow-sm hover:shadow-xl border border-white hover:border-primary transition-all duration-500 transform hover:-translate-y-2">
       <div className="relative h-48 overflow-hidden">
@@ -242,85 +236,61 @@ export default function PortfolioPage({ params }) {
 
   return (
     <div className="min-h-screen">
-      <section className="">
-        <div className="max-w-6xl mx-auto px-6 py-12">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+      <section className="bg-gradient-to-br py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+
+            {/* Text Content */}
             <div className="lg:col-span-2 space-y-6">
               <div>
-                <h1 className="text-3xl lg:text-4xl font-bold mb-2 text-primary">
-                  {data.name}
-                </h1>
-                <p className="text-xl mb-3">
-                  {data.role}
-                </p>
-                <p className="leading-relaxed">
-                  {data.bio}
-                </p>
+                <span className='flex items-end gap-2'>
+                  <h1 className="text-3xl lg:text-4xl font-bold text-primary">
+                    {data.name}
+                  </h1>
+                  <span className='bg-header hover:bg-primary p-2.5 rounded-full text-primary hover:text-white cursor-pointer'>
+                    <Linkedin className="h-5 w-5 " />
+                  </span>
+                </span>
+                <p className="text-xl mb-3">{data.role}</p>
+                <p className="leading-relaxed text-lg">{data.bio}</p>
               </div>
 
-              <div className="flex items-center space-x-2">
-                <MapPin className="w-4 h-4" />
+              <div className="flex items-center space-x-2  text-base mt-2">
+                <MapPin className="w-5 h-5 text-primary" />
                 <span>{portfolioData.location}</span>
               </div>
 
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">{portfolioData.stats.experience}</div>
-                  <div className="text-sm">Years Exp</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">{portfolioData.stats.projects}</div>
-                  <div className="text-sm">Projects</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">{portfolioData.stats.clients}</div>
-                  <div className="text-sm">Clients</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">{portfolioData.stats.commits}</div>
-                  <div className="text-sm">Commits</div>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap gap-3">
-                <button
-                  href={portfolioData.resumeUrl}
-                  download
-                  className="primaryBtn"
-                >
-                  <Download className="w-4 h-4" />
-                  <span>Resume</span>
-                </button>
-              </div>
-
-              <div className="flex flex-wrap gap-4">
-                {portfolioData.socialLinks.map(({ icon, href }, i) => (
-                  <a
-                    key={i}
-                    href={href}
-                    className="transition-transform hover:scale-110"
-                  >
-                    <span className="w-10 h-10 bg-header hover:bg-primary rounded-full flex items-center justify-center transition-colors duration-300">
-                      {icon}
-                    </span>
-                  </a>
+              {/* Stats */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6">
+                {[
+                  { label: 'Years Exp', value: portfolioData.stats.experience },
+                  { label: 'Projects', value: portfolioData.stats.projects },
+                  { label: 'Clients', value: portfolioData.stats.clients },
+                  { label: 'Commits', value: portfolioData.stats.commits }
+                ].map((item, idx) => (
+                  <div key={idx} className="text-center border border-header  rounded-xl py-4  shadow-sm hover:shadow-md transition">
+                    <div className="text-3xl font-bold text-primary">{item.value}</div>
+                    <div className="text-sm ">{item.label}</div>
+                  </div>
                 ))}
               </div>
             </div>
 
+            {/* Avatar Image */}
             <div className="flex justify-center">
               <Image
                 src={portfolioData.avatar}
                 alt={portfolioData.name}
-                className="w-full h-full object-cover rounded-2xl shadow-2xl"
                 width={500}
                 height={600}
                 unoptimized
+                className="rounded-2xl shadow-xl hover:shadow-2xl transition duration-300 object-cover w-full h-auto max-w-sm"
               />
             </div>
           </div>
         </div>
       </section>
+
 
       <section className="bg-background2 border-b sticky top-0 z-10">
         <div className="max-w-6xl mx-auto px-6">
@@ -416,25 +386,52 @@ export default function PortfolioPage({ params }) {
       )}
 
       {activeTab === 'experience' && (
-        <section className="py-12 bg-background2">
-          <div className="max-w-6xl mx-auto px-6">
-            <h2 className="text-2xl font-bold mb-8">Work Experience</h2>
-            <div className="space-y-6">
+        <section className="py-16 bg-background2">
+          <div className="max-w-4xl mx-auto px-6">
+            <h2 className="text-3xl font-bold text-center mb-16">Work Experience</h2>
+
+            {/* LinkedIn-style timeline */}
+            <div className="relative">
+              {/* Vertical line */}
+              <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gray-300"></div>
+
               {portfolioData.experience.map((exp, index) => (
-                <div key={index} className="border shadow-lg rounded-xl p-6">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
-                    <div>
-                      <h3 className="text-xl font-bold">{exp.position}</h3>
-                      <p className="text-primary font-semibold">{exp.company}</p>
+                <div key={index} className="relative flex items-start mb-8 pb-8 border-b border-gray-200 last:border-b-0">
+
+                  {/* Company logo placeholder / Circle */}
+                  <div className="relative z-10 flex-shrink-0 w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-4">
+                    <div className="w-6 h-6 bg-white rounded text-primary text-xs font-bold flex items-center justify-center">
+                      {exp.company.charAt(0)}
                     </div>
-                    <span className="text-sm mt-1 md:mt-0">{exp.duration}</span>
                   </div>
-                  <p className="">{exp.description}</p>
+
+                  {/* Content */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between mb-1">
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white leading-tight">
+                        {exp.position}
+                      </h3>
+                    </div>
+
+                    <p className="text-base text-gray-700 dark:text-gray-300 font-medium mb-1">
+                      {exp.company}
+                    </p>
+
+                    <p className="text-sm text-gray-500 mb-3">
+                      {exp.duration}
+                    </p>
+
+                    <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                      {exp.description}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
+
+
       )}
     </div>
   );
