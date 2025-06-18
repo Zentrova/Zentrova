@@ -47,10 +47,10 @@ export default function Header() {
     ];
 
     return (
-        <header className={`sticky top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'pt-6' : ''}`}>
-            <div className={`mx-auto flex justify-between items-center px-10 py-5 transition-all duration-300 ${scrolled
+        <header className={`sticky top-0 w-full z-50 transition-all duration-300 ${scrolled  && pathname === '/'  ? 'pt-6' : ''}`}>
+            <div className={`mx-auto flex justify-between items-center px-10 py-5 transition-all duration-300 ${scrolled && pathname === '/' 
                 ? 'backdrop-blur bg-header shadow-md w-11/12 rounded-lg'
-                : 'shadow-md w-full'}`}>
+                : 'shadow-md w-full bg-background'}`}>
 
                 {/* Logo */}
                 <Link href="/">

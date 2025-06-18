@@ -14,6 +14,7 @@ module.exports = {
         primary: "var(--primary)",
         primaryLight: "var(--lightPrimary)",
         background: "var(--background)",
+        foreground : "var(--foreground",
         background2: "var(--background2)",
         marquee: "#666666",
         

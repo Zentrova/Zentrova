@@ -2,81 +2,145 @@
 import React, { useState } from 'react';
 import { Calendar, User } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
+
+
+const blogs = [
+  {
+    id: 1,
+    title: "The Future of Web Development",
+    description: "Exploring the latest trends and technologies shaping the future of web development. From serverless architecture to AI-powered tools, discover what's coming next in the world of modern web applications.",
+    image: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800&h=600&fit=crop",
+    author: "Prabhjot Singh",
+    date: "March 15, 2024",
+    category:'web'
+  },
+  {
+    id: 2,
+    title: "Building Scalable React Applications",
+    description: "A comprehensive guide to architecting React applications for scale. Learn best practices for component organization, state management, and performance optimization in large-scale projects.",
+    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=600&fit=crop",
+    author: "Sumit Kumar",
+    date: "March 10, 2024",
+    category: ['web', 'mobile']
+  },
+  {
+    id: 3,
+    title: "AI and Machine Learning in 2024",
+    description: "Dive deep into the current state of artificial intelligence and machine learning. Discover breakthrough technologies, practical applications, and what these advances mean for developers.",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
+    author: "Raktinder",
+    date: "March 8, 2024",
+    category: "ai"
+  },
+  {
+    id: 4,
+    title: "Mastering CSS Grid and Flexbox",
+    description: "Complete guide to modern CSS layout techniques. Learn when to use Grid vs Flexbox, advanced layout patterns, and practical examples for building responsive designs.",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop",
+    author: "Yashpal Singh",
+    date: "March 5, 2024",
+    category: ['web', 'mobile']
+  },
+  {
+    id: 5,
+    title: "Node.js Performance Optimization",
+    description: "Boost your Node.js application performance with proven strategies. Explore caching, database optimization, memory management, and monitoring techniques for production apps.",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop",
+    author: "Sumit Kumar",
+    date: "March 1, 2024"
+
+  },
+  {
+    id: 6,
+    title: "Modern JavaScript Patterns",
+    description: "Explore advanced JavaScript patterns and best practices. From functional programming concepts to async/await patterns, elevate your JavaScript development skills.",
+    image: "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=800&h=600&fit=crop",
+    author: "Yashpal Singh",
+    date: "February 28, 2024",
+    category: "web"
+  }
+];
+
+
 
 const BlogsPage = () => {
   const [hoveredBlog, setHoveredBlog] = useState(null);
+  const [filter, setFilter] = useState('all');
 
-  const blogs = [
-    {
-      id: 1,
-      title: "The Future of Web Development",
-      description: "Exploring the latest trends and technologies shaping the future of web development. From serverless architecture to AI-powered tools, discover what's coming next in the world of modern web applications.",
-      image: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800&h=600&fit=crop",
-      author: "Prabhjot Singh",
-      date: "March 15, 2024"
-    },
-    {
-      id: 2,
-      title: "Building Scalable React Applications",
-      description: "A comprehensive guide to architecting React applications for scale. Learn best practices for component organization, state management, and performance optimization in large-scale projects.",
-      image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=600&fit=crop",
-      author: "Sumit Kumar",
-      date: "March 10, 2024"
-    },
-    {
-      id: 3,
-      title: "AI and Machine Learning in 2024",
-      description: "Dive deep into the current state of artificial intelligence and machine learning. Discover breakthrough technologies, practical applications, and what these advances mean for developers.",
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
-      author: "Raktinder",
-      date: "March 8, 2024"
-    },
-    {
-      id: 4,
-      title: "Mastering CSS Grid and Flexbox",
-      description: "Complete guide to modern CSS layout techniques. Learn when to use Grid vs Flexbox, advanced layout patterns, and practical examples for building responsive designs.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop",
-      author: "Yashpal Singh",
-      date: "March 5, 2024"
-    },
-    {
-      id: 5,
-      title: "Node.js Performance Optimization",
-      description: "Boost your Node.js application performance with proven strategies. Explore caching, database optimization, memory management, and monitoring techniques for production apps.",
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop",
-      author: "Sumit Kumar",
-      date: "March 1, 2024"
-    },
-    {
-      id: 6,
-      title: "Modern JavaScript Patterns",
-      description: "Explore advanced JavaScript patterns and best practices. From functional programming concepts to async/await patterns, elevate your JavaScript development skills.",
-      image: "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=800&h=600&fit=crop",
-      author: "Yashpal Singh",
-      date: "February 28, 2024"
-    }
+  const categories = [
+    { key: 'all', label: 'All' },
+    { key: 'web', label: 'Web' },
+    { key: 'mobile', label: 'Mobile Apps' },
+    { key: 'ai', label: 'AI/ML' }
   ];
+
+  const filteredProjects = filter === 'all'
+    ? blogs
+    : blogs.filter(blog => {
+      const category = blog.category;
+      if (!category) return false;
+      if (Array.isArray(category)) return category.includes(filter);
+      return category === filter;
+    });
+
 
   return (
     <div className="min-h-screen">
       {/* Header Section */}
-      <div className="text-center py-20">
-        <h1 className="text-5xl font-bold mb-4">Blog Posts</h1>
-        <p className="text-lg max-w-2xl mx-auto">
-          Discover insights, tutorials, and thoughts on web development, technology trends,
-          and best practices from our community of developers and designers.
-        </p>
+
+      <section className="relative heroSection py-24 text-white overflow-hidden mb-10">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/bg.jpg"
+            alt="Background"
+            layout="fill"
+            objectFit="cover"
+            className="opacity-50"
+            unoptimized
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/70" />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 max-w-4xl mx-auto text-center px-6">
+          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
+            Blog Posts
+          </h1>
+          <p className="mt-4 text-lg md:text-xl text-gray-200">
+
+            Discover insights, tutorials, and thoughts on web development, technology trends,
+            and best practices from our community of developers and designers.
+          </p>
+          <div className="mt-6 h-1 w-24 mx-auto bg-primary rounded-full" />
+        </div>
+      </section>
+
+
+      {/* Filters */}
+
+      <div className="max-w-7xl mx-auto px-6 mb-12">
+        <div className="flex flex-wrap justify-center gap-4">
+          {categories.map((category) => (
+            <button
+              key={category.key}
+              onClick={() => setFilter(category.key)}
+              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${filter === category.key ? 'primaryBtn' : 'SecondaryBtn'}`}
+            >
+              {category.label}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Blogs Grid */}
       <div className="max-w-7xl mx-auto px-6 pb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogs.map((blog, index) => (
-            <Link href='/blog/preview' key={blog.id}
-            >
+          {filteredProjects.map((blog, index) => (
+            <Link href='/blog/preview' key={blog.id}>
               <article
-                className={`group relative backdrop-blur-sm rounded-2xl overflow-hidden border-2 hover:border-primary shadow-lg transition-all duration-500 cursor-pointer ${index % 2 === 0 ? 'animate-fade-in-up' : 'animate-fade-in-up delay-200'
-                  }`}
+                className={`group relative backdrop-blur-sm rounded-2xl overflow-hidden border-2 hover:border-primary shadow-lg transition-all duration-500 cursor-pointer ${index % 2 === 0 ? 'animate-fade-in-up' : 'animate-fade-in-up delay-200'}`}
                 onMouseEnter={() => setHoveredBlog(blog.id)}
                 onMouseLeave={() => setHoveredBlog(null)}
               >
@@ -108,6 +172,9 @@ const BlogsPage = () => {
                     {blog.description}
                   </p>
 
+            
+
+
                   {/* Author */}
                   <div className="flex items-center gap-2 pt-2 border-t border-black/10">
                     <User size={18} className="text-gray-500" />
@@ -121,6 +188,7 @@ const BlogsPage = () => {
           ))}
         </div>
       </div>
+
     </div>
   );
 };

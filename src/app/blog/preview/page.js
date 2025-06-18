@@ -12,7 +12,8 @@ const sections = [
   {
     id: 'prototype',
     title: 'What Is a Prototype?',
-    desc: 'A Prototype is an interactive sample of your product, used to validate design and flow. It’s like a demo version to test with users before building the real thing. Example: A fintech app creates a clickable Figma prototype to test user onboarding and transaction flows with potential users.'
+    img: 'https://img.freepik.com/free-vector/blog-post-concept-illustration_114360-26355.jpg?semt=ais_hybrid&w=740',
+    desc: 'A Prototype is an interactive sample of your product, used to validate design and flow. It’s like a demo version to test with users before building the real thing. Example: A fintech app creates a clickable Figma prototype to test user onboarding and transaction flows with potential users.',
   },
   {
     id: 'mvp',
@@ -22,6 +23,7 @@ const sections = [
   {
     id: 'beta',
     title: 'What Is a Beta Version?',
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScpOVm0xBWbWub9-KJXgfKUm-vbUoTRdroDA&s",
     desc: 'A Beta version is a pre-release product made available to a limited audience to test for bugs and gather feedback. It’s more complete than an MVP, but not yet final. Example: Google often releases features in Beta to gather early user feedback and improve stability before official release.'
   },
   {
@@ -95,7 +97,7 @@ export default function BlogPreview() {
             alt="Background"
             layout="fill"
             objectFit="cover"
-            className="opacity-60"
+            className="opacity-70"
             unoptimized
           />
           <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/70" />
@@ -144,7 +146,7 @@ export default function BlogPreview() {
         </div>
 
         {/* Main Content */}
-        <div className="w-3/4 space-y-16 ">
+        <div className="w-3/4 space-y-16 text-justify">
           {sections.map(section => (
             <div
               key={section.id}
@@ -153,10 +155,23 @@ export default function BlogPreview() {
               className="scroll-mt-24"
             >
               <h2 className="text-2xl font-bold mb-4">{section.title}</h2>
-
               <p className="leading-relaxed">
                 {section.desc}
               </p>
+
+              {section.img && (
+                <div className="w-full my-4">
+                  <Image
+                    src={section.img}
+                    alt={section.title}
+                    width={100}
+                    height={100}
+                    className="rounded-lg object-contain w-auto  max-h-[520px] h-full"
+                    unoptimized
+                  />
+                </div>
+
+              )}
             </div>
           ))}
         </div>
