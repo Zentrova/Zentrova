@@ -13,7 +13,7 @@ const blogs = [
     image: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800&h=600&fit=crop",
     author: "Prabhjot Singh",
     date: "March 15, 2024",
-    category:'web'
+    category: 'web'
   },
   {
     id: 2,
@@ -89,7 +89,8 @@ const BlogsPage = () => {
     <div className="min-h-screen">
       {/* Header Section */}
 
-      <section className="relative heroSection py-24 text-white overflow-hidden mb-10">
+
+      <section className="relative heroSection h-hero text-white overflow-hidden mb-10">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -104,12 +105,10 @@ const BlogsPage = () => {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 max-w-4xl mx-auto text-center px-6">
+        <div className="relative z-10 max-w-6xl mx-auto flex justify-center items-center flex-col text-center h-hero">
           <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
-            Blog Posts
-          </h1>
+            Blog Posts      </h1>
           <p className="mt-4 text-lg md:text-xl text-gray-200">
-
             Discover insights, tutorials, and thoughts on web development, technology trends,
             and best practices from our community of developers and designers.
           </p>
@@ -172,7 +171,7 @@ const BlogsPage = () => {
                     {blog.description}
                   </p>
 
-            
+
 
 
                   {/* Author */}

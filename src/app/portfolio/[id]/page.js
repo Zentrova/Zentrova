@@ -17,6 +17,7 @@ import {
   Linkedin
 } from 'lucide-react';
 import Image from 'next/image';
+import CtcBtn from '@/components/homepage/ctcBtn';
 
 // src/app/portfolio/[id]/page.js
 
@@ -337,12 +338,6 @@ export default function PortfolioPage({ params }) {
             <div className="max-w-6xl mx-auto px-6">
               <div className="flex items-center justify-between mb-8">
                 <h2 className="text-2xl font-bold">Featured Projects</h2>
-                <button
-                  onClick={() => setActiveTab('projects')}
-                  className="hover:text-primary font-medium transition-colors"
-                >
-                  View All Projects →
-                </button>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -350,6 +345,11 @@ export default function PortfolioPage({ params }) {
                   <ProjectCard key={index} project={project} />
                 ))}
               </div>
+
+              <div className='mt-8 mx-auto w-fit'>
+                <CtcBtn text="  View All Projects"   onClick={() => setActiveTab('projects')}/>
+              </div>
+
             </div>
           </section>
 

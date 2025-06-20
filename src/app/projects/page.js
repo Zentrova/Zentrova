@@ -72,12 +72,33 @@ const ProjectsPage = () => {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <div className="text-center py-20">
-        <h1 className="text-5xl font-bold mb-4">My Projects</h1>
-        <p className="text-lg max-w-2xl mx-auto">
-          Explore my portfolio of innovative solutions and technical excellence.
-        </p>
-      </div>
+
+      <section className="relative heroSection h-hero text-white overflow-hidden mb-10">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/bg.jpg"
+            alt="Background"
+            layout="fill"
+            objectFit="cover"
+            className="opacity-50"
+            unoptimized
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/70" />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 max-w-6xl mx-auto flex justify-center items-center flex-col text-center h-hero">
+          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
+            My Projects      </h1>
+          <p className="mt-4 text-lg md:text-xl text-gray-200">
+            Explore my portfolio of innovative solutions and technical excellence.
+          </p>
+          <div className="mt-6 h-1 w-24 mx-auto bg-primary rounded-full" />
+        </div>
+      </section>
+
+
 
       {/* Filter */}
       <div className="max-w-7xl mx-auto px-6 mb-12">
