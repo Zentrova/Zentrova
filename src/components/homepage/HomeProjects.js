@@ -41,13 +41,13 @@ export default function HomeProjects() {
 
     return (
         <section className="py-24 px-6 md:px-20">
-            <div className="text-center mb-24 px-4">
+            <div className="text-center mb-14 px-4">
                 <motion.h2
                     initial={{ opacity: 0, y: -30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="text-4xl md:text-5xl font-extrabold text-primary"
+                    className="text-4xl md:text-4xl font-extrabold text-primary"
                 >
                     Our Featured Work
                 </motion.h2>
@@ -62,6 +62,8 @@ export default function HomeProjects() {
                     Handpicked projects that represent our creativity, tech, and strategy.
                 </motion.p>
             </div>
+
+           
 
 
 
@@ -104,11 +106,9 @@ export default function HomeProjects() {
                 ))}
             </div>
 
-            <div className="text-center mt-24">
+            <div className="text-center mt-14 mx-auto w-fit">
                 <Link href="/projects">
-                    <button className="px-8 py-3 text-lg bg-gray-900 text-white rounded-xl hover:bg-gray-800">
-                        Explore More Projects →
-                    </button>
+                      <CtcBtn text="Explore More Projects"/>
                 </Link>
             </div>
         </section>

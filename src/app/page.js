@@ -1,7 +1,8 @@
+import FAQ from "@/components/FAQ";
 import HeroSection from "@/components/homepage/herosection";
 import HomeProjects from "@/components/homepage/HomeProjects";
 import HomeServices from "@/components/homepage/HomeServices";
-import HowWeConnect from "@/components/homepage/howWeConnect";
+import HowItWorks from "@/components/homepage/howItWorks";
 import TeamSection from "@/components/homepage/teamSection";
 
 export default function Home() {
@@ -12,10 +13,11 @@ export default function Home() {
       <div className="bg-background2">
         <HomeProjects />
       </div>
-      <HowWeConnect />
+      <HowItWorks />
       <div className="bg-background2">
         <TeamSection />
       </div>
+      <FAQ/>
     </div>
   );
 }

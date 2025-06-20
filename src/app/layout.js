@@ -1,27 +1,25 @@
+"use client";
 
+import { usePathname } from "next/navigation";
 import Header from "@/components/header";
 import "./globals.css";
 import Footer from "@/components/footer";
 import MobileNav from "@/components/mobileNav";
 
-export const metadata = {
-  title: "Zentrova",
-  description: "",
-};
-
 export default function RootLayout({ children }) {
+  const pathname = usePathname();
+ const hideLayout = ["/page-not-found"].includes(pathname);
+
+
   return (
     <html lang="en">
-      <body className="min-h-screen flex flex-col ">
-        {/* add "dark" class to body to change theme to Dark theme */}
-      <Header/>
-      <div className="fixed bottom-0 z-10 w-full sm:hidden">
-        <MobileNav/>
-      </div>
-      <main className="flex-grow">
-        {children}
-      </main>
-        <Footer/>
+      <body className="min-h-screen flex flex-col">
+        {!hideLayout && <Header />}
+        <div className="fixed bottom-0 z-10 w-full sm:hidden">
+          <MobileNav />
+        </div>
+        <main className="flex-grow">{children}</main>
+        {!hideLayout && <Footer />}
       </body>
     </html>
   );
