@@ -5,6 +5,7 @@ import Header from "@/components/header";
 import "./globals.css";
 import Footer from "@/components/footer";
 import MobileNav from "@/components/mobileNav";
+import OfflineBanner from "@/components/offlineBanner";
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
@@ -20,6 +21,8 @@ export default function RootLayout({ children }) {
         </div>
         <main className="flex-grow">{children}</main>
         {!hideLayout && <Footer />}
+         <OfflineBanner />
+
       </body>
     </html>
   );
