@@ -20,7 +20,7 @@ export default function ContactUs() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-950 transition-colors duration-300">
+    <div className="min-h-screen transition-colors duration-300">
       <div className="mb-0">
         <CustomHeroSection
           title="Let's Collaborate"
@@ -34,65 +34,65 @@ export default function ContactUs() {
           <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
             <div className="col-span-1">
-              <label className="block text-sm font-medium mb-1 text-gray-800 dark:text-white">
+              <label className="block text-sm font-medium mb-1">
                 Full Name *
               </label>
               <input
                 type="text"
                 required
                 placeholder="John Doe"
-                className="w-full px-4 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-black/30 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="w-full px-4 py-2 rounded-xl border border-header bg-background focus:ring-2 focus:ring-primary focus:outline-none"
               />
             </div>
 
 
             <div className="col-span-1">
-              <label className="block text-sm font-medium mb-1 text-gray-800 dark:text-white">
+              <label className="block text-sm font-medium mb-1">
                 Email Address *
               </label>
               <input
                 type="email"
                 required
                 placeholder="you@example.com"
-                className="w-full px-4 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-black/30 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="w-full px-4 py-2 rounded-xl borderborder-header bg-background focus:ring-2 focus:ring-primary focus:outline-none"
               />
             </div>
 
 
             <div className="col-span-1">
-              <label className="block text-sm font-medium mb-1 text-gray-800 dark:text-white">
+              <label className="block text-sm font-medium mb-1">
                 Phone Number *
               </label>
               <input
                 type="tel"
                 required
                 placeholder="+91 98765 43210"
-                className="w-full px-4 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-black/30 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="w-full px-4 py-2 rounded-xl borderborder-header bg-background focus:ring-2 focus:ring-primary focus:outline-none"
               />
             </div>
 
 
             <div className="col-span-1">
-              <label className="block text-sm font-medium mb-1 text-gray-800 dark:text-white">
+              <label className="block text-sm font-medium mb-1">
                 Subject *
               </label>
               <input
                 type="text"
                 required
                 placeholder="What is your message about?"
-                className="w-full px-4 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-black/30 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="w-full px-4 py-2 rounded-xl borderborder-header bg-background focus:ring-2 focus:ring-primary focus:outline-none"
               />
             </div>
 
             {/* File Upload */}
             <div className="col-span-2">
-              <label className="block text-sm font-medium mb-2 text-gray-800 dark:text-white">
+              <label className="block text-sm font-medium mb-2">
                 Attach File (Optional)
               </label>
 
-              <label className="flex items-center gap-3 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-xl bg-white dark:bg-black/30 hover:bg-gray-100 dark:hover:bg-black/20 cursor-pointer transition">
+              <label className="flex items-center gap-3 px-4 py-2 border border-header rounded-xl bg-background hover:border-primary cursor-pointer transition">
                 <UploadCloud className="text-primary" />
-                <span className="text-sm text-gray-700 dark:text-gray-300">
+                <span className="text-sm">
                   {selectedFile ? "Change file" : "Choose a file"}
                 </span>
                 <input
@@ -103,8 +103,8 @@ export default function ContactUs() {
               </label>
 
               {selectedFile && (
-                <div className="flex items-center justify-between mt-3 bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
-                  <span className="text-sm text-gray-800 dark:text-gray-200 truncate max-w-[90%]">
+                <div className="flex items-center justify-between mt-3 bg-header px-4 py-2 rounded-lg">
+                  <span className="text-sm truncate max-w-[90%]">
                     {selectedFile.name}
                   </span>
                   <button
@@ -120,19 +120,19 @@ export default function ContactUs() {
             </div>
 
             <div className="col-span-2">
-              <label className="block text-sm font-medium mb-1 text-gray-800 dark:text-white">
+              <label className="block text-sm font-medium mb-1">
                 Message *
               </label>
               <textarea
                 required
                 rows={5}
                 placeholder="Tell us about your project, idea, or question..."
-                className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-black/30 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="w-full px-4 py-3 rounded-xl borderborder-header bg-background focus:ring-2 focus:ring-primary focus:outline-none"
               />
             </div>
             <div className="col-span-2 flex items-start gap-2">
               <input type="checkbox" className="h-4 w-4 accent-primary mt-1" id="acceptTnC" />
-              <label className="block text-sm font-medium mb-2 text-gray-800 dark:text-white" htmlFor="acceptTnC">
+              <label className="block text-sm font-medium mb-2" htmlFor="acceptTnC">
                 By submitting this form, I consent that Zentrova can process my data for the purpose of making me an offer for their services. Read our <Link href='/terms-conditions' className="text-primary">Terms and Condition</Link> and <Link href='/privacy-policy' className="text-primary">Privacy Policy</Link>.
               </label>
             </div>
