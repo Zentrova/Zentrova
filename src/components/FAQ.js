@@ -41,7 +41,7 @@ const faqs = [
   },
 ];
 
-const FAQ = () => {
+const FAQ = ({ bgColor = 'background2' }) => {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const handleToggle = (index) => {
@@ -74,7 +74,7 @@ const FAQ = () => {
             return (
               <div
                 key={index}
-                className="bg-background rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden"
+                className={`bg-${bgColor} rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden`}
               >
                 <button
                   onClick={() => handleToggle(index)}

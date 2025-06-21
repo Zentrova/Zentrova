@@ -5,6 +5,7 @@ import Header from "@/components/header";
 import "./globals.css";
 import Footer from "@/components/footer";
 import MobileNav from "@/components/mobileNav";
+import ChatBotLauncher from "@/components/ChatBotLauncher";
 import OfflineBanner from "@/components/offlineBanner";
 
 export default function RootLayout({ children }) {
@@ -21,7 +22,11 @@ export default function RootLayout({ children }) {
         </div>
         <main className="flex-grow">{children}</main>
         {!hideLayout && <Footer />}
+
+         {!hideLayout && <ChatBotLauncher />}
+
          <OfflineBanner />
+
 
       </body>
     </html>
