@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Calendar, User } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import CustomHeroSection from '@/components/CommonHeroSection';
 
 
 const blogs = [
@@ -87,34 +88,15 @@ const BlogsPage = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Header Section */}
 
+            <div className='mb-10'>
+        <CustomHeroSection
+        title='Blog Posts'
+        desc=' Discover insights, tutorials, and thoughts on web development, technology trends,
+            and best practices from our community of developers and designers.'
+      />
 
-      <section className="relative heroSection h-hero text-white overflow-hidden mb-10">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/bg.jpg"
-            alt="Background"
-            layout="fill"
-            objectFit="cover"
-            className="opacity-50"
-            unoptimized
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/70" />
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 max-w-6xl mx-auto flex justify-center items-center flex-col text-center h-hero">
-          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
-            Blog Posts      </h1>
-          <p className="mt-4 text-lg md:text-xl text-gray-200">
-            Discover insights, tutorials, and thoughts on web development, technology trends,
-            and best practices from our community of developers and designers.
-          </p>
-          <div className="mt-6 h-1 w-24 mx-auto bg-primary rounded-full" />
-        </div>
-      </section>
+      </div>
 
 
       {/* Filters */}

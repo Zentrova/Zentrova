@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import CtcBtn from '@/components/homepage/ctcBtn';
+import CountUp from 'react-countup';
 
 // src/app/portfolio/[id]/page.js
 
@@ -159,12 +160,12 @@ export default function PortfolioPage({ params }) {
     ],
 
     stats: {
-      experience: "4+",
-      projects: "15+",
-      clients: "10+",
-      commits: "2000+"
+      experience: "4",
+      projects: "15",
+      clients: "10",
+      commits: "2000"
     }
-  };
+  };  
 
   const displayedProjects = activeTab === 'projects' ? portfolioData.projects : portfolioData.projects.filter(p => p.featured);
 
@@ -270,7 +271,9 @@ export default function PortfolioPage({ params }) {
                   { label: 'Commits', value: portfolioData.stats.commits }
                 ].map((item, idx) => (
                   <div key={idx} className="text-center border border-header  rounded-xl py-4  shadow-sm hover:shadow-md transition">
-                    <div className="text-3xl font-bold text-primary">{item.value}</div>
+                    <div className="text-3xl font-bold text-primary">
+                       <CountUp end={item.value} duration={2} />+
+                    </div>
                     <div className="text-sm ">{item.label}</div>
                   </div>
                 ))}

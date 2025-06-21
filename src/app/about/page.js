@@ -1,13 +1,16 @@
+'use client';
+import CustomHeroSection from '@/components/CommonHeroSection';
 import FAQ from '@/components/FAQ';
 import HowItWorks from '@/components/homepage/howItWorks';
 import Image from 'next/image';
 import React from 'react';
+import CountUp from 'react-countup';
 
 const stats = [
-  { value: '14+', label: 'Years of Growth' },
-  { value: '120+', label: 'Product Experts' },
-  { value: '1000+', label: 'Projects Delivered' },
-  { value: '50+', label: 'Countries Served' },
+  { label: 'Clients', value: 250 },
+  { label: 'Projects', value: 120 },
+  { label: 'Years Experience', value: 5 },
+  { label: 'Team Members', value: 10 },
 ];
 
 const awards = [
@@ -20,40 +23,25 @@ const awards = [
 
 const AboutUs = () => (
   <div className="min-h-screen">
-    {/* Hero */}
+  
+    
 
-    <section className="relative heroSection h-hero text-white overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/bg.jpg"
-          alt="Background"
-          layout="fill"
-          objectFit="cover"
-          className="opacity-50"
-          unoptimized
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/70" />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto flex justify-center items-center flex-col text-center h-hero">
-        <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
-          Driven by Design. Built for Impact.        </h1>
-        <p className="mt-4 text-lg md:text-xl text-gray-200">
-          Zentrova is a team of passionate creators delivering tailored web and mobile solutions that combine strategy, design, and technology.
-        </p>
-        <div className="mt-6 h-1 w-24 mx-auto bg-primary rounded-full" />
-      </div>
-    </section>
+          <div className=''>
+        <CustomHeroSection
+    title='Driven by Design. Built for Impact.'
+    desc="Zentrova is a team of passionate creators delivering tailored web and mobile solutions that combine strategy, design, and technology."
+    />
+    </div>
 
 
     {/* Stats */}
     <div className='bg-background2'>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center  p-8 rounded-xl mx-auto w-3/4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center p-8 rounded-xl mx-auto w-3/4">
         {stats.map((s) => (
           <div key={s.label}>
-            <span className="block text-3xl font-bold">{s.value}</span>
+            <span className="block text-3xl font-bold">
+              <CountUp end={s.value} duration={2} />+
+            </span>
             <span className="text-primary">{s.label}</span>
           </div>
         ))}
@@ -95,7 +83,7 @@ const AboutUs = () => (
     </div>
 
     <div className='bg-background2'>
-      <FAQ />
+      <FAQ  bgColor="background"/>
     </div>
 
     {/* CTA */}

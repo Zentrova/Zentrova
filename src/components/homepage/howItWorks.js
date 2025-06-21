@@ -1,44 +1,38 @@
 import React from 'react';
 
 export default function HowItWorks() {
-    const steps = [
-        {
-            number: 1,
-            title: "Initial Discovery",
-            description:
-                "We begin with understanding your business goals, target audience, and project requirements through a discovery call or meeting.",
-        },
-        {
-            number: 2,
-            title: "Proposal & Planning",
-            description:
-                "Based on our discussion, we craft a tailored proposal outlining the scope, timeline, tools, and estimated cost for the project.",
-        },
-        {
-            number: 3,
-            title: "Design & Prototyping",
-            description:
-                "Our UI/UX team designs wireframes and interactive prototypes using tools like Figma to visualize the product before development begins.",
-        },
-        {
-            number: 4,
-            title: "Development & Integration",
-            description:
-                "Our frontend and backend teams build the product using scalable and modern technologies, ensuring performance, responsiveness, and functionality.",
-        },
-        {
-            number: 5,
-            title: "Testing & Feedback",
-            description:
-                "We rigorously test the platform for bugs, responsiveness, and usability. Client feedback is gathered and refinements are made accordingly.",
-        },
-        {
-            number: 6,
-            title: "Launch & Delivery",
-            description:
-                "Once approved, we launch the final product, assist with deployment, and provide documentation and post-launch support if needed.",
-        },
-    ];
+   const steps = [
+  {
+    number: 1,
+    title: "Initial Discovery",
+    description:
+      "We begin by understanding your business goals, target audience, and project requirements through a discovery call or meeting.",
+  },
+  {
+    number: 2,
+    title: "Planning & Prototyping",
+    description:
+      "Based on our discussion, we craft a tailored proposal and design interactive wireframes using tools like Figma to visualize the final product.",
+  },
+  {
+    number: 3,
+    title: "Development & Integration",
+    description:
+      "Our frontend and backend teams build the product using scalable, modern technologies while ensuring responsiveness and functionality.",
+  },
+  {
+    number: 4,
+    title: "Testing & Feedback",
+    description:
+      "We conduct thorough testing for bugs, usability, and responsiveness. Client feedback is gathered and necessary refinements are made.",
+  },
+  {
+    number: 5,
+    title: "Launch & Delivery",
+    description:
+      "Once approved, we launch the product, assist with deployment, and provide documentation along with post-launch support if needed.",
+  },
+];
 
 
     return (

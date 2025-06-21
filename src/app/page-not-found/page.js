@@ -32,14 +32,14 @@ export default function PageNotFound() {
 
         {/* Origami Bird */}
         <div className="absolute right-1/4 top-1/4 animate-float-slow opacity-25">
-          <div 
+          <div
             className="w-24 h-16 border border-neutral-600 dark:border-neutral-400"
-            style={{ 
+            style={{
               clipPath: 'polygon(0% 50%, 25% 0%, 50% 25%, 75% 0%, 100% 50%, 75% 100%, 50% 75%, 25% 100%)',
               transform: 'perspective(100px) rotateX(15deg)'
             }}
           />
-          <div 
+          <div
             className="absolute w-12 h-8 border border-neutral-700 dark:border-neutral-300 -top-2 left-6"
             style={{ clipPath: 'polygon(0% 100%, 50% 0%, 100% 100%)' }}
           />
@@ -81,21 +81,21 @@ export default function PageNotFound() {
         {/* Abstract Wave Pattern */}
         <div className="absolute left-1/12 bottom-1/5 animate-float-slow opacity-20">
           <div className="relative w-36 h-20">
-            <div 
+            <div
               className="absolute w-full h-2 border border-neutral-700 dark:border-neutral-300"
-              style={{ 
+              style={{
                 clipPath: 'polygon(0% 50%, 10% 0%, 20% 100%, 30% 0%, 40% 100%, 50% 0%, 60% 100%, 70% 0%, 80% 100%, 90% 0%, 100% 50%)'
               }}
             />
-            <div 
+            <div
               className="absolute w-full h-2 border border-neutral-600 dark:border-neutral-400 top-6"
-              style={{ 
+              style={{
                 clipPath: 'polygon(0% 50%, 15% 100%, 25% 0%, 35% 100%, 45% 0%, 55% 100%, 65% 0%, 75% 100%, 85% 0%, 95% 100%, 100% 50%)'
               }}
             />
-            <div 
+            <div
               className="absolute w-full h-2 border border-neutral-700 dark:border-neutral-300 top-12"
-              style={{ 
+              style={{
                 clipPath: 'polygon(0% 50%, 12% 0%, 24% 100%, 36% 0%, 48% 100%, 60% 0%, 72% 100%, 84% 0%, 96% 100%, 100% 50%)'
               }}
             />
@@ -114,7 +114,7 @@ export default function PageNotFound() {
             <div className="absolute w-2 h-2 bg-neutral-700 dark:bg-neutral-300 rounded-full top-6 left-2 transform rotate-270"></div>
             <div className="absolute w-2 h-2 bg-neutral-600 dark:bg-neutral-400 rounded-full top-2 left-4 transform rotate-315"></div>
             {/* Spiral curve */}
-            <div 
+            <div
               className="absolute inset-0 border border-neutral-600 dark:border-neutral-400 rounded-full opacity-50"
               style={{ borderStyle: 'dashed', borderWidth: '1px' }}
             />

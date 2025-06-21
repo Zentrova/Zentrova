@@ -3,28 +3,9 @@ import Link from "next/link";
 import CtcBtn from "./ctcBtn";
 
 export default function HeroSection() {
-  const users = [
-    {
-      name: "Prabhjot",
-      image:
-        "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1480&q=80",
-    },
-    {
-      name: "Sumit",
-      image:
-        "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1650&q=80",
-    },
-    {
-      name: "Yashpal",
-      image:
-        "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&auto=format&fit=crop&w=1760&q=80",
-    },
-    {
-      name: "Raktinder",
-      image:
-        "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1287&q=80",
-    },
-  ];
+  
+
+
 
   return (
     <section className="h-mainSection flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-12 md:py-20">
@@ -46,7 +27,7 @@ export default function HeroSection() {
           <CtcBtn text="Hire Us" />
           </Link>
 
-          <div className="flex items-center justify-center sm:justify-end -space-x-4">
+          {/* <div className="flex items-center justify-center sm:justify-end -space-x-4">
             {users.map((user, index) => (
               <div key={index} className="relative group">
                 <Link href={`/portfolio/${user.name.toLowerCase()}`}>
@@ -68,7 +49,7 @@ export default function HeroSection() {
                 </div>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
 

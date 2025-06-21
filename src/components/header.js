@@ -10,7 +10,7 @@ import {
     MenuList,
     MenuItem,
 } from '@material-tailwind/react';
-import { ChevronDownIcon } from 'lucide-react';
+import { ChevronDownIcon, Moon, Sun } from 'lucide-react';
 import headerLogo from '../../public/headerLogo.png';
 
 export default function Header() {
@@ -47,10 +47,10 @@ export default function Header() {
     ];
 
     return (
-        <header className={`sticky top-0 w-full z-50 transition-all duration-300 ${scrolled  && pathname === '/'  ? 'pt-6' : ''}`}>
-            <div className={`mx-auto flex justify-between items-center px-10 py-5 transition-all duration-300 ${scrolled && pathname === '/' 
-                ? 'backdrop-blur bg-header shadow-md w-11/12 rounded-lg'
-                : 'shadow-md w-full bg-background'}`}>
+        <header className={`sticky top-0 w-full z-50 transition-all duration-300 ${scrolled && pathname === '/' ? 'pt-6' : ''}`}>
+            <div className={`mx-auto flex justify-between items-center px-6 md:px-10 py-4 transition-all duration-300 ${scrolled && pathname === '/'
+                ? 'backdrop-blur bg-header shadow-lg w-11/12 rounded-xl'
+                : 'bg-background shadow-sm w-full'}`}>
 
                 {/* Logo */}
                 <Link href="/">
@@ -58,7 +58,7 @@ export default function Header() {
                 </Link>
 
                 {/* Navigation */}
-                <nav className="hidden sm:flex items-center space-x-10 font-medium text-lg relative">
+                <nav className="hidden sm:flex items-center space-x-8 font-medium text-base relative">
                     {navLinks.map((link, idx) => {
                         const isActive =
                             link.href === '/'
@@ -69,54 +69,65 @@ export default function Header() {
                             return (
                                 <div
                                     key={idx}
-                                    onMouseEnter={() => setOpenMenu(true)}
-                                    onMouseLeave={() => setOpenMenu(false)}
-                                    className="relative"
+                                    className="relative group"
                                 >
-                                    <Menu open={openMenu} allowHover>
+                                    <Menu allowHover>
                                         <MenuHandler>
-                                            <button className={`flex items-center gap-1 cursor-pointer focus:outline-none ${pathname.startsWith('/service') ? 'text-primary' : ''}`}>
+                                            <button
+                                                className={`flex items-center gap-1 cursor-pointer focus:outline-none focus:ring-0 transition-colors duration-300 ${pathname.startsWith('/service') ? 'text-primary' : 'hover:text-primary'
+                                                    }`}
+                                            >
                                                 {link.label}
-                                                <ChevronDownIcon className="w-4 h-4 transition-transform duration-200" />
+                                                <ChevronDownIcon className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" />
                                             </button>
                                         </MenuHandler>
-                                        <MenuList className="absolute top-full mt-2 min-w-[200px] bg-white dark:bg-black rounded-lg shadow-lg py-2 px-1 z-50">
+
+                                        <MenuList className="absolute top-full mt-3 w-44 bg-white dark:bg-neutral-900 rounded-lg shadow-2xl z-50 py-1 border border-gray-100 dark:border-neutral-800">
                                             {link.children.map((child, index) => (
                                                 <MenuItem
                                                     key={index}
-                                                    className="rounded-md px-4 py-2 text-sm hover:bg-primaryLight dark:hover:bg-primary transition"
+                                                    className=" text-left group px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 rounded-md transition-all duration-200"
                                                 >
-                                                    <Link href='/service' className="block w-full">
+                                                    <Link
+                                                        href="/service"
+                                                        className="block w-full transition-all duration-200 group-hover:translate-x-1 group-hover:text-primary focus:outline-none focus:ring-0"
+                                                    >
                                                         {child.label}
                                                     </Link>
                                                 </MenuItem>
                                             ))}
                                         </MenuList>
                                     </Menu>
+
                                 </div>
+
                             );
                         }
 
                         return (
                             <Link key={idx} href={link.href}>
-                                <span className={`cursor-pointer transition-colors ${isActive ? 'text-primary' : 'hover:text-primary'}`}>
+                                <span className={`relative group cursor-pointer transition-colors duration-300 ${isActive ? 'text-primary' : 'hover:text-primary'}`}>
                                     {link.label}
+                                    <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-300"></span>
                                 </span>
                             </Link>
                         );
                     })}
                 </nav>
 
-                {/* Dark Mode Switch */}
+                {/* Dark Mode Toggle (Preserved as Requested) */}
                 <div>
-                    <label className="switch-container">
-                        <input
-                            type="checkbox"
-                            checked={isDarkMode}
-                            onChange={() => setIsDarkMode(!isDarkMode)}
-                        />
-                        <span className="slider"></span>
-                    </label>
+                    <div className="container" onChange={() => setIsDarkMode(!isDarkMode)}>
+                        <label htmlFor="switch" className="toggle">
+                            <input type="checkbox" className="input" id="switch" />
+                            <div className="icon icon--moon">
+                                <Moon className="h-5 w-5" />
+                            </div>
+                            <div className="icon icon--sun">
+                                <Sun className="h-5 w-5" />
+                            </div>
+                        </label>
+                    </div>
                 </div>
             </div>
         </header>
