@@ -35,7 +35,7 @@ const ContentLayout = ({ sections, activeId, sectionRefs, blog }) => {
       {/* Main Content */}
       <div className="w-3/4 space-y-16 text-justify">
         <div
-          className="prose prose-lg max-w-none"
+          className="prose prose-lg max-w-none  dark:prose-invert"
           dangerouslySetInnerHTML={{ __html: blog.content }}
         />
         {/* {sections.map((section) => (

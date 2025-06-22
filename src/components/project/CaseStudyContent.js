@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import ContentLayout from '@/components/contentLayout';
 
-const CaseStudyContent = ({ sections }) => {
+const CaseStudyContent = ({ sections,project }) => {
   const [activeId, setActiveId] = useState(sections[0].id);
   const sectionRefs = useRef({});
 
@@ -34,6 +34,7 @@ const CaseStudyContent = ({ sections }) => {
       sections={sections}
       activeId={activeId}
       sectionRefs={sectionRefs}
+      blog={project}
     />
   );
 };

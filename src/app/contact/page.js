@@ -1,12 +1,40 @@
 "use client";
-
 import CustomHeroSection from "@/components/CommonHeroSection";
 import { UploadCloud, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { httpRequest } from "@/utils/httpRequest";
+import { Toaster, toast } from 'sonner';
 
 export default function ContactUs() {
   const [selectedFile, setSelectedFile] = useState(null);
+
+  const validationSchema = Yup.object({
+    fullName: Yup.string().required("Full name is required"),
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    phone: Yup.string().required("Phone number is required"),
+    subject: Yup.string().required("Subject is required"),
+    message: Yup.string().required("Message is required"),
+    termsAndPolicy: Yup.boolean().oneOf([true], "You must accept the terms"),
+  })
+
+  const formik = useFormik({
+    initialValues: {
+      fullName: "",
+      email: "",
+      phone: "",
+      subject: "",
+      message: "",
+      termsAndPolicy: false,
+    },
+    validationSchema,
+    onSubmit: (values) => {
+      // You can also append file to FormData here if needed
+      console.log("Form submitted with values:", values);
+    },
+  });
 
   const handleFileChange = (e) => {
     const file = e.target.files?.[0];
@@ -18,6 +46,59 @@ export default function ContactUs() {
   const handleRemoveFile = () => {
     setSelectedFile(null);
   };
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  // Validate form fields
+  const errors = await formik.validateForm();
+  formik.setTouched({
+    fullName: true,
+    email: true,
+    phone: true,
+    subject: true,
+    message: true,
+    termsAndPolicy: true,
+  });
+
+  if (Object.keys(errors).length > 0) return; // If validation fails
+
+  try {
+    const formData = new FormData();
+    formData.append("fullName", formik.values.fullName);
+    formData.append("email", formik.values.email);
+    formData.append("phone", formik.values.phone);
+    formData.append("subject", formik.values.subject);
+    formData.append("message", formik.values.message);
+    formData.append("termsAndPolicy", formik.values.termsAndPolicy);
+
+    if (selectedFile) {
+      formData.append("attachment", selectedFile);
+    }
+    console.log("selected file",selectedFile)
+    const { success, data, error } = await httpRequest({
+      url: "contact", // or full path if backend is separate
+      method: "POST",
+      data: formData,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    console.log("spisss",success)
+    if (success) {
+      toast.success("Thank you for contacting us ! Our team will contact you with in 24 hours");
+      formik.resetForm();
+      setSelectedFile(null);
+    } else {
+      toast.error("Submission failed: " + error);
+    }
+  } catch (err) {
+    console.error("Form submission error:", err);
+    toast.error("An error occurred. Please try again.");
+  }
+};
+
+
 
   return (
     <div className="min-h-screen transition-colors duration-300">
@@ -42,7 +123,11 @@ export default function ContactUs() {
                 required
                 placeholder="John Doe"
                 className="w-full px-4 py-2 rounded-xl border border-header bg-background focus:ring-2 focus:ring-primary focus:outline-none"
+                {...formik.getFieldProps("fullName")}
               />
+              {formik.touched.fullName && formik.errors.fullName && (
+                <p className="text-red-500 text-sm mt-1">{formik.errors.fullName}</p>
+              )}
             </div>
 
 
@@ -55,7 +140,11 @@ export default function ContactUs() {
                 required
                 placeholder="you@example.com"
                 className="w-full px-4 py-2 rounded-xl borderborder-header bg-background focus:ring-2 focus:ring-primary focus:outline-none"
+                {...formik.getFieldProps("email")}
               />
+              {formik.touched.email && formik.errors.email && (
+                <p className="text-red-500 text-sm mt-1">{formik.errors.email}</p>
+              )}
             </div>
 
 
@@ -68,7 +157,11 @@ export default function ContactUs() {
                 required
                 placeholder="+91 98765 43210"
                 className="w-full px-4 py-2 rounded-xl borderborder-header bg-background focus:ring-2 focus:ring-primary focus:outline-none"
+                {...formik.getFieldProps("phone")}
               />
+              {formik.touched.phone && formik.errors.phone && (
+                <p className="text-red-500 text-sm mt-1">{formik.errors.phone}</p>
+              )}
             </div>
 
 
@@ -81,7 +174,11 @@ export default function ContactUs() {
                 required
                 placeholder="What is your message about?"
                 className="w-full px-4 py-2 rounded-xl borderborder-header bg-background focus:ring-2 focus:ring-primary focus:outline-none"
+                {...formik.getFieldProps("subject")}
               />
+              {formik.touched.subject && formik.errors.subject && (
+                <p className="text-red-500 text-sm mt-1">{formik.errors.subject}</p>
+              )}
             </div>
 
             {/* File Upload */}
@@ -128,20 +225,30 @@ export default function ContactUs() {
                 rows={5}
                 placeholder="Tell us about your project, idea, or question..."
                 className="w-full px-4 py-3 rounded-xl borderborder-header bg-background focus:ring-2 focus:ring-primary focus:outline-none"
+                {...formik.getFieldProps("message")}
               />
+              {formik.touched.message && formik.errors.message && (
+                <p className="text-red-500 text-sm mt-1">{formik.errors.message}</p>
+              )}
             </div>
             <div className="col-span-2 flex items-start gap-2">
-              <input type="checkbox" className="h-4 w-4 accent-primary mt-1" id="acceptTnC" />
+              <input type="checkbox" className="h-4 w-4 accent-primary mt-1" id="acceptTnC"
+                {...formik.getFieldProps("termsAndPolicy")}
+              />
               <label className="block text-sm font-medium mb-2" htmlFor="acceptTnC">
                 By submitting this form, I consent that Zentrova can process my data for the purpose of making me an offer for their services. Read our <Link href='/terms-conditions' className="text-primary">Terms and Condition</Link> and <Link href='/privacy-policy' className="text-primary">Privacy Policy</Link>.
               </label>
             </div>
+            {formik.touched.termsAndPolicy && formik.errors.termsAndPolicy && (
+                <p className="text-red-500 text-sm mt-1">{formik.errors.termsAndPolicy}</p>
+              )}
 
             {/* Submit */}
             <div className="col-span-2">
               <button
                 type="submit"
                 className="w-full primaryBtn"
+                onClick={handleSubmit}
               >
                 Submit Form
               </button>
@@ -183,7 +290,7 @@ export default function ContactUs() {
                     Need more info on how we work, what we do or pretty much anything else?
                   </p>
                   <a href="mailto:zentrova.info@gmail.com" className="text-primary hover:underline">
-                   zentrova.info@gmail.com
+                    zentrova.info@gmail.com
                   </a>
                 </div>
               </div>

@@ -5,70 +5,80 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import CustomHeroSection from '@/components/CommonHeroSection';
+import { useBlogs } from '@/context/BlogContext';
+import { filterBlogs } from '@/utils/filterBlogs';
 
 const ProjectsPage = () => {
   const [hoveredProject, setHoveredProject] = useState(null);
   const [avatarHover, setAvatarHover] = useState(null); // For avatar tooltip
-  const [filter, setFilter] = useState('all');
+  const [filter, setFilter] = useState('');
+  const { blogs, loading } = useBlogs();
   const router = useRouter();
 
-  const projects = [
-    {
-      id: 1,
-      title: "E-Commerce Platform",
-      description: "A full-stack e-commerce solution with real-time inventory management, payment integration, and admin dashboard.",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
-      category: "web",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-      github: "https://github.com",
-      demo: "https://demo.com",
-      teamMembers: [
-        { name: "Prabhjot", role: "Frontend Developer", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" },
-        { name: "Sumit", role: "Backend Developer", avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face" },
-        { name: "Yashpal", role: "UI/UX Designer", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" }
-      ]
-    },
-    {
-      id: 2,
-      title: "AI Task Manager",
-      description: "Intelligent task management application powered by machine learning algorithms.",
-      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop",
-      category: "ai",
-      technologies: ["Python", "TensorFlow", "React", "FastAPI"],
-      github: "https://github.com",
-      demo: "https://demo.com",
-      teamMembers: [
-        { name: "Alice Brown", role: "ML Engineer", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop&crop=face" },
-        { name: "Bob Wilson", role: "Full Stack Developer", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop&crop=face" }
-      ]
-    },
-    {
-      id: 3,
-      title: "Mobile Banking App",
-      description: "Secure mobile banking app with biometric authentication and real-time analytics.",
-      image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop",
-      category: "mobile",
-      technologies: ["React Native", "Firebase", "Node.js"],
-      github: "https://github.com",
-      demo: "https://demo.com",
-      teamMembers: [
-        { name: "Sarah Davis", role: "Mobile Developer", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=40&h=40&fit=crop&crop=face" },
-        { name: "Tom Anderson", role: "Security Engineer", avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=40&h=40&fit=crop&crop=face" },
-        { name: "Emma Wilson", role: "Product Manager", avatar: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=40&h=40&fit=crop&crop=face" }
-      ]
-    }
-  ];
-
+  // const projects = [
+  //   {
+  //     id: 1,
+  //     title: "E-Commerce Platform",
+  //     description: "A full-stack e-commerce solution with real-time inventory management, payment integration, and admin dashboard.",
+  //     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
+  //     category: "web",
+  //     technologies: ["React", "Node.js", "MongoDB", "Stripe"],
+  //     github: "https://github.com",
+  //     demo: "https://demo.com",
+  //     teamMembers: [
+  //       { name: "Prabhjot", role: "Frontend Developer", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" },
+  //       { name: "Sumit", role: "Backend Developer", avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face" },
+  //       { name: "Yashpal", role: "UI/UX Designer", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" }
+  //     ]
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "AI Task Manager",
+  //     description: "Intelligent task management application powered by machine learning algorithms.",
+  //     image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop",
+  //     category: "ai",
+  //     technologies: ["Python", "TensorFlow", "React", "FastAPI"],
+  //     github: "https://github.com",
+  //     demo: "https://demo.com",
+  //     teamMembers: [
+  //       { name: "Alice Brown", role: "ML Engineer", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop&crop=face" },
+  //       { name: "Bob Wilson", role: "Full Stack Developer", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop&crop=face" }
+  //     ]
+  //   },
+  //   {
+  //     id: 3,
+  //     title: "Mobile Banking App",
+  //     description: "Secure mobile banking app with biometric authentication and real-time analytics.",
+  //     image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop",
+  //     category: "mobile",
+  //     technologies: ["React Native", "Firebase", "Node.js"],
+  //     github: "https://github.com",
+  //     demo: "https://demo.com",
+  //     teamMembers: [
+  //       { name: "Sarah Davis", role: "Mobile Developer", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=40&h=40&fit=crop&crop=face" },
+  //       { name: "Tom Anderson", role: "Security Engineer", avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=40&h=40&fit=crop&crop=face" },
+  //       { name: "Emma Wilson", role: "Product Manager", avatar: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=40&h=40&fit=crop&crop=face" }
+  //     ]
+  //   }
+  // ];
+  const filteredBlogs = filterBlogs({
+    blogs,
+    category: filter
+  })
+  if (loading) return <p>Loading...</p>
+  console.log("filtered blogs", filteredBlogs)
   const categories = [
-    { key: 'all', label: 'All Projects' },
-    { key: 'web', label: 'Web Apps' },
-    { key: 'mobile', label: 'Mobile Apps' },
-    { key: 'ai', label: 'AI/ML' }
+    { key: '', label: 'All Projects' },
+    { key: 'Web', label: 'Web Apps' },
+    { key: 'Ecommerce', label: 'E-commerce' },
+    { key: 'App', label: 'Mobile Apps' },
+    { key: 'Ai', label: 'AI/ML' },
+    { key: 'shopify', label: 'Shopify' },
   ];
 
-  const filteredProjects = filter === 'all'
-    ? projects
-    : projects.filter(project => project.category === filter);
+  // const filteredProjects = filter === 'all'
+  //   ? projects
+  //   : projects.filter(project => project.category === filter);
 
   return (
     <div className="min-h-screen">
@@ -100,33 +110,33 @@ const ProjectsPage = () => {
 
       {/* Projects */}
       <div className="max-w-7xl mx-auto px-6 pb-20 grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {filteredProjects.map((project, index) => (
+        {filteredBlogs.length > 0 ? filteredBlogs.map((project, index) => (
           <div
-            key={project.id}
-            onClick={() => router.push('/projects/project-preview')}
+            key={project.ID}
+            onClick={() => router.push(`/projects/${project.slug}`)}
             className="cursor-pointer group relative backdrop-blur-sm rounded-2xl overflow-hidden border-2 hover:border-primary shadow-lg transition-all duration-500"
-            onMouseEnter={() => setHoveredProject(project.id)}
+            onMouseEnter={() => setHoveredProject(project.ID)}
             onMouseLeave={() => setHoveredProject(null)}
           >
             {/* Image */}
             <div className="relative h-64 overflow-hidden">
               <img
-                src={project.image}
+                src={project.featured_image}
                 alt={project.title}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute top-4 right-4 flex gap-2 transition-all duration-300 opacity-0 group-hover:opacity-100">
-                <Link href={project.github} onClick={(e) => e.stopPropagation()} className="p-2 bg-black/50 rounded-full text-white hover:bg-black/70">
+                {/* <Link href={project.github} onClick={(e) => e.stopPropagation()} className="p-2 bg-black/50 rounded-full text-white hover:bg-black/70">
                   <Github size={18} />
-                </Link>
-                <Link href={project.demo} onClick={(e) => e.stopPropagation()} className="p-2 bg-black/50 rounded-full text-white hover:bg-black/70">
+                </Link> */}
+                {/* <Link href={project.demo} onClick={(e) => e.stopPropagation()} className="p-2 bg-black/50 rounded-full text-white hover:bg-black/70">
                   <ExternalLink size={18} />
-                </Link>
+                </Link> */}
               </div>
               <div className="absolute top-4 left-4">
                 <span className="inline-flex items-center gap-1 px-3 py-1 bg-primary text-white text-sm rounded-full">
                   <Tag size={12} />
-                  {project.category.toUpperCase()}
+                  {Object.keys(project.categories)[0]}
                 </span>
               </div>
             </div>
@@ -140,7 +150,7 @@ const ProjectsPage = () => {
 
                 {/* Avatars */}
                 <div className="flex -space-x-4">
-                  {project.teamMembers.map((member, idx) => {
+                  {/* {project.teamMembers.map((member, idx) => {
                     const avatarKey = `${project.id}-${idx}`;
                     return (
                       <div
@@ -167,22 +177,24 @@ const ProjectsPage = () => {
                         )}
                       </div>
                     );
-                  })}
+                  })} */}
                 </div>
               </div>
-
-              <p className="mb-4">{project.description}</p>
-
+              <div className="text-gray-600 text-sm mb-3 leading-relaxed line-clamp-2 "
+                dangerouslySetInnerHTML={{ __html: project.excerpt }} />
               <div className="flex flex-wrap gap-2">
-                {project.technologies.map((tech) => (
-                  <span key={tech} className="px-3 py-1 bg-header text-sm rounded-full">
-                    {tech}
+                {Object.values(project.tags).map((tag) => (
+                  <span key={tag.ID} className="px-3 py-1 bg-header text-sm rounded-full">
+                    {tag.name}
                   </span>
                 ))}
+
               </div>
             </div>
           </div>
-        ))}
+        )) :
+          <p>No Data Found</p>
+        }
       </div>
     </div>
   );

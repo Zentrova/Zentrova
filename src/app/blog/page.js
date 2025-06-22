@@ -74,13 +74,12 @@ const BlogsPage = () => {
     blogs,
     category: filter
   })
-  console.log("filteredBlogs", filteredBlogs)
   if (loading) return <p>Loading...</p>
   const categories = [
     { key: '', label: 'All' },
     { key: 'Ecommerce', label: 'E-Commerce' },
     { key: 'Web', label: 'Web' },
-    { key: 'Mobile', label: 'Mobile Apps' },
+    { key: 'App', label: 'Mobile Apps' },
     { key: 'Shopify', label: 'Shopify' },
     { key: 'Ai', label: 'AI/ML' }
   ];
@@ -129,7 +128,8 @@ const BlogsPage = () => {
       {/* Blogs Grid */}
       <div className="max-w-7xl mx-auto px-6 pb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredBlogs.map((blog, index) => (
+          { filteredBlogs.length>0 ?
+            filteredBlogs.map((blog, index) => (
             <Link href={`/blog/${blog.slug}`} key={blog.ID}>
               <article
                 className={`group relative backdrop-blur-sm rounded-2xl overflow-hidden border-2 hover:border-primary shadow-lg transition-all duration-500 cursor-pointer ${index % 2 === 0 ? 'animate-fade-in-up' : 'animate-fade-in-up delay-200'}`}
@@ -161,7 +161,7 @@ const BlogsPage = () => {
                   </h2>
 
 
-                  <div className="text-gray-600 text-sm mb-3 leading-relaxed line-clamp-2"
+                  <div className="text-gray-600 text-sm mb-3 leading-relaxed line-clamp-2 "
                     dangerouslySetInnerHTML={{ __html: blog.excerpt }} />
 
 
@@ -175,7 +175,8 @@ const BlogsPage = () => {
                 </div>
               </article>
             </Link>
-          ))}
+          )):
+          <p>No Data found</p>}
         </div>
       </div>
 
