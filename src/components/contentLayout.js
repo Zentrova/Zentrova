@@ -3,7 +3,7 @@ import React, { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const ContentLayout = ({ sections, activeId, sectionRefs }) => {
+const ContentLayout = ({ sections, activeId, sectionRefs, blog }) => {
   return (
     <section className="flex gap-12">
       {/* Sidebar */}
@@ -34,7 +34,11 @@ const ContentLayout = ({ sections, activeId, sectionRefs }) => {
 
       {/* Main Content */}
       <div className="w-3/4 space-y-16 text-justify">
-        {sections.map((section) => (
+        <div
+          className="prose prose-lg max-w-none"
+          dangerouslySetInnerHTML={{ __html: blog.content }}
+        />
+        {/* {sections.map((section) => (
           <div
             key={section.id}
             id={section.id}
@@ -57,7 +61,7 @@ const ContentLayout = ({ sections, activeId, sectionRefs }) => {
               </div>
             )}
           </div>
-        ))}
+        ))} */}
       </div>
     </section>
   );

@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ContentLayout from '@/components/contentLayout';
+import { useParams } from 'next/navigation';
 
 const sections = [
   {
@@ -63,7 +64,27 @@ const sections = [
 
 export default function BlogPreview() {
   const [activeId, setActiveId] = useState(sections[0].id);
+  const [blogDetail,setBlogDetail]=useState({})
   const sectionRefs = useRef({});
+  const params = useParams();
+  const slug=params.slug;
+  const blog = async (slug) => {
+    try {
+      const result = await fetch(
+        `${process.env.NEXT_PUBLIC_WP_API_BASE}/posts/slug:${slug}`
+      );
+      if (!result.ok) {
+        throw new Error("Blog not found");
+      }
+      
+    const data = await result.json();
+    console.log("dataa",data)
+    setBlogDetail(data)
+    } catch (error) {
+      console.error("Error fetching blog:", error.message);
+       return null;
+    }
+  }
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -84,6 +105,9 @@ export default function BlogPreview() {
       const ref = sectionRefs.current[section.id];
       if (ref) observer.observe(ref);
     });
+    if(slug){
+      blog(slug)
+    }
 
     return () => observer.disconnect();
   }, []);
@@ -94,7 +118,7 @@ export default function BlogPreview() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://c0.wallpaperflare.com/preview/639/306/330/aerial-background-blog-cafe-thumbnail.jpg"
+            src={blogDetail?.featured_image || "https://c0.wallpaperflare.com/preview/639/306/330/aerial-background-blog-cafe-thumbnail.jpg"}
             alt="Background"
             layout="fill"
             objectFit="cover"
@@ -105,23 +129,23 @@ export default function BlogPreview() {
         </div>
 
 
-        
+
 
         {/* Content */}
         <div className="relative z-10 max-w-4xl mx-auto text-center px-6">
-          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
-            POC vs Prototype vs MVP
+          <h1 className="text-4xl md:text-4xl font-extrabold leading-tight">
+            {blogDetail?.title}
           </h1>
-          <p className="mt-4 text-lg md:text-xl text-gray-200">
+          {/* <p className="mt-4 text-lg md:text-xl text-gray-200">
             Decoding product development stages — from validating ideas to launching successful products.
-          </p>
+          </p> */}
           <div className="mt-6 h-1 w-24 mx-auto bg-primary rounded-full" />
         </div>
       </section>
-      
+
 
       <div className='px-24'>
-        <ContentLayout sections={sections} activeId={activeId} sectionRefs={sectionRefs} />
+        <ContentLayout sections={sections} activeId={activeId} sectionRefs={sectionRefs} blog={blogDetail}/>
       </div>
 
 
