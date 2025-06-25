@@ -12,8 +12,10 @@ import { Toaster, toast } from 'sonner';
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
-  const hideLayout = ["/page-not-found"].includes(pathname);
 
+  const hideLayoutRoutes = ["/page-not-found"];
+  const isAuthLayout = pathname.startsWith("/auth");
+  const isHideLayout = hideLayoutRoutes.includes(pathname) || isAuthLayout;
 
   return (
     <html lang="en">
@@ -31,15 +33,15 @@ export default function RootLayout({ children }) {
           }}
         />
 
-        {!hideLayout && <Header />}
+        {!isHideLayout && <Header />}
         <div className="fixed bottom-0 z-10 w-full sm:hidden">
           <MobileNav />
         </div>
         <BlogProvider>
           <main className="flex-grow">{children}</main>
         </BlogProvider>
-        {!hideLayout && <Footer />}
-        {!hideLayout && <ChatBotLauncher />}
+        {!isHideLayout && <Footer />}
+        {!isHideLayout && <ChatBotLauncher />}
       </body>
     </html>
   );
