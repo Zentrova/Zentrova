@@ -54,7 +54,7 @@ export default function Header() {
 
                 {/* Logo */}
                 <Link href="/">
-                    <Image src={headerLogo} alt="Header Logo" className="w-[120px] h-auto" />
+                    <Image src={headerLogo} alt="Header Logo" className="w-auto h-12" />
                 </Link>
 
                 {/* Navigation */}

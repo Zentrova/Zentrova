@@ -25,10 +25,10 @@ export default function CustomHeroSection({
 
             {/* Content */}
             <div className="relative z-10 max-w-4xl mx-auto text-center px-6">
-                <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
+                <h1 className="text-3xl md:text-4xl font-bold md:font-extrabold leading-tight">
                     {title}
                 </h1>
-                <p className="mt-4 text-lg text-zinc-200">{desc}</p>
+                <p className="mt-4 text-base md:text-lg text-zinc-200">{desc}</p>
                 <div className="mt-6 h-1 w-24 mx-auto bg-primary rounded-full" />
             </div>
         </section>
