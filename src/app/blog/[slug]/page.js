@@ -114,8 +114,7 @@ export default function BlogPreview() {
 
   return (
     <div className="blogWrap mb-10">
-      <section className="relative heroSection py-24 text-white overflow-hidden mb-10">
-        {/* Background Image */}
+      {/* <section className="relative heroSection py-24 text-white overflow-hidden mb-10">
         <div className="absolute inset-0 z-0">
           <Image
             src={blogDetail?.featured_image || "https://c0.wallpaperflare.com/preview/639/306/330/aerial-background-blog-cafe-thumbnail.jpg"}
@@ -127,25 +126,19 @@ export default function BlogPreview() {
           />
           <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/70" />
         </div>
-
-
-
-
-        {/* Content */}
         <div className="relative z-10 max-w-4xl mx-auto text-center px-6">
           <h1 className="text-4xl md:text-4xl font-extrabold leading-tight">
             {blogDetail?.title}
           </h1>
-          {/* <p className="mt-4 text-lg md:text-xl text-gray-200">
-            Decoding product development stages — from validating ideas to launching successful products.
-          </p> */}
           <div className="mt-6 h-1 w-24 mx-auto bg-primary rounded-full" />
         </div>
-      </section>
+      </section> */}
+
+  
 
 
       <div className='px-24'>
-        <ContentLayout sections={sections} activeId={activeId} sectionRefs={sectionRefs} blog={blogDetail}/>
+        <ContentLayout sections={sections} activeId={activeId} sectionRefs={sectionRefs} blog={blogDetail} />
       </div>
 
 

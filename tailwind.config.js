@@ -22,7 +22,7 @@ module.exports = {
       },
       height: {
         mainSection: "calc(100vh - 170px)",
-        hero: "calc(100vh - 220px)"
+        hero: "calc(100vh - 280px)"
       },
       fontFamily: {
         sniglet: ['Comic Neue', 'cursive']

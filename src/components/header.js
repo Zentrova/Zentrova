@@ -47,6 +47,12 @@ export default function Header() {
     const html = document.documentElement;
     html.classList.toggle("dark", isDarkMode);
   }, [isDarkMode]);
+  {
+    /* Logo */
+  }
+  <Link href="/">
+    <Image src={headerLogo} alt="Header Logo" className="w-auto h-12" />
+  </Link>;
 
   const navLinks = [
     { href: "/", label: "Home" },
