@@ -17,7 +17,8 @@ module.exports = {
         foreground : "var(--foreground",
         background2: "var(--background2)",
         marquee: "#666666",
-        
+        primaryGreen: "#05b572",
+        lightGreen: "#a8e6cf",
       },
       height: {
         mainSection: "calc(100vh - 170px)",
