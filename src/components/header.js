@@ -73,16 +73,14 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 w-full z-50 transition-all duration-300 ${
-        scrolled && pathname === "/" ? "pt-6" : ""
-      }`}
+      className={`sticky top-0 w-full z-50 transition-all duration-300 bg-none  ${scrolled && pathname === "/" ? "fixed top-6" : ""
+        }`}
     >
       <div
-        className={`mx-auto flex justify-between items-center px-6 md:px-10 py-4 transition-all duration-300 ${
-          scrolled && pathname === "/"
-            ? "backdrop-blur bg-header shadow-lg w-11/12 rounded-xl"
-            : "bg-background shadow-sm w-full"
-        }`}
+        className={`mx-auto flex justify-between items-center px-6 py-4 transition-all duration-300 ${scrolled && pathname === "/"
+            ? "backdrop-blur bg-header shadow-lg w-11/12 rounded-xl md:px-10"
+            : "bg-background shadow-sm w-full md:px-20 "
+          }`}
       >
         {/* Logo */}
         <Link href="/">
@@ -109,11 +107,10 @@ export default function Header() {
                   <Menu allowHover>
                     <MenuHandler>
                       <button
-                        className={`flex items-center gap-1 cursor-pointer focus:outline-none focus:ring-0 transition-colors duration-300 ${
-                          pathname.startsWith("/service")
+                        className={`flex items-center gap-1 cursor-pointer focus:outline-none focus:ring-0 transition-colors duration-300 ${pathname.startsWith("/service")
                             ? "text-primary"
                             : "hover:text-primary"
-                        }`}
+                          }`}
                       >
                         {link.label}
                         <ChevronDownIcon className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" />
@@ -143,9 +140,8 @@ export default function Header() {
             return (
               <Link key={idx} href={link.href}>
                 <span
-                  className={`relative group cursor-pointer transition-colors duration-300 ${
-                    isActive ? "text-primary" : "hover:text-primary"
-                  }`}
+                  className={`relative group cursor-pointer transition-colors duration-300 ${isActive ? "text-primary" : "hover:text-primary"
+                    }`}
                 >
                   {link.label}
                   <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-300"></span>
