@@ -31,7 +31,13 @@ const Footer = () => {
                     {/* Company Info */}
                     <div>
                         <Link href="/" className="block mb-4">
-                            <Image src={logo} className="footerLogo" alt="footerImage"/>
+                            <Image
+                                src='/XentrovaLogo.svg'
+                                alt="Header Logo"
+                                height={100}
+                                width={100}
+                                className="w-[120px] h-auto"
+                            />
                         </Link>
 
                         <div className="flex flex-wrap gap-4">

@@ -64,12 +64,12 @@ export default function ContactSidebarForm() {
     };
 
     return (
-        <div className="w-full max-w-sm p-8 bg-white/60 backdrop-blur-xl rounded-3xl border border-gray-200 shadow-2xl">
-            <h2 className="text-xl font-bold text-zinc-900 mb-4 leading-tight">
+        <div className="w-full max-w-sm p-8 backdrop-blur-xl rounded-3xl border border-header shadow-2xl">
+            <h2 className="text-xl font-bold mb-4 leading-tight">
                 Ready To Take The <br /> Next Step?
             </h2>
 
-            <hr className="border-gray-300 mb-6" />
+            <hr className="border-header mb-6" />
 
             <form  className="space-y-5">
                 <div className="col-span-1">
@@ -79,7 +79,8 @@ export default function ContactSidebarForm() {
                     <input
                         type="text"
                         placeholder="Enter Your Name"
-                        className="w-full px-4 py-2 rounded-xl border focus:ring-2 focus:ring-primary focus:outline-none"
+
+                        className="w-full  px-4 py-2 rounded-xl border border-header bg-background focus:ring-2 focus:ring-primary focus:outline-none"
                         {...formik.getFieldProps("fullName")}
                     />
                     {formik.touched.fullName && formik.errors.fullName && (
@@ -93,9 +94,13 @@ export default function ContactSidebarForm() {
                     </label>
                     <input
                         type="text"
-                        placeholder="Enter Your Name"
-                        className="w-full px-4 py-2 rounded-xl border focus:ring-2 focus:ring-primary focus:outline-none"
+
+                        required
+                        placeholder="Enter Your Mail"
+                        className="w-full  px-4 p-2 rounded-xl border border-header bg-background focus:ring-2 focus:ring-primary focus:outline-none"
+
                        {...formik.getFieldProps("email")}
+
                     />
                     {formik.touched.email && formik.errors.email && (
                         <p className="text-red-500 text-sm mt-1">{formik.errors.email}</p>
@@ -108,9 +113,11 @@ export default function ContactSidebarForm() {
                         Message *
                     </label>
                     <textarea
+                        required
                         rows={4}
                         placeholder="Your project, idea, or question..."
-                        className="w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-primary focus:outline-none"
+                        className="w-full px-4 py-2 rounded-xl border border-header bg-background focus:ring-2 focus:ring-primary focus:outline-none"
+                   
                         {...formik.getFieldProps("message")}
                     />
                     {console.log("formikk",formik.values)}

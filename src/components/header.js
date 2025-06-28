@@ -11,7 +11,6 @@ import {
   MenuItem,
 } from "@material-tailwind/react";
 import { ChevronDownIcon, Moon, Sun } from "lucide-react";
-import headerLogo from "../../public/headerLogo.png";
 
 export default function Header() {
   const pathname = usePathname();
@@ -51,7 +50,7 @@ export default function Header() {
     /* Logo */
   }
   <Link href="/">
-    <Image src={headerLogo} alt="Header Logo" className="w-auto h-12" />
+    <Image src='/XentrovaLogo.svg' alt="Header Logo" className="w-auto h-12" height={100} width={100} />
   </Link>;
 
   const navLinks = [
@@ -67,6 +66,7 @@ export default function Header() {
       ],
     },
     { href: "/projects", label: "Projects" },
+    { href: "/team", label: "Our Team" },
     { href: "/blog", label: "Blog" },
     { href: "/contact", label: "Contact" },
   ];
@@ -87,8 +87,10 @@ export default function Header() {
         {/* Logo */}
         <Link href="/">
           <Image
-            src={headerLogo}
+            src='/XentrovaLogo.svg'
             alt="Header Logo"
+            height={100}
+            width={100}
             className="w-[120px] h-auto"
           />
         </Link>

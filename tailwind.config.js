@@ -21,8 +21,8 @@ module.exports = {
         lightGreen: "#a8e6cf",
       },
       height: {
-        mainSection: "calc(100vh - 170px)",
-        hero: "calc(100vh - 280px)"
+        mainSection: "calc(100vh - 150px)",
+        hero: "calc(100vh - 260px)"
       },
       fontFamily: {
         sniglet: ['Comic Neue', 'cursive']

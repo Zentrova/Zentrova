@@ -45,13 +45,13 @@ const ContentLayout = ({ sections, activeId, sectionRefs, blog }) => {
 
           {relatedBlogs.length > 0 && (
             <div className="mt-6 backdrop-blur-xl p-4 rounded-xl border shadow">
-              <h3 className="text-lg font-semibold text-zinc-800 mb-3">Recommended Reads</h3>
+              <h3 className="text-lg font-semibold  mb-3">Recommended Reads</h3>
               <div className="flex flex-wrap gap-2">
                 {relatedBlogs.map((item) => (
                   <Link
                     key={item.slug}
                     href={`/blogs/${item.slug}`}
-                    className="px-4 py-1 text-sm font-medium text-zinc-700 bg-zinc-100 rounded-full border border-zinc-300 hover:bg-primaryLight transition"
+                    className="px-4 py-1 text-sm font-medium   rounded-full border border-header hover:bg-primaryLight transition"
                     title={item.title}
                   >
                     {item.title.length > 30 ? item.title.slice(0, 30) + '…' : item.title}
