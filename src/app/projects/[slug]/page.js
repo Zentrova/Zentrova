@@ -6,13 +6,14 @@ import TeamContent from '@/components/project/teamContent';
 import Tabs from '@/components/project/tabs';
 import Header from '@/components/project/header';
 import { useParams } from 'next/navigation';
-
+import { httpRequest } from '@/utils/httpRequest';
 export default function ProjectPreview() {
   const [activeTab, setActiveTab] = useState('overview');
   const [projectDetail,setProjectDetail]=useState({});
+  const [projectOverview,setProjectOverview]=useState({});
   const params = useParams();
   const slug=params.slug;
-   const blog = async (slug) => {
+  const projectContent = async (slug) => {
     try {
       const result = await fetch(
         `${process.env.NEXT_PUBLIC_WP_API_BASE}/posts/slug:${slug}`
@@ -22,46 +23,30 @@ export default function ProjectPreview() {
       }
       
     const data = await result.json();
-    console.log("dataa",data)
     setProjectDetail(data)
     } catch (error) {
       console.error("Error fetching blog:", error.message);
        return null;
     }
   }
-  const project = {
-    title: "E-Commerce Platform",
-    subtitle: " Full-Stack Enterprise Solution",
-    description: "A comprehensive e-commerce platform designed to handle high-traffic retail operations...",
-    category: "Web Development",
-    status: "Completed",
-    duration: "8 months",
-    team: "5 developers",
-    year: "2024",
-    images: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=800&fit=crop",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe", "AWS", "Docker", "Redis", "GraphQL"],
-    teamMembers: [
-      { name: "Prabhjot", role: "Frontend Lead", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=face" },
-      { name: "Sumit", role: "Backend Lead", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" },
-      { name: "Yashpal", role: "UI/UX Designer", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" }
-    ],
-    metrics: [
-      { label: "Performance Improvement", value: "75%", icon: require('lucide-react').TrendingUp },
-      { label: "User Satisfaction", value: "4.8/5", icon: require('lucide-react').Star },
-      { label: "Load Time Reduction", value: "60%", icon: require('lucide-react').Clock },
-      { label: "Conversion Rate", value: "+45%", icon: require('lucide-react').Target }
-    ],
-    features: [
-      "Real-time inventory management",
-      "Multi-payment gateway integration",
-      "Advanced search and filtering",
-      "Admin dashboard with analytics",
-      "Mobile-responsive design",
-      "Order tracking system",
-      "Customer support chat",
-      "Multi-language support"
-    ]
-  };
+  const project= async(slug)=>{
+    try {
+      const response= await httpRequest({
+        url:`project/${slug}`,
+        method:'get',
+      }
+      )
+      if(response?.success===true){
+        setProjectOverview(response?.data)
+      }
+    } catch (error) {
+      console.error("Error fetching project detail:", error.message);
+      return null;
+    }
+
+
+  }
+
 
   const sections = [
     {
@@ -79,18 +64,19 @@ export default function ProjectPreview() {
   ];
   useEffect(()=>{
     if(slug){
-      blog(slug)
+      projectContent(slug)
+      project(slug)
     }
   },[])
 
   return (
     <div>
-      <Header project={project} />
+      <Header project={projectOverview} wpData={projectDetail}/>
       <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
       <div className="max-w-7xl mx-auto px-6 py-12">
-        {activeTab === 'overview' && <OverviewContent project={project} />}
+        {activeTab === 'overview' && <OverviewContent project={projectOverview} />}
         {activeTab === 'case-study' && <CaseStudyContent sections={sections} project={projectDetail}/>}
-        {activeTab === 'team' && <TeamContent project={project} />}
+        {activeTab === 'team' && <TeamContent project={projectOverview} />}
       </div>
     </div>
   );
