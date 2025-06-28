@@ -28,6 +28,7 @@ export default function ContactUs() {
       subject: "",
       message: "",
       termsAndPolicy: false,
+      path:"contact"
     },
     validationSchema,
     onSubmit: (values) => {

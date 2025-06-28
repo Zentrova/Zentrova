@@ -2,7 +2,7 @@
 import { ArrowLeft, Calendar, Users } from 'lucide-react';
 import Link from 'next/link';
 
-const Header = ({ project }) => (
+const Header = ({project,wpData}) => (
   <div className="max-w-7xl mx-auto px-6 py-8">
     <div className="flex items-center space-x-4 mb-6">
       <Link href="/projects" className="flex items-center space-x-2 hover:text-primary transition-colors">
@@ -14,28 +14,28 @@ const Header = ({ project }) => (
       <div>
         <div className="flex items-center space-x-2 mb-4">
           <span className="px-3 py-1 bg-primary text-white rounded-full text-sm font-medium">
-            {project.category}
+            {project.tags?.map(tag=>tag)}
           </span>
-          <span className="px-3 py-1 bg-primary rounded-full text-white text-sm font-medium">
+          {/* <span className="px-3 py-1 bg-primary rounded-full text-white text-sm font-medium">
             {project.status}
-          </span>
+          </span> */}
         </div>
         <h1 className="text-4xl font-bold text-primary mb-2">{project.title}</h1>
-        <p className="text-xl mb-6">{project.subtitle}</p>
+        <p className="text-xl mb-6">{project.subTitle}</p>
         <div className="flex flex-wrap gap-4 mb-6 text-gray-600">
           {/* <div className="flex items-center space-x-2">
             <Calendar className="w-5 h-5" />
             <span>{project.duration}</span>
           </div> */}
-          <div className="flex items-center space-x-2">
+          {/* <div className="flex items-center space-x-2">
             <Users className="w-5 h-5" />
             <span>{project.team}</span>
-          </div>
+          </div> */}
         </div>
       </div>
       <div>
         <img
-          src={project.images}
+          src={wpData.featured_image}
           alt={project.title}
           className="w-full h-80 object-cover rounded-2xl"
         />
