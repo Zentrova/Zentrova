@@ -25,12 +25,12 @@ export default function ContactSidebarForm() {
     };
 
     return (
-        <div className="w-full max-w-sm p-8 bg-white/60 backdrop-blur-xl rounded-3xl border border-gray-200 shadow-2xl">
-            <h2 className="text-xl font-bold text-zinc-900 mb-4 leading-tight">
+        <div className="w-full max-w-sm p-8 backdrop-blur-xl rounded-3xl border border-header shadow-2xl">
+            <h2 className="text-xl font-bold mb-4 leading-tight">
                 Ready To Take The <br /> Next Step?
             </h2>
 
-            <hr className="border-gray-300 mb-6" />
+            <hr className="border-header mb-6" />
 
             <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="col-span-1">
@@ -41,34 +41,34 @@ export default function ContactSidebarForm() {
                         type="text"
                         required
                         placeholder="Enter Your Name"
-                        className="w-full px-4 py-2 rounded-xl border focus:ring-2 focus:ring-primary focus:outline-none"
+                        className="w-full  px-4 py-2 rounded-xl border border-header bg-background focus:ring-2 focus:ring-primary focus:outline-none"
                     />
                 </div>
 
-                 <div className="col-span-1">
+                <div className="col-span-1">
                     <label className="block text-sm font-medium mb-1">
                         Email *
                     </label>
                     <input
                         type="text"
                         required
-                        placeholder="Enter Your Name"
-                        className="w-full px-4 py-2 rounded-xl border focus:ring-2 focus:ring-primary focus:outline-none"
+                        placeholder="Enter Your Mail"
+                        className="w-full  px-4 p-2 rounded-xl border border-header bg-background focus:ring-2 focus:ring-primary focus:outline-none"
                     />
                 </div>
 
                 {/* Message */}
-              <div className="col-span-2">
-              <label className="block text-sm font-medium mb-1">
-                Message *
-              </label>
-              <textarea
-                required
-                rows={4}
-                placeholder="Your project, idea, or question..."
-                className="w-full px-4 py-3 rounded-xl border focus:ring-2 focus:ring-primary focus:outline-none"
-              />
-            </div>
+                <div className="col-span-2">
+                    <label className="block text-sm font-medium mb-1">
+                        Message *
+                    </label>
+                    <textarea
+                        required
+                        rows={4}
+                        placeholder="Your project, idea, or question..."
+                        className="w-full px-4 py-2 rounded-xl border border-header bg-background focus:ring-2 focus:ring-primary focus:outline-none"
+                    />
+                </div>
 
                 {/* Button */}
                 <button

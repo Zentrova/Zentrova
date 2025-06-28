@@ -2,15 +2,33 @@
 import CustomHeroSection from '@/components/CommonHeroSection';
 import FAQ from '@/components/FAQ';
 import HowItWorks from '@/components/homepage/howItWorks';
+import KpiCard from '@/components/KpiCards';
+import { Code, Rocket, Trophy, Users } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
 import CountUp from 'react-countup';
 
 const stats = [
-  { label: 'Clients', value: 250 },
-  { label: 'Projects', value: 120 },
-  { label: 'Years Experience', value: 5 },
-  { label: 'Team Members', value: 10 },
+  {
+    icon: <Rocket className="w-6 h-6" />,
+    value: 50,
+    label: 'Active Projects',
+  },
+  {
+    icon: <Users className="w-6 h-6" />,
+    value: 250,
+    label: 'Clients',
+  },
+  {
+    icon: <Code className="w-6 h-6" />,
+    value: 100000,
+    label: 'Lines of Code',
+  },
+  {
+    icon: <Trophy className="w-6 h-6" />,
+    value: 15,
+    label: 'Awards & Features',
+  },
 ];
 
 const awards = [
@@ -23,27 +41,28 @@ const awards = [
 
 const AboutUs = () => (
   <div className="min-h-screen">
-  
-    
 
-          <div className=''>
-        <CustomHeroSection
-    title='Driven by Design. Built for Impact.'
-    desc="Zentrova is a team of passionate creators delivering tailored web and mobile solutions that combine strategy, design, and technology."
-    />
+
+
+    <div className=''>
+      <CustomHeroSection
+        title='Driven by Design. Built for Impact.'
+        desc="Zentrova is a team of passionate creators delivering tailored web and mobile solutions that combine strategy, design, and technology."
+      />
     </div>
 
 
     {/* Stats */}
-    <div className='bg-background2'>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center p-8 rounded-xl mx-auto w-3/4">
-        {stats.map((s) => (
-          <div key={s.label}>
-            <span className="block text-3xl font-bold">
-              <CountUp end={s.value} duration={2} />+
-            </span>
-            <span className="text-primary">{s.label}</span>
-          </div>
+    <div className="bg-background2 py-12">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-6 md:px-20 max-w-7xl mx-auto">
+        {stats.map((stat, i) => (
+          <KpiCard
+            key={i}
+            icon={stat.icon}
+            value={stat.value}
+            label={stat.label}
+            subLabel={stat.subLabel}
+          />
         ))}
       </div>
     </div>
@@ -83,7 +102,7 @@ const AboutUs = () => (
     </div>
 
     <div className='bg-background2'>
-      <FAQ  bgColor="background"/>
+      <FAQ bgColor="background" />
     </div>
 
     {/* CTA */}

@@ -224,7 +224,7 @@ const handleSubmit = async (e) => {
                 required
                 rows={5}
                 placeholder="Tell us about your project, idea, or question..."
-                className="w-full px-4 py-3 rounded-xl borderborder-header bg-background focus:ring-2 focus:ring-primary focus:outline-none"
+                className="w-full px-4 py-3 rounded-xl border border-header bg-background focus:ring-2 focus:ring-primary focus:outline-none"
                 {...formik.getFieldProps("message")}
               />
               {formik.touched.message && formik.errors.message && (
