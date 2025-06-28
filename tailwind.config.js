@@ -12,6 +12,7 @@ module.exports = {
         footer: "var(--footer)",
         header: "var(--header)",
         primary: "var(--primary)",
+        secondary: "var(--secondary)",
         primaryLight: "var(--lightPrimary)",
         background: "var(--background)",
         foreground : "var(--foreground",
@@ -21,7 +22,7 @@ module.exports = {
         lightGreen: "#a8e6cf",
       },
       height: {
-        mainSection: "calc(100vh - 150px)",
+        mainSection: "calc(100vh - 160px)",
         hero: "calc(100vh - 260px)"
       },
       fontFamily: {

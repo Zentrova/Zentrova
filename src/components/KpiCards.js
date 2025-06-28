@@ -4,9 +4,9 @@ import CountUp from 'react-countup';
 
 const KpiCard = ({ icon, value, label, description }) => {
   return (
-    <div className="group flex items-center gap-4 p-4 rounded-2xl shadow-md bg-background border border-border hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
+    <div className="group flex items-center gap-4 p-4 rounded-2xl shadow-md bg-background  hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
       {/* Icon on the left */}
-      <div className="min-w-[56px] min-h-[56px] bg-gradient-to-br from-primary to-purple-600 rounded-xl flex items-center justify-center text-white group-hover:rotate-6 transition-transform duration-300 shadow-inner">
+      <div className="min-w-[56px] min-h-[56px] bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center text-white group-hover:rotate-6 transition-transform duration-300 shadow-inner">
         {icon}
       </div>
 

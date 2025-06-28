@@ -31,7 +31,7 @@ export default function HomeServices() {
     const speed =  ourServices.length * minSpeed  ;
 
     return (
-        <div className="space-y-4 pb-10 ">
+        <div className="space-y-4 py-7 ">
             {/* News Marquee */}
             <div className="relative overflow-hidden whitespace-nowrap text-marquee">
                 <div

@@ -1,9 +1,22 @@
 'use client';
+
 import React from 'react';
 import Image from 'next/image';
-import { Users, Lightbulb, Code2, Heart, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Users, Lightbulb, Code2, Heart } from 'lucide-react';
 import CustomHeroSection from '@/components/CommonHeroSection';
 import KpiCard from '@/components/KpiCards';
+import CtcBtn from '@/components/homepage/ctcBtn';
+import Link from 'next/link';
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  show: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.1, duration: 0.6, ease: 'easeOut' }
+  })
+};
 
 
 const founders = [
@@ -113,26 +126,31 @@ const teamStats = [
 ];
 
 
+
 export default function TeamSection() {
   return (
-    <div className="">
-      <CustomHeroSection
-        title='The Zentrova Family'
-        desc="We're a diverse group of passionate individuals united by our mission to build 
-              exceptional digital experiences."
-      />
-      <div className='py-10 px-6 bg-white dark:bg-zinc-950 transition-colors'>
+    <div>
+      <div>
+        <CustomHeroSection
+          title='The Zentrova Family'
+          desc="We're a diverse group of passionate individuals united by our mission to build exceptional digital experiences."
+        />
+      </div>
+
+      <div className="py-10 px-6 bg-white dark:bg-zinc-950 transition-colors">
         <div className="max-w-7xl mx-auto">
+
           {/* Stats */}
-          <div className="mb-20">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-6 md:px-20 max-w-7xl mx-auto">
+          <div
+            className="mb-20"
+          >
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-6 md:px-20">
               {teamStats.map((stat, i) => (
                 <KpiCard
                   key={i}
                   icon={stat.icon}
                   value={stat.value}
                   label={stat.label}
-                  subLabel={stat.subLabel}
                 />
               ))}
             </div>
@@ -140,15 +158,31 @@ export default function TeamSection() {
 
           {/* Founders */}
           <section className="mb-20">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">Our Founders</h2>
+            <motion.div
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              className="text-center mb-12"
+            >
+              <h2 className="text-4xl md:text-4xl font-extrabold text-primary mb-2">Our Founders</h2>
               <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
                 The visionaries who started it all and continue to drive our mission forward.
               </p>
-            </div>
+            </motion.div>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {founders.map((founder, index) => (
-                <div key={index} className="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+              {founders.map((founder, i) => (
+                <motion.div
+                  key={i}
+                  className="relative group overflow-hidden rounded-2xl shadow-lg"
+                  whileHover={{ scale: 1.02 }}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true }}
+                  variants={fadeUp}
+                  custom={i}
+                >
                   <div className="aspect-[3/4] relative">
                     <Image
                       src={founder.image}
@@ -156,7 +190,7 @@ export default function TeamSection() {
                       layout="fill"
                       objectFit="cover"
                       unoptimized
-                      className="grayscale group-hover:grayscale-0 transition duration-500 rounded-2xl"
+                      className=" transition duration-500 rounded-2xl"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:opacity-100 transition-opacity" />
                     <div className="absolute bottom-0 p-6 text-zinc-100">
@@ -169,59 +203,76 @@ export default function TeamSection() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </section>
 
           {/* Team */}
           <section className="mb-16">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">Our Team</h2>
+            <motion.div
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              className="text-center mb-12"
+            >
+              <h2 className="text-4xl md:text-4xl font-extrabold text-primary mb-2">Our Team</h2>
               <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
                 The talented individuals who bring our vision to life every day.
               </p>
-            </div>
+            </motion.div>
+
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {employees.map((member, index) => (
-                <div key={index} className="relative group overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+                <motion.div
+                  key={index}
+                  className="relative group overflow-hidden rounded-xl shadow-md"
+                  whileHover={{ scale: 1.03 }}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true }}
+                  variants={fadeUp}
+                  custom={index}
+                >
                   <div className="aspect-[4/5] relative">
                     <Image
                       src={member.image}
                       alt={member.name}
                       layout="fill"
                       objectFit="cover"
-                      className="grayscale group-hover:grayscale-0 transition duration-500 rounded-xl"
+                      className="rounded-xl"
                       unoptimized
                     />
                     <div className="absolute bottom-0 bg-gradient-to-t from-black/80 to-transparent w-full p-3 text-zinc-100">
                       <p className="text-sm font-semibold">{member.name}</p>
                       <p className="text-xs text-primary font-medium">{member.role}</p>
-                      <p className="text-xs">{member.experience}</p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </section>
 
           {/* CTA */}
-          <section className="text-center bg-gradient-to-r from-primary to-purple-600 rounded-2xl p-12 text-zinc-100">
-            <h3 className="text-3xl font-bold mb-4">Ready to Join Our Journey?</h3>
+          <motion.section
+            className="text-center rounded-2xl p-12"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
+            <h3 className="text-3xl font-bold mb-4 text-primary">Ready to Work With Us?</h3>
             <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
-              We're always looking for passionate individuals who want to make a difference.
-              Come build the future with us.
+              Collaborate with a dedicated team of professionals who bring creativity, code, and strategy together. Let's turn your ideas into impactful digital experiences.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/careers"
-                className="inline-flex items-center px-8 py-3 bg-white text-primary font-semibold rounded-xl hover:bg-zinc-100 transition-colors"
-                aria-label="View open positions at Zentrova"
-              >
-                View Open Positions <ArrowRight className="ml-2 w-4 h-4" />
-              </a>
+              <Link href="/contact">
+                <CtcBtn text="Hire Us" />
+              </Link>
             </div>
-          </section>
+          </motion.section>
+
         </div>
       </div>
     </div>

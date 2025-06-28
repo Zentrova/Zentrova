@@ -9,6 +9,7 @@ export default function Home() {
   return (
     <div>
       <HeroSection />
+      <div className="bg-background">
       <HomeServices/>
       <div className="bg-background2">
         <HomeProjects />
@@ -18,6 +19,7 @@ export default function Home() {
         <TeamSection />
       </div>
       <FAQ/>
+      </div>
     </div>
   );
 }
