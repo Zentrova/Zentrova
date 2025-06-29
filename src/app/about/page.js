@@ -47,7 +47,7 @@ const AboutUs = () => (
     <div className=''>
       <CustomHeroSection
         title='Driven by Design. Built for Impact.'
-        desc="Zentrova is a team of passionate creators delivering tailored web and mobile solutions that combine strategy, design, and technology."
+        desc="Xentrova is a team of passionate creators delivering tailored web and mobile solutions that combine strategy, design, and technology."
       />
     </div>
 
@@ -73,9 +73,9 @@ const AboutUs = () => (
           <h1 className="text-4xl font-extrabold leading-tight">
             Who are we</h1>
           <p className="mt-4 text-base">
-            Zentrova is a multidisciplinary digital solutions team specializing in UI/UX design, frontend development, and scalable web and mobile platforms. We collaborate with startups, agencies, and enterprises to turn bold ideas into polished, high-performing products.
+            Xentrova is a multidisciplinary digital solutions team specializing in UI/UX design, frontend development, and scalable web and mobile platforms. We collaborate with startups, agencies, and enterprises to turn bold ideas into polished, high-performing products.
             <br /><br />
-            At Zentrova, we follow a quality-first approach—ensuring each solution we deliver is tailored, future-ready, and aligned with the client’s business goals. With a deep understanding of design, code, and user experience, we bridge creativity and technology to craft digital excellence.
+            At Xentrova, we follow a quality-first approach—ensuring each solution we deliver is tailored, future-ready, and aligned with the client’s business goals. With a deep understanding of design, code, and user experience, we bridge creativity and technology to craft digital excellence.
           </p>
           <div className="mt-6 h-1 w-24 mx-auto bg-primary rounded-full" />
         </div>

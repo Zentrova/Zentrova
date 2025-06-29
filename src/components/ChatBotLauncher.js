@@ -69,7 +69,7 @@ export default function ChatBotLauncher() {
         >
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
-            <h3 className="font-semibold text-lg text-black dark:text-white">Zentrova Chat</h3>
+            <h3 className="font-semibold text-lg text-black dark:text-white">Xentrova Chat</h3>
             <button
               onClick={handleToggle}
               className="text-gray-500 hover:text-red-500 transition"

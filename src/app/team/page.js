@@ -25,28 +25,28 @@ const founders = [
     role: 'Co-founder & Head of Design',
     experience: '3.5 yrs',
     image: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&auto=format&fit=crop&w=1760&q=80',
-    brand: 'Zentrova',
+    brand: 'Xentrova',
   },
   {
     name: 'Ravi Sharma',
     role: 'Co-founder & API Architect',
     experience: '4 yrs',
     image: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1480&q=80',
-    brand: 'Zentrova',
+    brand: 'Xentrova',
   },
   {
     name: 'Priya Mehta',
     role: 'Co-founder & Backend Lead',
     experience: '3 yrs',
     image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=1287&q=80',
-    brand: 'Zentrova',
+    brand: 'Xentrova',
   },
   {
     name: 'Arjun Patel',
     role: 'Co-founder & Product Strategist',
     experience: '3.5 yrs',
     image: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1650&q=80',
-    brand: 'Zentrova',
+    brand: 'Xentrova',
   },
 ];
 
@@ -132,7 +132,7 @@ export default function TeamSection() {
     <div>
       <div>
         <CustomHeroSection
-          title='The Zentrova Family'
+          title='The Xentrova Family'
           desc="We're a diverse group of passionate individuals united by our mission to build exceptional digital experiences."
         />
       </div>

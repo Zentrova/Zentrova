@@ -7,12 +7,12 @@ import { motion } from "framer-motion";
 
 export default function HeroSection() {
   return (
-    <section className="h-mainSection flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-12 md:py-20 dark:bg-black/10 bg-white/15 text-white">
+    <section className="h-mainSection flex flex-col md:flex-row items-center justify-between px-6 md:px-20 md:py-20 md:bg-white/10 dark:bg-black/50 bg-black/20 text-white">
       <Image
         src="/heroBg.png"
         height={100}
         width={100}
-        className="h-screen w-screen object-fit fixed right-0 -z-10"
+        className="h-screen w-screen object-fill top-0 fixed right-0 -z-10"
         unoptimized
         alt="bg"
       />
@@ -21,7 +21,7 @@ export default function HeroSection() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="max-w-xl space-y-6 text-center md:text-left"
+        className="max-w-xl space-y-6 text-center md:text-left flex flex-col justify-center h-full"
       >
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -41,7 +41,7 @@ export default function HeroSection() {
           transition={{ delay: 0.6, duration: 0.8 }}
           className="text-base sm:text-lg md:text-xl"
         >
-          We’re <span className="font-semibold">Zentrova</span> — a full-stack
+          We’re <span className="font-semibold">Xentrova</span> — a full-stack
           team crafting seamless web solutions with powerful design, scalable
           code, and reliable APIs.
         </motion.p>

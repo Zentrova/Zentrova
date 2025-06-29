@@ -10,7 +10,7 @@ export default function PrivacyPolicy() {
     {
       title: "1. Introduction",
       content:
-        "Zentrova respects your privacy. This Privacy Policy explains how we handle your data and what choices you have.",
+        "Xentrova respects your privacy. This Privacy Policy explains how we handle your data and what choices you have.",
     },
     {
       title: "2. Information We Collect",
@@ -45,7 +45,7 @@ export default function PrivacyPolicy() {
     {
       title: "8. Changes to This Policy",
       content:
-        "Zentrova may update this policy occasionally. We encourage you to review this page regularly for any changes.",
+        "Xentrova may update this policy occasionally. We encourage you to review this page regularly for any changes.",
     },
   ];
 
@@ -55,7 +55,7 @@ export default function PrivacyPolicy() {
       <div className='mb-10'>
         <CustomHeroSection
           title="Privacy Policy"
-          desc="  Your privacy matters. Learn how Zentrova handles your data."
+          desc="  Your privacy matters. Learn how Xentrova handles your data."
         />
       </div>
 

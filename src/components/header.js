@@ -73,7 +73,7 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 w-full z-50 transition-all duration-300 bg-none  ${scrolled && pathname === "/" ? "fixed top-6" : ""
+      className={`sticky top-0 w-full z-50 transition-all duration-300  ${scrolled && pathname === "/" ? "fixed top-6" : ""
         }`}
     >
       <div
