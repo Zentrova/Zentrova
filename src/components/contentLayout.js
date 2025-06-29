@@ -3,10 +3,10 @@ import React, { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ContactSidebarForm from './contactsidebarform';
+import AnimatedBlogContent from './AnimatedBlogContent';
+
 
 const ContentLayout = ({ sections, activeId, sectionRefs, blog }) => {
-
-
   const relatedBlogs = [
     { title: "5 UX Mistakes to Avoid", slug: "ux-mistakes" },
     { title: "Why React is Awesome", slug: "react-awesome" },
@@ -37,7 +37,10 @@ const ContentLayout = ({ sections, activeId, sectionRefs, blog }) => {
               unoptimized
             />
           </div>
-          <div
+          {/* {blog.content &&
+                    <AnimatedBlogContent html={blog.content} />
+          }   */}
+           <div
             className="prose prose-lg max-w-none  dark:prose-invert"
             dangerouslySetInnerHTML={{ __html: blog.content }}
           />
@@ -60,10 +63,6 @@ const ContentLayout = ({ sections, activeId, sectionRefs, blog }) => {
               </div>
             </div>
           )}
-
-
-
-
         </div>
 
       </div>
