@@ -10,12 +10,12 @@ export default function TermsCondition() {
     {
       title: "1. Agreement to Terms",
       content:
-        "By using the Zentrova website, you confirm that you agree to abide by these Terms and Conditions. If you do not accept any part of these terms, please discontinue use immediately.",
+        "By using the Xentrova website, you confirm that you agree to abide by these Terms and Conditions. If you do not accept any part of these terms, please discontinue use immediately.",
     },
     {
       title: "2. Ownership and Copyright",
       content:
-        "All materials on this site, including text, images, and logos, are the intellectual property of Zentrova and its partners, and may not be reused without permission.",
+        "All materials on this site, including text, images, and logos, are the intellectual property of Xentrova and its partners, and may not be reused without permission.",
     },
     {
       title: "3. User Conduct",
@@ -30,12 +30,12 @@ export default function TermsCondition() {
     {
       title: "5. Third-Party Integrations",
       content:
-        "Zentrova may integrate third-party tools or links. We are not responsible for the privacy or security practices of those external services.",
+        "Xentrova may integrate third-party tools or links. We are not responsible for the privacy or security practices of those external services.",
     },
     {
       title: "6. Limitation of Liability",
       content:
-        "Zentrova shall not be liable for any direct or indirect damages resulting from the use or inability to use the website or services.",
+        "Xentrova shall not be liable for any direct or indirect damages resulting from the use or inability to use the website or services.",
     },
     {
       title: "7. Termination Rights",

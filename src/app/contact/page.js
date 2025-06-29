@@ -237,7 +237,7 @@ const handleSubmit = async (e) => {
                 {...formik.getFieldProps("termsAndPolicy")}
               />
               <label className="block text-sm font-medium mb-2" htmlFor="acceptTnC">
-                By submitting this form, I consent that Zentrova can process my data for the purpose of making me an offer for their services. Read our <Link href='/terms-conditions' className="text-primary">Terms and Condition</Link> and <Link href='/privacy-policy' className="text-primary">Privacy Policy</Link>.
+                By submitting this form, I consent that Xentrova can process my data for the purpose of making me an offer for their services. Read our <Link href='/terms-conditions' className="text-primary">Terms and Condition</Link> and <Link href='/privacy-policy' className="text-primary">Privacy Policy</Link>.
               </label>
             </div>
             {formik.touched.termsAndPolicy && formik.errors.termsAndPolicy && (
@@ -268,8 +268,8 @@ const handleSubmit = async (e) => {
                 <div>
                   <h3 className="text-xl font-semibold mb-1">Projects</h3>
                   <p className="text-sm mb-1">Got an idea? Tell us all about it!</p>
-                  <a href="mailto:zentrova.info@gmail.com" className="text-primary hover:underline">
-                    zentrova.info@gmail.com
+                  <a href="mailto:Xentrova.info@gmail.com" className="text-primary hover:underline">
+                    Xentrova.info@gmail.com
                   </a>
                 </div>
 
@@ -279,8 +279,8 @@ const handleSubmit = async (e) => {
                   <p className="text-sm mb-1">
                     Do you have the skills & talent to join us? Send us some info about yourself.
                   </p>
-                  <a href="mailto:join@zentrova.com" className="text-blue-600 hover:underline">
-                    join@zentrova.com
+                  <a href="mailto:join@Xentrova.com" className="text-blue-600 hover:underline">
+                    join@Xentrova.com
                   </a>
                 </div> */}
 
@@ -290,8 +290,8 @@ const handleSubmit = async (e) => {
                   <p className="text-sm mb-1">
                     Need more info on how we work, what we do or pretty much anything else?
                   </p>
-                  <a href="mailto:zentrova.info@gmail.com" className="text-primary hover:underline">
-                    zentrova.info@gmail.com
+                  <a href="mailto:Xentrova.info@gmail.com" className="text-primary hover:underline">
+                    Xentrova.info@gmail.com
                   </a>
                 </div>
               </div>

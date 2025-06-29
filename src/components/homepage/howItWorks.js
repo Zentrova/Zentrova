@@ -65,10 +65,10 @@ export default function HowItWorks() {
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeUp}
         >
-          <div className="text-4xl md:text-4xl font-extrabold text-primary text-center">
+          <div className="text-3xl md:text-4xl font-extrabold text-primary text-center">
             How it works
           </div>
-          <div className="text-lg md:text-xl max-w-3xl mx-auto mt-4 text-center">
+          <div className="text-base md:text-xl max-w-3xl mx-auto mt-4 text-center">
             A seamless process tailored to deliver exceptional outcomes.
           </div>
         </motion.div>

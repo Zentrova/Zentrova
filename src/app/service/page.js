@@ -74,7 +74,7 @@ const AboutUs = () => (
     <div className="">
       <CustomHeroSection
         title="What fits better than a tailor-made suit? We can do the same for your app"
-        desc="Zentrova is a team of passionate creators delivering tailored web and mobile solutions that combine strategy, design, and technology."
+        desc="Xentrova is a team of passionate creators delivering tailored web and mobile solutions that combine strategy, design, and technology."
       />
     </div>
 

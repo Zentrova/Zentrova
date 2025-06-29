@@ -111,10 +111,10 @@ const Footer = () => {
                                     <Mail className="h-5 w-5" />
                                 </span>
                                 <a
-                                    href="mailto:zentrova.info@gmail.com"
+                                    href="mailto:Xentrova.info@gmail.com"
                                     className="hover:text-primary transition-colors"
                                 >
-                                    zentrova.info@gmail.com
+                                    Xentrova.info@gmail.com
                                 </a>
                             </li>
                             <li className="flex items-center">
@@ -135,7 +135,7 @@ const Footer = () => {
 
             {/* Bottom Bar */}
             <div className="bg-gray-900 py-6 border-t border-gray-700 text-center text-sm">
-                <p>&copy; {currentYear} Zentrova. All rights reserved.</p>
+                <p>&copy; {currentYear} Xentrova. All rights reserved.</p>
             </div>
         </footer>
     );

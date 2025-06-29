@@ -54,9 +54,9 @@ export default function HomeServices() {
                         {ourServices.map((item, index) => (
                             <div
                                 key={index}
-                                className="flex items-center justify-center font-sniglet gap-3  transition"
+                                className="flex items-center justify-center  gap-3  transition"
                             >
-                                <span className="text-xl mt-1 capitalize">{item}</span>
+                                <span className="text-xl mt-1 capitalize font-sniglet">{item}</span>
                             </div>
                         ))}
                     </div>

@@ -47,7 +47,7 @@ export default function HomeProjects() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="text-4xl md:text-4xl font-extrabold text-primary"
+                    className="text-3xl md:text-4xl font-extrabold text-primary"
                 >
                     Our Featured Work
                 </motion.h2>
@@ -57,7 +57,7 @@ export default function HomeProjects() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                     viewport={{ once: true }}
-                    className="text-lg md:text-xl max-w-2xl mx-auto mt-4"
+                    className="text-base md:text-xl max-w-2xl mx-auto mt-4"
                 >
                     Handpicked projects that represent our creativity, tech, and strategy.
                 </motion.p>
@@ -67,7 +67,7 @@ export default function HomeProjects() {
 
 
 
-            <div className="space-y-28">
+            <div className="space-y-6 md:space-y-28">
                 {mockProjects.map((project, index) => (
                     <motion.div
                         key={project.id}
@@ -75,7 +75,7 @@ export default function HomeProjects() {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: index * 0.2 }}
                         viewport={{ once: true }}
-                        className={`flex flex-col lg:flex-row items-center gap-12 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+                        className={`flex flex-col lg:flex-row items-center gap-12 border p-4 rounded-xl border-primaryLight md:border-none md:p-0 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''
                             }`}
                     >
                         <div className="lg:w-1/2 w-full relative h-72 md:h-96 rounded-xl overflow-hidden shadow-lg">
