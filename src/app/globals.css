@@ -5,6 +5,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
+/* @layer utilities {
+  .wp-block-post-content.min-h-screen {
+    @apply p-0 md:px-0 lg:px-0;
+  }
+
+  .min-h-screen.px-4.py-10.md\:px-20.lg\:px-40 {
+    @apply p-0 !important;
+  }
+} */
 
 :root {
   --background: #EFF1F3;
@@ -312,4 +321,36 @@ html {
 #switch:checked ~ .icon--sun {
   transition-delay: 200ms;
   transform: scale(1) rotate(360deg);
+}
+
+.wp-block-cover {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+  color: white;
+  text-align: center;
+}
+
+.wp-block-cover__image-background,
+.wp-block-cover__background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.wp-block-cover__inner-container {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+}
+.prose .wp-block-cover {
+  margin: 0 !important;
+  padding: 0 !important;
 }

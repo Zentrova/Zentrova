@@ -11,12 +11,13 @@ import {
   MenuItem,
 } from "@material-tailwind/react";
 import { ChevronDownIcon, Moon, Sun } from "lucide-react";
+import headerLogo from "../../public/headerLogo.png";
+import useTheme from "@/hooks/useTheme";
 
 export default function Header() {
+  const { theme, toggleTheme } = useTheme();
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [openMenu, setOpenMenu] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 2);
@@ -28,27 +29,6 @@ export default function Header() {
   //     document.body.classList.toggle('dark', isDarkMode);
   // }, [isDarkMode]);
 
-  useEffect(() => {
-    // Load saved theme from localStorage
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark") {
-      setIsDarkMode(true);
-    } else {
-      setIsDarkMode(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    // Save user preference
-    localStorage.setItem("theme", isDarkMode ? "dark" : "light");
-
-    // Apply to <html> for Tailwind dark mode
-    const html = document.documentElement;
-    html.classList.toggle("dark", isDarkMode);
-  }, [isDarkMode]);
-  {
-    /* Logo */
-  }
   <Link href="/">
     <Image src='/XentrovaLogo.svg' alt="Header Logo" className="w-auto h-12" height={100} width={100} />
   </Link>;
@@ -160,15 +140,18 @@ export default function Header() {
                 type="checkbox"
                 className="input"
                 id="switch"
-                checked={isDarkMode}
-                onChange={() => setIsDarkMode(!isDarkMode)}
+                checked={theme === "dark"}
+                onChange={toggleTheme}
               />
+              {theme==="light" ? 
               <div className="icon icon--moon">
                 <Moon className="h-5 w-5" />
               </div>
+              :
               <div className="icon icon--sun">
                 <Sun className="h-5 w-5" />
               </div>
+              }
             </label>
           </div>
         </div>
