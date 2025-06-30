@@ -1,43 +1,39 @@
 'use client';
 
-import Lottie from 'lottie-react';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-import loaderAnimation from '@/../public/loaderAnimation.json'; // ✅ Adjust if needed
 
 export default function Loader() {
-    const [showImage, setShowImage] = useState(true);
-    const [playAnimation, setPlayAnimation] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setShowImage(false);
-            setPlayAnimation(true);
-        }, 5000); // 5 seconds
+        // When everything on the page is loaded
+        const handleLoad = () => {
+            setTimeout(() => setIsLoading(false), 300); // optional delay for smoother transition
+        };
 
-        return () => clearTimeout(timer);
+        if (document.readyState === 'complete') {
+            handleLoad();
+        } else {
+            window.addEventListener('load', handleLoad);
+        }
+
+        return () => window.removeEventListener('load', handleLoad);
     }, []);
 
+    if (!isLoading) return null;
+
     return (
-        <div className="fixed top-0 right-0 bg-background w-screen h-screen flex items-center justify-center px-10" style={{zIndex: '99999'}}>
-            {showImage ? (
-                <Image
-                    src="/icon.svg"
-                    alt="loader"
-                    width={224}
-                    height={224}
-                    className="w-auto h-20 md:h-36 animate-bounce"
-                />
-            ) : playAnimation ? (
-                <div className="w-auto h-20 md:h-36">
-                    <Lottie
-                        animationData={loaderAnimation}
-                        loop={false}
-                        autoplay
-                        style={{ width: '100%', height: '100%' }}
-                    />
-                </div>
-            ) : null}
+        <div
+            className={`fixed top-0 left-0 bg-background w-screen h-screen flex items-center justify-center px-10 transition-opacity duration-500 z-[99999] ${isLoading ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                }`}
+        >      <Image
+                src="/icon.svg"
+                alt="loader"
+                width={224}
+                height={224}
+                className="w-auto h-20 md:h-36 animate-bounce"
+            />
         </div>
     );
 }
