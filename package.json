@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@material-tailwind/react": "^2.1.10",
+    "@wordpress/block-library": "^9.26.0",
     "axios": "^1.10.0",
     "formik": "^2.4.6",
     "framer-motion": "^12.12.1",
