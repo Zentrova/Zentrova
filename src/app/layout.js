@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import Header from "@/components/header";
 import "./globals.css";
+import '@wordpress/block-library/build-style/style.css';
 import Footer from "@/components/footer";
 import MobileNav from "@/components/mobileNav";
 import ChatBotLauncher from "@/components/ChatBotLauncher";
