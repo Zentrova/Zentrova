@@ -5,7 +5,9 @@ import { usePathname } from "next/navigation";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import "./globals.css";
-// import MobileNav from "@/components/mobileNav";
+
+import '@wordpress/block-library/build-style/style.css';
+import Footer from "@/components/footer";
 import ChatBotLauncher from "@/components/ChatBotLauncher";
 import Loader from "@/components/Loader/Loader";
 import MainLoader from "@/components/MainLoader";
