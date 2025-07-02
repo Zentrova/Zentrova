@@ -1,30 +1,21 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 
+import Footer from "@/components/footer";
 import Header from "@/components/header";
 import "./globals.css";
+
 import '@wordpress/block-library/build-style/style.css';
 import Footer from "@/components/footer";
-import MobileNav from "@/components/mobileNav";
 import ChatBotLauncher from "@/components/ChatBotLauncher";
-import OfflineBanner from "@/components/offlineBanner";
+import Loader from "@/components/Loader/Loader";
+import MainLoader from "@/components/MainLoader";
 import { BlogProvider } from '@/context/BlogContext';
-import { Toaster, toast } from 'sonner';
-import Loader from "@/components/Loader/Loader"; 
+import { Toaster } from 'sonner';
 
 export default function RootLayout({ children }) {
-  const [loading, setLoading] = useState(false);
   const pathname = usePathname();
-  useEffect(() => {
-    setLoading(true);
-    const timeout = setTimeout(() => {
-      setLoading(false);
-    },500); // Adjust duration as needed
-
-    return () => clearTimeout(timeout);
-  }, [pathname]);
   const hideLayoutRoutes = ["/page-not-found"];
   const isAuthLayout = pathname.startsWith("/auth");
   const isHideLayout = hideLayoutRoutes.includes(pathname) || isAuthLayout;
@@ -73,18 +64,14 @@ export default function RootLayout({ children }) {
           }}
         />
         {!isHideLayout && <Header />}
-        <div className="fixed bottom-0 z-10 w-full sm:hidden">
-          <MobileNav />
-        </div>
         {!isHideLayout && <ChatBotLauncher />}
+        <MainLoader/>
 
-        {loading && (
-          <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-white dark:bg-zinc-900">
+          {/* <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-white dark:bg-zinc-900"> */}
             <Loader />
-          </div>
-        )}
+          {/* </div> */}
         <BlogProvider>
-          <main className={`flex-grow transition-opacity duration-300 ${loading ? 'opacity-0' : 'opacity-100'}`}>
+          <main>
           {children}</main>
         </BlogProvider>
         {!isHideLayout && <Footer />}
