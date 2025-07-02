@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Users, Lightbulb, Code2, Heart } from 'lucide-react';
@@ -8,6 +8,8 @@ import CustomHeroSection from '@/components/CommonHeroSection';
 import KpiCard from '@/components/KpiCards';
 import CtcBtn from '@/components/homepage/ctcBtn';
 import Link from 'next/link';
+
+import { httpRequest } from '@/utils/httpRequest';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -19,36 +21,6 @@ const fadeUp = {
 };
 
 
-const founders = [
-  {
-    name: 'Yashpal Singh',
-    role: 'Co-founder & Head of Design',
-    experience: '3.5 yrs',
-    image: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&auto=format&fit=crop&w=1760&q=80',
-    brand: 'Xentrova',
-  },
-  {
-    name: 'Ravi Sharma',
-    role: 'Co-founder & API Architect',
-    experience: '4 yrs',
-    image: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1480&q=80',
-    brand: 'Xentrova',
-  },
-  {
-    name: 'Priya Mehta',
-    role: 'Co-founder & Backend Lead',
-    experience: '3 yrs',
-    image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=1287&q=80',
-    brand: 'Xentrova',
-  },
-  {
-    name: 'Arjun Patel',
-    role: 'Co-founder & Product Strategist',
-    experience: '3.5 yrs',
-    image: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1650&q=80',
-    brand: 'Xentrova',
-  },
-];
 
 const employees = [
   {
@@ -102,38 +74,42 @@ const employees = [
 ];
 
 
-const teamStats = [
-  {
-    icon: <Users className="w-6 h-6" />,
-    value: 4,
-    label: 'Core Members',
-  },
-  {
-    icon: <Lightbulb className="w-6 h-6" />,
-    value: 20,
-    label: 'Combined Projects',
-  },
-  {
-    icon: <Code2 className="w-6 h-6" />,
-    value: 10,
-    label: 'Tech Stacks',
-  },
-  {
-    icon: <Heart className="w-6 h-6" />,
-    value: 100,
-    label: 'Team Synergy',
-  }
-];
-
-
 
 export default function TeamSection() {
+
+
+  const [teamData, setTeamData] = useState(null)
+
+  const fetchData = async () => {
+    try {
+      const response = await httpRequest({
+        url: "team",
+        method: "GET",
+      });
+
+      if (response.success) {
+        setTeamData(response.data.data);
+        console.log("data fetched successfully", response);
+      } else {
+        console.warn("Data was not fetched successfully");
+      }
+    } catch (error) {
+      console.error("API Error:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+
   return (
     <div>
       <div>
         <CustomHeroSection
-          title='The Xentrova Family'
-          desc="We're a diverse group of passionate individuals united by our mission to build exceptional digital experiences."
+          title={teamData?.heroSection?.title}
+          desc={teamData?.heroSection?.subTitle}
+          img={teamData?.heroSection?.image}
         />
       </div>
 
@@ -141,23 +117,37 @@ export default function TeamSection() {
         <div className="max-w-7xl mx-auto">
 
           {/* Stats */}
-          <div
-            className="mb-20"
-          >
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-6 md:px-20">
-              {teamStats.map((stat, i) => (
-                <KpiCard
-                  key={i}
-                  icon={stat.icon}
-                  value={stat.value}
-                  label={stat.label}
-                />
-              ))}
-            </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-6 md:px-20 mb-20">
+            <KpiCard
+              icon={<Users className="w-6 h-6" />}
+              value={teamData?.heroSection?.coreMember}
+              label='Core Members'
+            />
+            <KpiCard
+              icon={<Lightbulb className="w-6 h-6" />}
+              value={teamData?.heroSection?.projects}
+              label='Combined Projects'
+            />
+            <KpiCard
+              icon={<Code2 className="w-6 h-6" />}
+              value={teamData?.heroSection?.tech}
+              label='Tech Stacks'
+            />
+            <KpiCard
+              icon={<Heart className="w-6 h-6" />}
+              value={teamData?.heroSection?.teamSynergy}
+              label='Team Synergy'
+            />
+
+          </div>
+
+          <div>
+            
           </div>
 
           {/* Founders */}
-          <section className="mb-20">
+          <section className='mb-20'>
             <motion.div
               initial="hidden"
               whileInView="show"
@@ -165,48 +155,43 @@ export default function TeamSection() {
               variants={fadeUp}
               className="text-center mb-12"
             >
-              <h2 className="text-4xl md:text-4xl font-extrabold text-primary mb-2">Our Founders</h2>
+              <h2 className="text-4xl font-extrabold text-primary mb-2">{teamData?.founders?.title}</h2>
               <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-                The visionaries who started it all and continue to drive our mission forward.
+                {teamData?.founders?.subTitle}
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {founders.map((founder, i) => (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 gap-y-6">
+              {teamData?.founders?.members.map((founder, i) => (
                 <motion.div
                   key={i}
-                  className="relative group overflow-hidden rounded-2xl shadow-lg"
-                  whileHover={{ scale: 1.02 }}
+                  className="relative group overflow-hidden rounded-xl shadow-md"
+                  whileHover={{ scale: 1.03 }}
                   initial="hidden"
                   whileInView="show"
                   viewport={{ once: true }}
                   variants={fadeUp}
                   custom={i}
                 >
-                  <div className="aspect-[3/4] relative">
+                  <div className="aspect-[4/5] relative">
                     <Image
-                      src={founder.image}
+                      src={founder?.image}
                       alt={founder.name}
-                      layout="fill"
-                      objectFit="cover"
+                      fill
+                      className="object-cover rounded-xl transition duration-500"
                       unoptimized
-                      className=" transition duration-500 rounded-2xl"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:opacity-100 transition-opacity" />
-                    <div className="absolute bottom-0 p-6 text-zinc-100">
-                      <h4 className="text-xl font-semibold">{founder.name}</h4>
-                      <p className="text-sm text-primary font-medium">{founder.role}</p>
-                      <p className="text-xs text-zinc-400">@{founder.brand}</p>
-                      <div className="flex items-center gap-2 mt-1 text-xs">
-                        <span className="w-2 h-2 bg-green-400 rounded-full" />
-                        <span>{founder.experience} experience</span>
-                      </div>
+                    <div className="absolute bottom-0 p-4 text-zinc-100">
+                      <h4 className="text-sm font-semibold">{founder?.name}</h4>
+                      <p className="text-xs text-primary font-medium capitalize">{founder?.role}</p>
                     </div>
                   </div>
                 </motion.div>
               ))}
             </div>
           </section>
+
 
           {/* Team */}
           <section className="mb-16">
@@ -217,9 +202,9 @@ export default function TeamSection() {
               variants={fadeUp}
               className="text-center mb-12"
             >
-              <h2 className="text-4xl md:text-4xl font-extrabold text-primary mb-2">Our Team</h2>
+              <h2 className="text-4xl md:text-4xl font-extrabold text-primary mb-2">{teamData?.teams?.title}</h2>
               <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-                The talented individuals who bring our vision to life every day.
+                {teamData?.teams?.subTitle}
               </p>
             </motion.div>
 

@@ -5,14 +5,13 @@ import HomeProjects from "@/components/homepage/HomeProjects";
 import HomeServices from "@/components/homepage/HomeServices";
 import HowItWorks from "@/components/homepage/howItWorks";
 import TeamSection from "@/components/homepage/teamSection";
-import Loader from "@/components/Loader/Loader";
+import MainLoader from "@/components/MainLoader";
 import Lottie from "lottie-react";
 import loaderAnimation from '@/../public/loaderAnimation.json'; // ✅ Adjust if needed
 
 export default function Home() {
   return (
     <div>
-      
       <HeroSection />
       {/* <Loader/> */}
       <div className="bg-background">

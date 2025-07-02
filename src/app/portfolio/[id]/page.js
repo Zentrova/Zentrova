@@ -19,6 +19,7 @@ import {
 import Image from 'next/image';
 import CtcBtn from '@/components/homepage/ctcBtn';
 import CountUp from 'react-countup';
+import { httpRequest } from '@/utils/httpRequest';
 
 // src/app/portfolio/[id]/page.js
 
@@ -67,6 +68,7 @@ export default function PortfolioPage({ params }) {
       </div>
     );
   }
+
 
   const portfolioData = {
     name: "Prabhjot Singh",
@@ -170,7 +172,7 @@ export default function PortfolioPage({ params }) {
   const displayedProjects = activeTab === 'projects' ? portfolioData.projects : portfolioData.projects.filter(p => p.featured);
 
   const ProjectCard = ({ project }) => (
-    <div className="group cursor-pointer rounded-xl overflow-hidden shadow-sm hover:shadow-xl border border-white hover:border-primary transition-all duration-500 transform hover:-translate-y-2">
+    <div className="group cursor-pointer rounded-xl overflow-hidden shadow-sm hover:shadow-xl border border-header hover:border-primary transition-all duration-500 transform hover:-translate-y-2">
       <div className="relative h-48 overflow-hidden">
         <img
           src={project.image}
@@ -232,6 +234,35 @@ export default function PortfolioPage({ params }) {
             </span>
           )}
         </div>
+      </div>
+    </div>
+  );
+
+  const BlogCard = () => (
+    <div className="group cursor-pointer rounded-xl overflow-hidden shadow-sm hover:shadow-xl border border-header hover:border-primary transition-all duration-500 transform hover:-translate-y-2">
+      <div className="relative h-48 overflow-hidden">
+        <img
+          src='{project.image}'
+          alt='blog img'
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div className="absolute top-4 left-4">
+          <span className="inline-flex items-center gap-1 px-3 py-1 bg-primary text-white text-sm rounded-full">
+            <Tag size={12} />
+           web
+          </span>
+        </div>
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      </div>
+
+      <div className="p-5">
+        <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors duration-300">
+          Blog Title
+        </h3>
+        <p className="text-sm mb-4 line-clamp-3">
+          Blog desc
+        </p>
       </div>
     </div>
   );
@@ -337,24 +368,7 @@ export default function PortfolioPage({ params }) {
             </div>
           </section>
 
-          <section className="py-12 bg-background2">
-            <div className="max-w-6xl mx-auto px-6">
-              <div className="flex items-center justify-between mb-8">
-                <h2 className="text-2xl font-bold">Featured Projects</h2>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {displayedProjects.slice(0, 3).map((project, index) => (
-                  <ProjectCard key={index} project={project} />
-                ))}
-              </div>
-
-              <div className='mt-8 mx-auto w-fit'>
-                <CtcBtn text="  View All Projects"   onClick={() => setActiveTab('projects')}/>
-              </div>
-
-            </div>
-          </section>
+       
 
           <section className="py-12 bg-background2">
             <div className="max-w-6xl mx-auto px-6">
@@ -370,6 +384,44 @@ export default function PortfolioPage({ params }) {
                   </div>
                 ))}
               </div>
+            </div>
+          </section>
+
+             <section className="py-12 bg-background2">
+            <div className="max-w-6xl mx-auto px-6">
+              <div className="flex items-center justify-between mb-8">
+                <h2 className="text-2xl font-bold">Featured Projects</h2>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {displayedProjects.slice(0, 3).map((project, index) => (
+                  <ProjectCard key={index} project={project} />
+                ))}
+              </div>
+
+              {/* <div className='mt-8 mx-auto w-fit'>
+                <CtcBtn text="  View All Projects"   onClick={() => setActiveTab('projects')}/>
+              </div> */}
+
+            </div>
+          </section>
+          
+             <section className="py-12 bg-background2">
+            <div className="max-w-6xl mx-auto px-6">
+              <div className="flex items-center justify-between mb-8">
+                <h2 className="text-2xl font-bold">Must Read</h2>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+             
+                  <BlogCard  />
+              
+              </div>
+
+              {/* <div className='mt-8 mx-auto w-fit'>
+                <CtcBtn text="  View All Projects"   onClick={() => setActiveTab('projects')}/>
+              </div> */}
+
             </div>
           </section>
         </>

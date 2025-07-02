@@ -8,6 +8,7 @@ import "./globals.css";
 // import MobileNav from "@/components/mobileNav";
 import ChatBotLauncher from "@/components/ChatBotLauncher";
 import Loader from "@/components/Loader/Loader";
+import MainLoader from "@/components/MainLoader";
 import { BlogProvider } from '@/context/BlogContext';
 import { Toaster } from 'sonner';
 
@@ -62,6 +63,7 @@ export default function RootLayout({ children }) {
         />
         {!isHideLayout && <Header />}
         {!isHideLayout && <ChatBotLauncher />}
+        <MainLoader/>
 
           {/* <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-white dark:bg-zinc-900"> */}
             <Loader />

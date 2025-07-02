@@ -7,7 +7,6 @@ export default function Loader() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        // When everything on the page is loaded
         const handleLoad = () => {
             setTimeout(() => setIsLoading(false), 300); // optional delay for smoother transition
         };

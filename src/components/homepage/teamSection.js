@@ -1,6 +1,8 @@
 'use client';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { httpRequest } from '@/utils/httpRequest';
 
 const teamMembers = [
   {
@@ -48,17 +50,47 @@ const fadeUp = {
 };
 
 export default function TeamSection() {
+
+
+
+   const [teamData, setTeamData] = useState(null)
+  
+    const fetchData = async () => {
+      try {
+        const response = await httpRequest({
+          url: "team",
+          method: "GET",
+        });
+  
+        if (response.success) {
+          setTeamData(response.data.data);
+          console.log("data fetched successfully", response);
+        } else {
+          console.warn("Data was not fetched successfully");
+        }
+      } catch (error) {
+        console.error("API Error:", error);
+      }
+    };
+  
+    useEffect(() => {
+      fetchData();
+    }, []);
+  
+
+
+
   return (
     <div className="py-20 px-4 sm:px-6 lg:px-20">
       <div className="text-center mb-14">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-primary">Meet Our Team</h2>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-primary">{teamData?.founders?.title}</h2>
         <p className="text-base md:text-xl text-zinc-500 mt-4 max-w-2xl mx-auto">
-          A group of passionate experts dedicated to crafting exceptional digital experiences.
+        {teamData?.founders?.subTitle}
         </p>
       </div>
 
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        {teamMembers.map((member, index) => (
+        {teamData?.founders?.members.map((member, index) => (
           <motion.div
             key={index}
             className="relative group overflow-hidden rounded-2xl shadow-md bg-white/10 dark:bg-black/20"
@@ -71,21 +103,21 @@ export default function TeamSection() {
           >
             <div className="relative aspect-[3/4]">
               <Image
-                src={member.image}
-                alt={member.name}
+                src={member?.image}
+                alt={member?.name}
                 fill
                 className="object-cover transition duration-500 rounded-2xl"
                 unoptimized
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:opacity-100 transition-opacity" />
               <div className="absolute bottom-0 p-6 text-white z-10">
-                <h4 className="text-xl font-semibold">{member.name}</h4>
-                <p className="text-sm text-primary font-medium">{member.role}</p>
-                <p className="text-xs text-zinc-400">@{member.brand}</p>
+                <h4 className="text-xl font-semibold">{member?.name}</h4>
+                <p className="text-sm text-primary font-medium capitalize">{member?.role}</p>
+                {/* <p className="text-xs text-zinc-400">@{member.brand}</p>
                 <div className="flex items-center gap-2 mt-1 text-xs">
                   <span className="w-2 h-2 bg-green-400 rounded-full" />
                   <span>{member.experience || "Experience NA"}</span>
-                </div>
+                </div> */}
               </div>
             </div>
           </motion.div>

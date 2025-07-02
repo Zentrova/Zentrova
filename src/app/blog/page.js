@@ -1,12 +1,13 @@
 'use client';
 import React, { useState } from 'react';
-import { Calendar, Search, User } from 'lucide-react';
+import { Calendar, ChevronDown, Search, User } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import CustomHeroSection from '@/components/CommonHeroSection';
 import { useBlogs } from '@/context/BlogContext';
 import { filterBlogs } from '@/utils/filterBlogs';
 import moment from 'moment';
+import EmptyState from '@/components/EmptyState';
 
 const BlogsPage = () => {
   const [hoveredBlog, setHoveredBlog] = useState(null);
@@ -76,53 +77,61 @@ const BlogsPage = () => {
       </div>
 
       {/* Blogs Grid */}
-      <div className="max-w-7xl mx-auto px-6 pb-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredBlogs.length > 0 ? filteredBlogs.map((blog, index) => (
-            <Link href={`/blog/${blog.slug}`} key={blog.ID}>
-              <article
-                className={`group relative backdrop-blur-sm rounded-2xl overflow-hidden border-2 hover:border-primary shadow-lg transition-all duration-500 cursor-pointer ${index % 2 === 0 ? 'animate-fade-in-up' : 'animate-fade-in-up delay-200'}`}
-                onMouseEnter={() => setHoveredBlog(blog.ID)}
-                onMouseLeave={() => setHoveredBlog(null)}
-              >
-                {/* Blog Image */}
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={blog.featured_image}
-                    alt={blog.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute top-3 left-3">
-                    <span className="inline-flex items-center gap-1 px-2 py-1 bg-black/50 backdrop-blur-sm text-white text-xs rounded-full">
-                      <Calendar size={10} />
-                      {moment(blog.date).format("MMMM D, YYYY")}
-                    </span>
+      <div className="max-w-7xl mx-auto px-6 pb-10">
+        {filteredBlogs.length > 0 ? filteredBlogs.map((blog, index) => (
+          <div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <Link href={`/blog/${blog.slug}`} key={blog.ID}>
+                <article
+                  className={`group relative backdrop-blur-sm rounded-2xl overflow-hidden border-2 hover:border-primary shadow-lg transition-all duration-500 cursor-pointer ${index % 2 === 0 ? 'animate-fade-in-up' : 'animate-fade-in-up delay-200'}`}
+                  onMouseEnter={() => setHoveredBlog(blog.ID)}
+                  onMouseLeave={() => setHoveredBlog(null)}
+                >
+                  {/* Blog Image */}
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={blog.featured_image}
+                      alt={blog.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute top-3 left-3">
+                      <span className="inline-flex items-center gap-1 px-2 py-1 bg-black/50 backdrop-blur-sm text-white text-xs rounded-full">
+                        <Calendar size={10} />
+                        {moment(blog.date).format("MMMM D, YYYY")}
+                      </span>
+                    </div>
                   </div>
-                </div>
 
-                {/* Blog Content */}
-                <div className="p-4">
-                  <h2 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors line-clamp-2 leading-tight">
-                    {blog.title}
-                  </h2>
-                  <div
-                    className="text-gray-600 text-sm mb-3 leading-relaxed line-clamp-2"
-                    dangerouslySetInnerHTML={{ __html: blog.excerpt }}
-                  />
-                  <div className="flex items-center gap-2 pt-2 border-t border-black/10">
-                    <User size={18} className="text-gray-500" />
-                    <span className="text-sm font-medium text-gray-700">
-                      {blog.author.name}
-                    </span>
+                  {/* Blog Content */}
+                  <div className="p-4">
+                    <h2 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors line-clamp-2 leading-tight">
+                      {blog.title}
+                    </h2>
+                    <div
+                      className="text-gray-600 text-sm mb-3 leading-relaxed line-clamp-2"
+                      dangerouslySetInnerHTML={{ __html: blog.excerpt }}
+                    />
+                    <div className="flex items-center gap-2 pt-2 border-t border-black/10">
+                      <User size={18} className="text-gray-500" />
+                      <span className="text-sm font-medium text-gray-700">
+                        {blog.author.name}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </article>
-            </Link>
-          )) : (
-            <p>No Data found</p>
-          )}
-        </div>
+                </article>
+              </Link>
+            </div>
+            <div className='w-fit mx-auto mt-10'>
+              <button className='primaryBtn'>Load More <ChevronDown /></button>
+            </div>
+          </div>
+        )) : (
+          <EmptyState
+            title="No Blogs Available"
+            message="New content is on the way. Stay connected for upcoming posts!"
+          />
+        )}
       </div>
     </div>
   );
