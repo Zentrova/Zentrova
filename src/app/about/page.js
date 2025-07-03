@@ -2,33 +2,17 @@
 import CustomHeroSection from '@/components/CommonHeroSection';
 import FAQ from '@/components/FAQ';
 import HowItWorks from '@/components/homepage/howItWorks';
+import ServiceSwiper from '@/components/homepage/ServiceSwiper';
 import KpiCard from '@/components/KpiCards';
 import { Code, Rocket, Trophy, Users } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
-import CountUp from 'react-countup';
 
 const stats = [
-  {
-    icon: <Rocket className="w-6 h-6" />,
-    value: 50,
-    label: 'Active Projects',
-  },
-  {
-    icon: <Users className="w-6 h-6" />,
-    value: 250,
-    label: 'Clients',
-  },
-  {
-    icon: <Code className="w-6 h-6" />,
-    value: 100000,
-    label: 'Lines of Code',
-  },
-  {
-    icon: <Trophy className="w-6 h-6" />,
-    value: 15,
-    label: 'Awards & Features',
-  },
+  { icon: <Rocket className="w-6 h-6" />, value: 50, label: 'Active Projects' },
+  { icon: <Users className="w-6 h-6" />, value: 250, label: 'Clients' },
+  { icon: <Code className="w-6 h-6" />, value: 100000, label: 'Lines of Code' },
+  { icon: <Trophy className="w-6 h-6" />, value: 15, label: 'Awards & Features' },
 ];
 
 const awards = [
@@ -42,78 +26,72 @@ const awards = [
 const AboutUs = () => (
   <div className="min-h-screen">
 
+    {/* Hero Section */}
+    <CustomHeroSection
+      title="Driven by Design. Built for Impact."
+      desc="Xentrova is a team of passionate creators delivering tailored web and mobile solutions that combine strategy, design, and technology."
+    />
 
-
-    <div className=''>
-      <CustomHeroSection
-        title='Driven by Design. Built for Impact.'
-        desc="Xentrova is a team of passionate creators delivering tailored web and mobile solutions that combine strategy, design, and technology."
-      />
-    </div>
-
-
-    {/* Stats */}
+    {/* Stats Section */}
     <div className="bg-background2 py-12">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-6 md:px-20 max-w-7xl mx-auto">
-        {stats.map((stat, i) => (
-          <KpiCard
-            key={i}
-            icon={stat.icon}
-            value={stat.value}
-            label={stat.label}
-            subLabel={stat.subLabel}
-          />
-        ))}
-      </div>
-    </div>
-
-    <div className='flex '>
-      <div className='flex-1'>
-        <div className="relative z-10 max-w-6xl mx-auto flex justify-center items-center flex-col px-10 h-full text-center">
-          <h1 className="text-4xl font-extrabold leading-tight">
-            Who are we</h1>
-          <p className="mt-4 text-base">
-            Xentrova is a multidisciplinary digital solutions team specializing in UI/UX design, frontend development, and scalable web and mobile platforms. We collaborate with startups, agencies, and enterprises to turn bold ideas into polished, high-performing products.
-            <br /><br />
-            At Xentrova, we follow a quality-first approach—ensuring each solution we deliver is tailored, future-ready, and aligned with the client’s business goals. With a deep understanding of design, code, and user experience, we bridge creativity and technology to craft digital excellence.
-          </p>
-          <div className="mt-6 h-1 w-24 mx-auto bg-primary rounded-full" />
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {stats.map((stat, i) => (
+            <KpiCard
+              key={i}
+              icon={stat.icon}
+              value={stat.value}
+              label={stat.label}
+            />
+          ))}
         </div>
       </div>
-      <div className='flex-1'>
+    </div>
+
+    {/* Who Are We Section */}
+    <div className="flex flex-col md:flex-row items-center justify-between gap-10 px-6 py-12 max-w-7xl mx-auto">
+      <div className="md:w-1/2 w-full text-center md:text-left">
+        <h2 className="text-3xl md:text-4xl font-extrabold leading-tight mb-4">
+          Who are we
+        </h2>
+        <p className="text-base md:text-lg text-gray-600">
+          Xentrova is a multidisciplinary digital solutions team specializing in UI/UX design,
+          frontend development, and scalable web and mobile platforms. We collaborate with startups,
+          agencies, and enterprises to turn bold ideas into polished, high-performing products.
+          <br /><br />
+          At Xentrova, we follow a quality-first approach—ensuring each solution we deliver is tailored,
+          future-ready, and aligned with the client’s business goals. With a deep understanding of design,
+          code, and user experience, we bridge creativity and technology to craft digital excellence.
+        </p>
+        <div className="mt-6 h-1 w-24 mx-auto md:mx-0 bg-primary rounded-full" />
+      </div>
+      <div className="md:w-1/2 w-full">
         <Image
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZIK_dzjnmoFopN-Tti8pDSgDA3R8NvHYnAg&s"
-          height={100}
-          width={100}
-          alt='abc'
+          alt="About Us"
+          width={800}
+          height={600}
           unoptimized
-          className='h-full w-full object-cover'
+          className="w-full h-auto object-cover rounded-xl"
         />
       </div>
     </div>
 
-
-    <div className='bg-background2 h-hero'>
-      Services Cards
+    {/* Services */}
+    <div className="bg-background2">
+      <ServiceSwiper />
     </div>
-    {/* Work Flow */}
-    <div className=''>
+
+    {/* How It Works */}
+    <div>
       <HowItWorks />
     </div>
 
-    <div className='bg-background2'>
+    {/* FAQ */}
+    <div className="bg-background2">
       <FAQ bgColor="background" />
     </div>
 
-    {/* CTA */}
-    {/* <div className="text-center py-10  rounded-xl mx-auto w-3/4 my-10">
-      <h3 className="text-2xl font-semibold mb-5">
-        Let’s enhance your digital journey — with design that truly converts.
-      </h3>
-      <button className="primaryBtn mx-auto">
-        Let’s Talk About It
-      </button>
-    </div> */}
   </div>
 );
 

@@ -22,7 +22,7 @@ module.exports = {
         lightGreen: "#a8e6cf",
       },
       height: {
-        mainSection: "calc(100vh - 160px)",
+        mainSection: "calc(100vh - 70px)",
         hero: "calc(100vh - 260px)"
       },
       fontFamily: {
