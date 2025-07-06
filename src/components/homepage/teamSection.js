@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { httpRequest } from '@/utils/httpRequest';
+import Link from 'next/link';
 
 const teamMembers = [
   {
@@ -95,31 +96,32 @@ export default function TeamSection() {
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 gap-y-6">
           {teamData?.founders?.members.map((founder, i) => (
-            <motion.div
-              key={i}
-              className="relative group overflow-hidden rounded-xl shadow-md"
-              whileHover={{ scale: 1.03 }}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              variants={fadeUp}
-              custom={i}
-            >
-              <div className="aspect-[4/5] relative">
-                <Image
-                  src={founder?.image}
-                  alt={founder.name}
-                  fill
-                  className="object-cover rounded-xl transition duration-500"
-                  unoptimized
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:opacity-100 transition-opacity" />
-                <div className="absolute bottom-0 p-4 text-zinc-100">
-                  <h4 className="text-sm font-semibold">{founder?.name}</h4>
-                  <p className="text-xs text-primary font-medium capitalize">{founder?.role}</p>
+            <Link href={`/portfolio/${founder.name}`} key={i}>
+              <motion.div
+                className="relative group overflow-hidden rounded-xl shadow-md"
+                whileHover={{ scale: 1.03 }}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                variants={fadeUp}
+                custom={i}
+              >
+                <div className="aspect-[4/5] relative">
+                  <Image
+                    src={founder?.image}
+                    alt={founder.name}
+                    fill
+                    className="object-cover rounded-xl transition duration-500"
+                    unoptimized
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute bottom-0 p-4 text-zinc-100">
+                    <h4 className="text-sm font-semibold">{founder?.name}</h4>
+                    <p className="text-xs text-primary font-medium capitalize">{founder?.role}</p>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </section>
