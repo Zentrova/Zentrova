@@ -1,69 +1,59 @@
 'use client';
-import React, { useState, use } from 'react';
+import { httpRequest } from '@/utils/httpRequest';
 import {
-  MapPin,
-  Download,
-  Send,
-  Code,
-  User,
   Award,
-  ExternalLink,
+  Code,
   Eye,
   Github,
+  Linkedin,
+  MapPin,
   Tag,
-  Instagram,
-  Facebook,
-  Twitter,
-  Linkedin
+  User
 } from 'lucide-react';
 import Image from 'next/image';
-import CtcBtn from '@/components/homepage/ctcBtn';
+import Link from 'next/link';
+import { use, useEffect, useState } from 'react';
 import CountUp from 'react-countup';
-import { httpRequest } from '@/utils/httpRequest';
 
-// src/app/portfolio/[id]/page.js
-
-const portfolios = {
-  prabhjot: {
-    name: "Prabhjot Singh",
-    role: "Frontend Developer",
-    bio: "Passionate about UI/UX and clean code.",
-  },
-  sumit: {
-    name: "Sumit Kumar",
-    role: "Backend Developer",
-    bio: "Loves working with databases and scalable systems.",
-  },
-  yashpal: {
-    name: "Yashpal Singh",
-    role: "Full Stack Engineer",
-    bio: "Bridging frontend and backend with elegant solutions.",
-  },
-  raktinder: {
-    name: "Raktinder Singh",
-    role: "Project Manager",
-    bio: "Ensuring delivery, deadlines, and delightful UX.",
-  },
-};
 
 export default function PortfolioPage({ params }) {
-  // Unwrap the params Promise using React.use()
-  const resolvedParams = use(params);
-  const memberId = resolvedParams?.id?.toLowerCase?.() || '';
-  const data = portfolios[memberId];
 
   const [activeTab, setActiveTab] = useState('overview');
+  const [portfolio, setPortfolio] = useState(null)
+  const resolvedParam = use(params)
+  const decodedParam = decodeURIComponent(resolvedParam?.id);
+
+  const fetchData = async () => {
+    try {
+      const response = await httpRequest({
+        url: `/team/${decodedParam}`,
+        method: "GET",
+      });
+
+      if (response.success) {
+        setPortfolio(response.data.data);
+        console.log("data fetched successfully", response);
+      } else {
+        console.warn("Data was not fetched successfully");
+      }
+    } catch (error) {
+      console.error("API Error:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+
 
   // Check if member exists
-  if (!data) {
+if (portfolio == "User not found") {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-red-500 mb-2">Member Not Found</h1>
-          <p className="text-gray-600 mb-4">The portfolio for "{memberId}" does not exist.</p>
-          <p className="text-sm text-gray-500">
-            Available portfolios: {Object.keys(portfolios).join(', ')}
-          </p>
+          <p className="text-gray-600 mb-4">The portfolio for "{decodedParam}" does not exist.</p>
         </div>
       </div>
     );
@@ -167,17 +157,20 @@ export default function PortfolioPage({ params }) {
       clients: "10",
       commits: "2000"
     }
-  };  
+  };
 
   const displayedProjects = activeTab === 'projects' ? portfolioData.projects : portfolioData.projects.filter(p => p.featured);
 
   const ProjectCard = ({ project }) => (
     <div className="group cursor-pointer rounded-xl overflow-hidden shadow-sm hover:shadow-xl border border-header hover:border-primary transition-all duration-500 transform hover:-translate-y-2">
       <div className="relative h-48 overflow-hidden">
-        <img
+        <Image
           src={project.image}
           alt={project.title}
+          height={100}
+          width={100}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          unoptimized
         />
 
         <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
@@ -241,15 +234,18 @@ export default function PortfolioPage({ params }) {
   const BlogCard = () => (
     <div className="group cursor-pointer rounded-xl overflow-hidden shadow-sm hover:shadow-xl border border-header hover:border-primary transition-all duration-500 transform hover:-translate-y-2">
       <div className="relative h-48 overflow-hidden">
-        <img
+        <Image
           src='{project.image}'
           alt='blog img'
+                    height={100}
+          width={100}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          unoptimized
         />
         <div className="absolute top-4 left-4">
           <span className="inline-flex items-center gap-1 px-3 py-1 bg-primary text-white text-sm rounded-full">
             <Tag size={12} />
-           web
+            web
           </span>
         </div>
 
@@ -272,20 +268,21 @@ export default function PortfolioPage({ params }) {
       <section className="bg-gradient-to-br py-16">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
-
             {/* Text Content */}
             <div className="lg:col-span-2 space-y-6">
               <div>
                 <span className='flex items-end gap-2'>
                   <h1 className="text-3xl lg:text-4xl font-bold text-primary">
-                    {data.name}
+                    {portfolio?.name}
                   </h1>
-                  <span className='bg-header hover:bg-primary p-2.5 rounded-full text-primary hover:text-white cursor-pointer'>
-                    <Linkedin className="h-5 w-5 " />
-                  </span>
+                  {portfolio?.linkedin &&
+                    <Link href={portfolio?.linkedin} target='blank' className='bg-header hover:bg-primary p-2.5 rounded-full text-primary hover:text-white cursor-pointer'>
+                      <Linkedin className="h-5 w-5 " />
+                    </Link>
+                  }
                 </span>
-                <p className="text-xl mb-3">{data.role}</p>
-                <p className="leading-relaxed text-lg">{data.bio}</p>
+                <p className="text-xl mb-3">{portfolio?.designation}</p>
+                <p className="leading-relaxed text-lg">{portfolio?.description}</p>
               </div>
 
               <div className="flex items-center space-x-2  text-base mt-2">
@@ -303,7 +300,7 @@ export default function PortfolioPage({ params }) {
                 ].map((item, idx) => (
                   <div key={idx} className="text-center border border-header  rounded-xl py-4  shadow-sm hover:shadow-md transition">
                     <div className="text-3xl font-bold text-primary">
-                       <CountUp end={item.value} duration={2} />+
+                      <CountUp end={item.value} duration={2} />+
                     </div>
                     <div className="text-sm ">{item.label}</div>
                   </div>
@@ -314,8 +311,8 @@ export default function PortfolioPage({ params }) {
             {/* Avatar Image */}
             <div className="flex justify-center">
               <Image
-                src={portfolioData.avatar}
-                alt={portfolioData.name}
+                src={portfolio?.profileImage || '/IMg'}
+                alt={portfolio?.name || 'Img'}
                 width={500}
                 height={600}
                 unoptimized
@@ -356,7 +353,7 @@ export default function PortfolioPage({ params }) {
             <div className="max-w-6xl mx-auto px-6">
               <h2 className="text-2xl font-bold mb-6">Skills & Technologies</h2>
               <div className="flex flex-wrap gap-2">
-                {portfolioData.skills.map((skill, index) => (
+                {portfolio?.skills?.map((skill, index) => (
                   <span
                     key={index}
                     className="bg-header px-3 py-1 rounded-full text-sm font-medium"
@@ -368,7 +365,7 @@ export default function PortfolioPage({ params }) {
             </div>
           </section>
 
-       
+
 
           <section className="py-12 bg-background2">
             <div className="max-w-6xl mx-auto px-6">
@@ -387,7 +384,7 @@ export default function PortfolioPage({ params }) {
             </div>
           </section>
 
-             <section className="py-12 bg-background2">
+          <section className="py-12 bg-background2">
             <div className="max-w-6xl mx-auto px-6">
               <div className="flex items-center justify-between mb-8">
                 <h2 className="text-2xl font-bold">Featured Projects</h2>
@@ -405,17 +402,17 @@ export default function PortfolioPage({ params }) {
 
             </div>
           </section>
-          
-             <section className="py-12 bg-background2">
+
+          <section className="py-12 bg-background2">
             <div className="max-w-6xl mx-auto px-6">
               <div className="flex items-center justify-between mb-8">
                 <h2 className="text-2xl font-bold">Must Read</h2>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-             
-                  <BlogCard  />
-              
+
+                <BlogCard />
+
               </div>
 
               {/* <div className='mt-8 mx-auto w-fit'>
@@ -450,13 +447,13 @@ export default function PortfolioPage({ params }) {
               {/* Vertical line */}
               <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gray-300"></div>
 
-              {portfolioData.experience.map((exp, index) => (
+              {portfolio?.experience?.map((exp, index) => (
                 <div key={index} className="relative flex items-start mb-8 pb-8 border-b border-gray-200 last:border-b-0">
 
                   {/* Company logo placeholder / Circle */}
                   <div className="relative z-10 flex-shrink-0 w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-4">
                     <div className="w-6 h-6 bg-white rounded text-primary text-xs font-bold flex items-center justify-center">
-                      {exp.company.charAt(0)}
+                     ab
                     </div>
                   </div>
 
@@ -464,24 +461,24 @@ export default function PortfolioPage({ params }) {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between mb-1">
                       <h3 className="text-lg font-semibold text-gray-900 dark:text-white leading-tight">
-                        {exp.position}
+                       {exp?.designation}
                       </h3>
                     </div>
 
                     <p className="text-base text-gray-700 dark:text-gray-300 font-medium mb-1">
-                      {exp.company}
+                      {exp?.company}
                     </p>
 
                     <p className="text-sm text-gray-500 mb-3">
-                      {exp.duration}
+                      {exp?.date?.start} - {exp?.date?.status} 
                     </p>
 
                     <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                      {exp.description}
+                      {exp?.responsibilities}
                     </p>
                   </div>
                 </div>
-              ))}
+              ))} 
             </div>
           </div>
         </section>

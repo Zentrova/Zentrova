@@ -8,6 +8,7 @@ import TeamSection from "@/components/homepage/teamSection";
 import MainLoader from "@/components/MainLoader";
 import Lottie from "lottie-react";
 import loaderAnimation from '@/../public/loaderAnimation.json'; // ✅ Adjust if needed
+import ServiceSwiper from "@/components/homepage/ServiceSwiper";
 
 export default function Home() {
   return (
@@ -15,16 +16,17 @@ export default function Home() {
       <HeroSection />
       {/* <Loader/> */}
       <div className="bg-background">
-        <HomeServices />
-        <div className="bg-background2">
-          <HomeProjects />
-        </div>
-        <HowItWorks />
-        <div className="bg-background2">
-          <TeamSection />
-        </div>
-        <FAQ />
+        {/* <HomeServices /> */}
+        <ServiceSwiper />
+      <div className="bg-background2">
+        <HomeProjects />
       </div>
+      <HowItWorks />
+      <div className="bg-background2">
+        <TeamSection />
+      </div>
+      <FAQ />
     </div>
+    </div >
   );
 }

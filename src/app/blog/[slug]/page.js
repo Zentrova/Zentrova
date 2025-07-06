@@ -137,7 +137,7 @@ export default function BlogPreview() {
   
 
 
-      <div className='px-24'>
+      <div className='px-0 md:px-24'>
         <ContentLayout sections={sections} activeId={activeId} sectionRefs={sectionRefs} blog={blogDetail} />
       </div>
 

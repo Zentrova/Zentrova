@@ -117,33 +117,35 @@ export default function TeamSection() {
         <div className="max-w-7xl mx-auto">
 
           {/* Stats */}
+          <div className="max-w-6xl mx-auto px-4 mb-10 md:mb-20">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-6 md:px-20 mb-20">
-            <KpiCard
-              icon={<Users className="w-6 h-6" />}
-              value={teamData?.heroSection?.coreMember}
-              label='Core Members'
-            />
-            <KpiCard
-              icon={<Lightbulb className="w-6 h-6" />}
-              value={teamData?.heroSection?.projects}
-              label='Combined Projects'
-            />
-            <KpiCard
-              icon={<Code2 className="w-6 h-6" />}
-              value={teamData?.heroSection?.tech}
-              label='Tech Stacks'
-            />
-            <KpiCard
-              icon={<Heart className="w-6 h-6" />}
-              value={teamData?.heroSection?.teamSynergy}
-              label='Team Synergy'
-            />
+              <KpiCard
+                icon={<Users className="w-6 h-6" />}
+                value={teamData?.heroSection?.coreMember}
+                label='Core Members'
+              />
+              <KpiCard
+                icon={<Lightbulb className="w-6 h-6" />}
+                value={teamData?.heroSection?.projects}
+                label='Combined Projects'
+              />
+              <KpiCard
+                icon={<Code2 className="w-6 h-6" />}
+                value={teamData?.heroSection?.tech}
+                label='Tech Stacks'
+              />
+              <KpiCard
+                icon={<Heart className="w-6 h-6" />}
+                value={teamData?.heroSection?.teamSynergy}
+                label='Team Synergy'
+              />
 
+            </div>
           </div>
 
           <div>
-            
+
           </div>
 
           {/* Founders */}

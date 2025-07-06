@@ -8,7 +8,7 @@ import {
   MenuList,
 } from "@material-tailwind/react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDownIcon, MenuIcon, Moon, Sun, X } from "lucide-react";
+import { ChevronDownIcon, MenuIcon, Moon, Sun, SunIcon, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -152,7 +152,7 @@ export default function Header() {
                 </div>
                 :
                 <div className="icon icon--sun">
-                  <Sun className="h-5 w-5" />
+                  <SunIcon className="h-5 w-5" />
                 </div>
               }
             </label>

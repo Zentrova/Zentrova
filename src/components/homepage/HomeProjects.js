@@ -1,5 +1,3 @@
-// components/HomeProjects.js
-
 'use client';
 
 import Link from 'next/link';
@@ -38,16 +36,15 @@ export default function HomeProjects() {
         },
     ];
 
-
     return (
-        <section className="py-24 px-6 md:px-20">
-            <div className="text-center mb-14 px-4">
+        <section className="py-16 px-4 sm:px-6 md:px-20">
+            <div className="text-center mb-12 px-2">
                 <motion.h2
                     initial={{ opacity: 0, y: -30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="text-3xl md:text-4xl font-extrabold text-primary"
+                    className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary"
                 >
                     Our Featured Work
                 </motion.h2>
@@ -57,17 +54,13 @@ export default function HomeProjects() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                     viewport={{ once: true }}
-                    className="text-base md:text-xl max-w-2xl mx-auto mt-4"
+                    className="text-sm sm:text-base md:text-xl max-w-xl mx-auto mt-3 text-gray-600 dark:text-gray-300"
                 >
                     Handpicked projects that represent our creativity, tech, and strategy.
                 </motion.p>
             </div>
 
-           
-
-
-
-            <div className="space-y-6 md:space-y-28">
+            <div className="space-y-10 sm:space-y-16 md:space-y-28">
                 {mockProjects.map((project, index) => (
                     <motion.div
                         key={project.id}
@@ -75,10 +68,10 @@ export default function HomeProjects() {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: index * 0.2 }}
                         viewport={{ once: true }}
-                        className={`flex flex-col lg:flex-row items-center gap-12 border p-4 rounded-xl border-primaryLight md:border-none md:p-0 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+                        className={`flex flex-col lg:flex-row items-center gap-8 sm:gap-10 lg:gap-12 border border-primaryLight p-3 sm:p-4 rounded-xl md:border-none md:p-0 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''
                             }`}
                     >
-                        <div className="lg:w-1/2 w-full relative h-72 md:h-96 rounded-xl overflow-hidden shadow-lg">
+                        <div className="lg:w-1/2 w-full relative h-48 sm:h-56 md:h-72 rounded-xl overflow-hidden shadow-md">
                             <Image
                                 src={project.image}
                                 alt={project.title}
@@ -89,26 +82,26 @@ export default function HomeProjects() {
                         </div>
 
                         <div className="lg:w-1/2 w-full">
-                            <p className="text-sm uppercase text-primary font-semibold mb-2">
+                            <p className="text-xs sm:text-sm uppercase text-primary font-semibold mb-2">
                                 {project.category}
                             </p>
-                            <h3 className="text-3xl font-semibold mb-4">
+                            <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-3">
                                 {project.title}
                             </h3>
-                            <p className="text-gray-700 dark:text-gray-300 mb-6">
+                            <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-4">
                                 {project.description}
                             </p>
                             <Link href={`/projects/${project.slug}`}>
-                                  <CtcBtn text="View Case Study"/>
+                                <CtcBtn text="View Case Study" />
                             </Link>
                         </div>
                     </motion.div>
                 ))}
             </div>
 
-            <div className="text-center mt-14 mx-auto w-fit">
+            <div className="text-center mt-12 sm:mt-14 mx-auto w-fit">
                 <Link href="/projects">
-                      <CtcBtn text="Explore More Projects"/>
+                    <CtcBtn text="Explore More Projects" />
                 </Link>
             </div>
         </section>
