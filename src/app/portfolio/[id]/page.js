@@ -1,26 +1,19 @@
 'use client';
-import React, { useState, use, useEffect } from 'react';
+import { httpRequest } from '@/utils/httpRequest';
 import {
-  MapPin,
-  Download,
-  Send,
-  Code,
-  User,
   Award,
-  ExternalLink,
+  Code,
   Eye,
   Github,
+  Linkedin,
+  MapPin,
   Tag,
-  Instagram,
-  Facebook,
-  Twitter,
-  Linkedin
+  User
 } from 'lucide-react';
 import Image from 'next/image';
-import CtcBtn from '@/components/homepage/ctcBtn';
-import CountUp from 'react-countup';
-import { httpRequest } from '@/utils/httpRequest';
 import Link from 'next/link';
+import { use, useEffect, useState } from 'react';
+import CountUp from 'react-countup';
 
 
 export default function PortfolioPage({ params }) {
@@ -54,22 +47,17 @@ export default function PortfolioPage({ params }) {
 
 
 
-
-
   // Check if member exists
-  // if (!data) {
-  //   return (
-  //     <div className="min-h-screen flex items-center justify-center">
-  //       <div className="text-center">
-  //         <h1 className="text-2xl font-bold text-red-500 mb-2">Member Not Found</h1>
-  //         <p className="text-gray-600 mb-4">The portfolio for "{memberId}" does not exist.</p>
-  //         <p className="text-sm text-gray-500">
-  //           Available portfolios: {Object.keys(portfolios).join(', ')}
-  //         </p>
-  //       </div>
-  //     </div>
-  //   );
-  // }
+if (portfolio == "User not found") {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-red-500 mb-2">Member Not Found</h1>
+          <p className="text-gray-600 mb-4">The portfolio for "{decodedParam}" does not exist.</p>
+        </div>
+      </div>
+    );
+  }
 
 
   const portfolioData = {
@@ -365,7 +353,7 @@ export default function PortfolioPage({ params }) {
             <div className="max-w-6xl mx-auto px-6">
               <h2 className="text-2xl font-bold mb-6">Skills & Technologies</h2>
               <div className="flex flex-wrap gap-2">
-                {portfolio?.skills.map((skill, index) => (
+                {portfolio?.skills?.map((skill, index) => (
                   <span
                     key={index}
                     className="bg-header px-3 py-1 rounded-full text-sm font-medium"
@@ -459,8 +447,8 @@ export default function PortfolioPage({ params }) {
               {/* Vertical line */}
               <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gray-300"></div>
 
-              {/* {portfolio?.experience.map((exp, index) => ( */}
-                <div className="relative flex items-start mb-8 pb-8 border-b border-gray-200 last:border-b-0">
+              {portfolio?.experience?.map((exp, index) => (
+                <div key={index} className="relative flex items-start mb-8 pb-8 border-b border-gray-200 last:border-b-0">
 
                   {/* Company logo placeholder / Circle */}
                   <div className="relative z-10 flex-shrink-0 w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-4">
@@ -473,24 +461,24 @@ export default function PortfolioPage({ params }) {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between mb-1">
                       <h3 className="text-lg font-semibold text-gray-900 dark:text-white leading-tight">
-                       {portfolio?.experience?.designation}
+                       {exp?.designation}
                       </h3>
                     </div>
 
                     <p className="text-base text-gray-700 dark:text-gray-300 font-medium mb-1">
-                      {portfolio?.experience?.company}
+                      {exp?.company}
                     </p>
 
                     <p className="text-sm text-gray-500 mb-3">
-                      {portfolio?.experience?.date?.start} - {portfolio?.experience?.date?.status} 
+                      {exp?.date?.start} - {exp?.date?.status} 
                     </p>
 
                     <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                      {portfolio?.experience?.responsibilities}
+                      {exp?.responsibilities}
                     </p>
                   </div>
                 </div>
-              {/* ))} */}
+              ))} 
             </div>
           </div>
         </section>
