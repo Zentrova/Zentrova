@@ -14,14 +14,14 @@ const Header = ({project,wpData}) => (
       <div>
         <div className="flex items-center space-x-2 mb-4">
           <span className="px-3 py-1 bg-primary text-white rounded-full text-sm font-medium">
-            {project.tags?.map(tag=>tag)}
+            {project?.tags?.map(tag=>tag)}
           </span>
           {/* <span className="px-3 py-1 bg-primary rounded-full text-white text-sm font-medium">
             {project.status}
           </span> */}
         </div>
-        <h1 className="text-4xl font-bold text-primary mb-2">{project.title}</h1>
-        <p className="text-xl mb-6">{project.subTitle}</p>
+        <h1 className="text-4xl font-bold text-primary mb-2">{project?.title}</h1>
+        <p className="text-xl mb-6">{project?.subTitle}</p>
         <div className="flex flex-wrap gap-4 mb-6 text-gray-600">
           {/* <div className="flex items-center space-x-2">
             <Calendar className="w-5 h-5" />
@@ -35,8 +35,8 @@ const Header = ({project,wpData}) => (
       </div>
       <div>
         <img
-          src={wpData.featured_image}
-          alt={project.title}
+          src={wpData?.featured_image}
+          alt={project?.title}
           className="w-full h-80 object-cover rounded-2xl"
         />
       </div>
