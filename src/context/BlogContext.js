@@ -9,8 +9,7 @@ export const BlogProvider = ({ children }) => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const pathname = usePathname();
-  const type = pathname.includes('/projects') ? 'projects' : 'blogs';
-
+  const type = pathname.includes('/projects') ? 'projects': 'blogs';
 
   const fetchBlogs = async () => {
     try {

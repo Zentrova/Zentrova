@@ -164,33 +164,42 @@ export default function TeamSection() {
             </motion.div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 gap-y-6">
-              {teamData?.founders?.members.map((founder, i) => (
-                <motion.div
-                  key={i}
-                  className="relative group overflow-hidden rounded-xl shadow-md"
-                  whileHover={{ scale: 1.03 }}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true }}
-                  variants={fadeUp}
-                  custom={i}
-                >
-                  <div className="aspect-[4/5] relative">
-                    <Image
-                      src={founder?.image}
-                      alt={founder.name}
-                      fill
-                      className="object-cover rounded-xl transition duration-500"
-                      unoptimized
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:opacity-100 transition-opacity" />
-                    <div className="absolute bottom-0 p-4 text-zinc-100">
-                      <h4 className="text-sm font-semibold">{founder?.name}</h4>
-                      <p className="text-xs text-primary font-medium capitalize">{founder?.role}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+              {teamData?.founders?.members.map((founder, i) => {
+                const encodedName = encodeURIComponent(founder?.name); // convert name to id-friendly string
+                return (
+                  <Link href={`/team/${encodedName}`} key={i}>
+                    <motion.div
+                      className="relative group overflow-hidden rounded-xl shadow-md cursor-pointer"
+                      whileHover={{ scale: 1.03 }}
+                      initial="hidden"
+                      whileInView="show"
+                      viewport={{ once: true }}
+                      variants={fadeUp}
+                      custom={i}
+                    >
+                      <div className="aspect-[4/5] relative">
+                        <Image
+                          src={
+                            founder?.profileImage ||
+                            `${process.env.NEXT_PUBLIC_AVATAR_BASE_URL}?name=${encodeURIComponent(founder.name)}&background=random&color=ffffff&size=512&bold=true`
+                          }
+                          alt={founder.name}
+                          fill
+                          className="object-cover rounded-xl transition duration-500"
+                          unoptimized
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent group-hover:opacity-100 transition-opacity" />
+                        <div className="absolute bottom-0 p-4 text-zinc-100">
+                          <h4 className="text-sm font-semibold">{founder?.name}</h4>
+                          <p className="text-xs text-primary font-medium capitalize">
+                            {founder?.designation}
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </Link>
+                );
+              })}
             </div>
           </section>
 
@@ -211,33 +220,41 @@ export default function TeamSection() {
             </motion.div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {employees.map((member, index) => (
-                <motion.div
-                  key={index}
-                  className="relative group overflow-hidden rounded-xl shadow-md"
-                  whileHover={{ scale: 1.03 }}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true }}
-                  variants={fadeUp}
-                  custom={index}
-                >
-                  <div className="aspect-[4/5] relative">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      layout="fill"
-                      objectFit="cover"
-                      className="rounded-xl"
-                      unoptimized
-                    />
-                    <div className="absolute bottom-0 bg-gradient-to-t from-black/80 to-transparent w-full p-3 text-zinc-100">
-                      <p className="text-sm font-semibold">{member.name}</p>
-                      <p className="text-xs text-primary font-medium">{member.role}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+              {teamData?.teams?.members.map((member, index) => {
+                const encodedName = encodeURIComponent(member.name);
+
+                return (
+                  <Link href={`/team/${encodedName}`} key={index}>
+                    <motion.div
+                      className="relative group overflow-hidden rounded-xl shadow-md cursor-pointer"
+                      whileHover={{ scale: 1.03 }}
+                      initial="hidden"
+                      whileInView="show"
+                      viewport={{ once: true }}
+                      variants={fadeUp}
+                      custom={index}
+                    >
+                      <div className="aspect-[4/5] relative">
+                        <Image
+                          src={
+                            member?.image ||
+                            `${process.env.NEXT_PUBLIC_AVATAR_BASE_URL}?name=${encodeURIComponent(member.name)}&background=random&color=ffffff&size=512&bold=true`
+                          }
+                          alt={member.name}
+                          layout="fill"
+                          objectFit="cover"
+                          className="rounded-xl"
+                          unoptimized
+                        />
+                        <div className="absolute bottom-0 bg-gradient-to-t from-black/80 to-transparent w-full p-3 text-zinc-100">
+                          <p className="text-sm font-semibold">{member.name}</p>
+                          <p className="text-xs text-primary font-medium">{member.designation}</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </Link>
+                );
+              })}
             </div>
           </section>
 

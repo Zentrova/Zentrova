@@ -32,7 +32,6 @@ export default function PortfolioPage({ params }) {
 
       if (response.success) {
         setPortfolio(response.data.data);
-        console.log("port", response.data.data.experience)
         console.log("data fetched successfully", response);
       } else {
         console.warn("Data was not fetched successfully");
@@ -185,81 +184,81 @@ export default function PortfolioPage({ params }) {
       commits: "2000"
     }
   };
-
-  const displayedProjects = activeTab === 'projects' ? portfolioData.projects : portfolioData.projects.filter(p => p.featured);
-
   const ProjectCard = ({ project }) => (
-    <div className="group cursor-pointer rounded-xl overflow-hidden shadow-sm hover:shadow-xl border border-header hover:border-primary transition-all duration-500 transform hover:-translate-y-2">
-      <div className="relative h-48 overflow-hidden">
-        <Image
-          src={project?.featured_image}
-          alt={project?.title}
-          height={100}
-          width={100}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-          unoptimized
-        />
+    <Link href={`/projects/${project?.slug}`} passHref>
+      <div className="group cursor-pointer rounded-xl overflow-hidden shadow-sm hover:shadow-xl border border-header hover:border-primary transition-all duration-500 transform hover:-translate-y-2">
+        <div className="relative h-48 overflow-hidden">
+          <Image
+            src={project?.featured_image}
+            alt={project?.title || "image"}
+            height={100}
+            width={100}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            unoptimized
+          />
 
-        <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-          <a
-            href={project?.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-2 bg-black/50 backdrop-blur-sm rounded-full text-white"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <Eye className="w-4 h-4" />
-          </a>
-          <a
-            href={project?.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-2 bg-black/50 backdrop-blur-sm rounded-full text-white"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <Github className="w-4 h-4" />
-          </a>
-        </div>
+          <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+            <a
+              href={project?.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 bg-black/50 backdrop-blur-sm rounded-full text-white"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Eye className="w-4 h-4" />
+            </a>
+            <a
+              href={project?.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 bg-black/50 backdrop-blur-sm rounded-full text-white"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Github className="w-4 h-4" />
+            </a>
+          </div>
 
-        <div className="absolute top-4 left-4">
-          <span className="inline-flex items-center gap-1 px-3 py-1 bg-primary text-white text-sm rounded-full">
-            <Tag size={12} />
-            {project.categories && Object.keys(project.categories)[0]}
-          </span>
-        </div>
-
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-      </div>
-
-      <div className="p-5">
-        <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors duration-300">
-          {project?.title}
-        </h3>
-        <p className="text-sm mb-4 line-clamp-2" dangerouslySetInnerHTML={{ __html: project.excerpt }}>
-        </p>
-
-        <div className="flex flex-wrap gap-1 mb-4">
-          {project.tags && Object.values(project.tags).slice(0, 3).map((tag) => (
-            <span key={tag.ID} className="px-3 py-1 bg-header text-sm rounded-full">
-              {tag.name}
+          <div className="absolute top-4 left-4">
+            <span className="inline-flex items-center gap-1 px-3 py-1 bg-primary text-white text-sm rounded-full">
+              <Tag size={12} />
+              {project?.categories && Object.keys(project?.categories)[0]}
             </span>
-          ))}
-          {project.tags && Object.values(project.tags).length > 3 && (
-            <span className="px-3 py-1 bg-muted text-sm rounded-full text-muted-foreground">
-              +{Object.values(project.tags).length - 3} more
-            </span>
-          )}
+          </div>
+
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+
+        <div className="p-5">
+          <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors duration-300">
+            {project?.title}
+          </h3>
+          <p className="text-sm mb-4 line-clamp-2" dangerouslySetInnerHTML={{ __html: project?.excerpt }}>
+          </p>
+
+          <div className="flex flex-wrap gap-1 mb-4">
+            {project?.tags && Object.values(project?.tags).slice(0, 3).map((tag) => (
+              <span key={tag?.ID} className="px-3 py-1 bg-header text-sm rounded-full">
+                {tag?.name}
+              </span>
+            ))}
+            {project?.tags && Object.values(project?.tags).length > 3 && (
+              <span className="px-3 py-1 bg-muted text-sm rounded-full text-muted-foreground">
+                +{Object.values(project?.tags).length - 3} more
+              </span>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 
-  const BlogCard = ({blog}) => (
+  const BlogCard = ({ blog }) => (
+  <Link href={`/projects/${blog?.slug}`} passHref>
     <div className="group cursor-pointer rounded-xl overflow-hidden shadow-sm hover:shadow-xl border border-header hover:border-primary transition-all duration-500 transform hover:-translate-y-2">
       <div className="relative h-48 overflow-hidden">
         <Image
           src={blog?.featured_image}
-          alt={blog.featured_image}
+          alt={blog?.title || "image"}
           height={100}
           width={100}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -267,8 +266,8 @@ export default function PortfolioPage({ params }) {
         />
         <div className="absolute top-4 left-4">
           <span className="inline-flex items-center gap-1 px-3 py-1 bg-primary text-white text-sm rounded-full">
-             <Tag size={12} />
-            {Object.keys(blog.categories)[0]}
+            <Tag size={12} />
+            {Object.keys(blog?.categories)[0]}
           </span>
         </div>
 
@@ -279,10 +278,11 @@ export default function PortfolioPage({ params }) {
         <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors duration-300">
           {blog?.title}
         </h3>
-        <p className="text-sm mb-4 line-clamp-3"  dangerouslySetInnerHTML={{ __html: blog.excerpt }}>
+        <p className="text-sm mb-4 line-clamp-3" dangerouslySetInnerHTML={{ __html: blog?.excerpt }}>
         </p>
       </div>
     </div>
+  </Link>
   );
 
   return (
@@ -309,7 +309,9 @@ export default function PortfolioPage({ params }) {
 
               <div className="flex items-center space-x-2  text-base mt-2">
                 <MapPin className="w-5 h-5 text-primary" />
-                <span>{portfolioData.location}</span>
+                <span>{[portfolio?.address?.city, portfolio?.address?.state, portfolio?.address?.country]
+                  .filter(Boolean)
+                  .join(', ')}</span>
               </div>
 
               {/* Stats */}
@@ -333,8 +335,11 @@ export default function PortfolioPage({ params }) {
             {/* Avatar Image */}
             <div className="flex justify-center">
               <Image
-                src={portfolio?.profileImage || '/IMg'}
-                alt={portfolio?.name || 'Img'}
+                src={
+                  portfolio?.profileImage ||
+                  `${process.env.NEXT_PUBLIC_AVATAR_BASE_URL}?name=${encodeURIComponent(portfolio?.name)}&background=random&color=ffffff&size=512&bold=true`
+                }
+                alt={portfolio?.name || "image"}
                 width={500}
                 height={600}
                 unoptimized
@@ -406,36 +411,34 @@ export default function PortfolioPage({ params }) {
             </div>
           </section>
 
-          <section className="py-12 bg-background2">
+          {projects.length>0 && <section className="py-12 bg-background2">
             <div className="max-w-6xl mx-auto px-6">
               <div className="flex items-center justify-between mb-8">
                 <h2 className="text-2xl font-bold">Featured Projects</h2>
               </div>
-
-              {projects &&
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {projects.slice(0, 3).map((project, index) => (
                     <ProjectCard key={index} project={project} />
                   ))}
-                </div>}
+                </div>
 
               {/* <div className='mt-8 mx-auto w-fit'>
                 <CtcBtn text="  View All Projects"   onClick={() => setActiveTab('projects')}/>
               </div> */}
 
             </div>
-          </section>
+          </section>}
 
-          <section className="py-12 bg-background2">
+         { blogs.length>0 && <section className="py-12 bg-background2">
             <div className="max-w-6xl mx-auto px-6">
               <div className="flex items-center justify-between mb-8">
                 <h2 className="text-2xl font-bold">Must Read</h2>
               </div>
 
               {blogs && <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                 {blogs.slice(0, 3).map((blog, index) => (
-                    <BlogCard key={index} blog={blog} />
-                  ))}
+                {blogs.slice(0, 3).map((blog, index) => (
+                  <BlogCard key={index} blog={blog} />
+                ))}
               </div>}
 
               {/* <div className='mt-8 mx-auto w-fit'>
@@ -443,7 +446,7 @@ export default function PortfolioPage({ params }) {
               </div> */}
 
             </div>
-          </section>
+          </section>}
         </>
       )}
 

@@ -9,7 +9,7 @@ import { useState } from 'react';
 
 const ProjectsPage = () => {
   const [hoveredProject, setHoveredProject] = useState(null);
-  const [avatarHover, setAvatarHover] = useState(null); // For avatar tooltip
+  // const [avatarHover, setAvatarHover] = useState(null); // For avatar tooltip
   const [filter, setFilter] = useState('');
   const { blogs, loading } = useBlogs();
   const router = useRouter();
