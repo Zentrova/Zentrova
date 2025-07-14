@@ -2,11 +2,14 @@
 
 import React from 'react';
 import Image from 'next/image';
+import CtcBtn from './homepage/ctcBtn';
+import Link from 'next/link';
 
 export default function CustomHeroSection({
   title = '',
   desc = '',
   img = '/bg.jpg',
+  ctcBtn
 }) {
   return (
     <section className="relative min-h-[60vh] flex items-center justify-center text-white overflow-hidden">
@@ -30,7 +33,15 @@ export default function CustomHeroSection({
         <p className="mt-4 text-sm sm:text-base md:text-lg text-zinc-200">
           {desc}
         </p>
-        <div className="mt-6 h-1 w-24 mx-auto bg-primary rounded-full" />
+        {ctcBtn ?
+          <div className='mx-auto w-fit mt-6'>
+            <Link href='/contact'>
+              <CtcBtn text='Get in touch' />
+            </Link>
+          </div>
+          :
+          <div className="mt-6 h-1 w-24 mx-auto bg-primary rounded-full" />
+        }
       </div>
     </section>
   );
