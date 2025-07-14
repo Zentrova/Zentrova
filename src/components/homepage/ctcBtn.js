@@ -3,7 +3,7 @@
 export default function CtcBtn({ text = "button" }) {
   return (
     <button
-      className="flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 text-sm sm:text-base font-medium bg-primary text-white rounded-full hover:bg-primaryDark transition-all duration-300"
+      className="flex items-center gap-2 primaryBtn"
     >
       {text}
       <svg
