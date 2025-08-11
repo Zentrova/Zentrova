@@ -4,12 +4,12 @@ import Image from "next/image";
 
 export default function HomeServices() {
     const ourServices = [
-        "Website Design",
-        "Frontend Development",
-        "Backend Development",
-        "Full Stack Development",
-        "Responsive Web Design",
-        "UI/UX Design",
+        "Web Development",
+        "UI/UX Development",
+        "App Development",
+        "Shopify Development",
+        "Maintenance & Support",
+        "Digital Marketing & SEO",
         "Landing Page Design",
         "E-commerce Website Development",
         "Custom Web Applications",
@@ -25,7 +25,6 @@ export default function HomeServices() {
         "Version Control (Git/GitHub)",
         "Deployment (Vercel, Netlify, AWS)",
     ];
-
 
     const minSpeed = 3;
     const speed =  ourServices.length * minSpeed  ;

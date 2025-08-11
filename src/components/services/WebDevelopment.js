@@ -4,6 +4,8 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import CustomHeroSection from '@/components/CommonHeroSection';
 import { Rocket, Users, Zap, TrendingUp, ShieldCheck, Lightbulb } from 'lucide-react';
+import LogoGrid from '../LogoGrid';
+import { webDev } from '@/ServiceData/service';
 
 export default function WebDevelopment() {
   const valuePoints = [
@@ -170,6 +172,7 @@ export default function WebDevelopment() {
           </div>
         </div>
       </section>
+        <LogoGrid logos={webDev} />
     </div>
   );
 }

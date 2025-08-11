@@ -16,8 +16,8 @@ export default function Home() {
       <HeroSection />
       {/* <Loader/> */}
       <div className="bg-background">
-        {/* <HomeServices /> */}
         <ServiceSwiper />
+        <HomeServices />
       <div className="bg-background2">
         <HomeProjects />
       </div>

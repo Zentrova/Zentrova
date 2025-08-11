@@ -3,6 +3,8 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import CustomHeroSection from '@/components/CommonHeroSection';
+import LogoGrid from '../LogoGrid';
+import { UiUX } from '@/ServiceData/service';
 
 export default function UiUx() {
   const fadeUp = {
@@ -16,7 +18,7 @@ export default function UiUx() {
       <CustomHeroSection
         title="UI/UX Design"
         desc="We craft meaningful digital experiences that go beyond visual appeal — balancing aesthetics, usability, and business goals. Our UI/UX design process ensures every interaction is purposeful, seamless, and enjoyable."
-        img="https://images.unsplash.com/photo-1587614382346-ac5ce068fe85?w=800"
+        img="https://images.unsplash.com/photo-1541462608143-67571c6738dd?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         ctcBtn
       />
 
@@ -37,7 +39,7 @@ export default function UiUx() {
             {
               title: 'User-Centric Approach',
               desc: 'We design with empathy, ensuring every screen feels intuitive and every interaction has purpose. Through deep user research and journey mapping, we create experiences that not only look great but also meet user expectations and solve real problems.',
-              img: 'https://images.unsplash.com/photo-1559027615-ce3b7b4d226d?w=800',
+              img: 'https://plus.unsplash.com/premium_photo-1705178701080-1e0eae873f7e?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             },
             {
               title: 'Pixel-Perfect Design',
@@ -87,17 +89,17 @@ export default function UiUx() {
             {
               title: 'User Research & Persona Building',
               desc: 'We begin every project with a thorough understanding of your audience — conducting interviews, surveys, and competitor analysis to uncover motivations, pain points, and behavior patterns. These insights shape realistic personas that guide our design decisions from concept to delivery.',
-              img: 'https://images.unsplash.com/photo-1607082349566-187342175e2f?w=800',
+              img: 'https://images.unsplash.com/photo-1588600878108-578307a3cc9d?q=80&w=1176&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             },
             {
               title: 'Wireframing & Prototyping',
               desc: 'Our process emphasizes clarity before polish. Low-fidelity wireframes map functionality, while high-fidelity prototypes bring the vision to life for stakeholder feedback and user testing. This approach minimizes costly revisions during development.',
-              img: 'https://images.unsplash.com/photo-1581090700227-4c4f50b1c5d6?w=800',
+              img: 'https://images.unsplash.com/photo-1648109941110-d30f859426ea?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             },
             {
               title: 'Responsive & Accessible Design',
               desc: 'We ensure your product works beautifully for everyone, everywhere. By following WCAG guidelines and applying responsive design best practices, we create experiences that are inclusive, adaptable, and consistent across devices and screen sizes.',
-              img: 'https://images.unsplash.com/photo-1612865547334-09cb8cb455da?w=800',
+              img: 'https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             },
           ].map((item, i) => (
             <motion.div
@@ -134,53 +136,10 @@ export default function UiUx() {
       </section>
 
       {/* Toolkit */}
-      <section className="py-20 max-w-7xl mx-auto px-6">
-        <motion.h2
-          className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-12"
-          initial="hidden"
-          whileInView="visible"
-          variants={fadeUp}
-          viewport={{ once: true }}
-        >
-          Our Design Toolkit
-        </motion.h2>
+    
 
-        <div className="grid md:grid-cols-4 gap-8 text-center">
-          {[
-            { name: "Figma", img: "https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" },
-            { name: "Adobe XD", img: "https://upload.wikimedia.org/wikipedia/commons/c/c2/Adobe_XD_CC_icon.svg" },
-            { name: "Sketch", img: "https://upload.wikimedia.org/wikipedia/commons/5/59/Sketch_Logo.svg" },
-            { name: "InVision", img: "https://upload.wikimedia.org/wikipedia/commons/7/7e/InVision-logo.svg" },
-            { name: "Canva", img: "https://upload.wikimedia.org/wikipedia/commons/b/bb/Canva_Logo.svg" },
-            { name: "Miro", img: "https://upload.wikimedia.org/wikipedia/commons/5/5d/Miro_logo.svg" },
-            { name: "Zeplin", img: "https://upload.wikimedia.org/wikipedia/commons/3/34/Zeplin-logo.svg" },
-            { name: "Framer", img: "https://upload.wikimedia.org/wikipedia/commons/3/3f/Framer_logo.svg" }
-          ].map((tool, i) => (
-            <motion.div
-              key={i}
-              className="flex flex-col items-center gap-4 bg-background2 p-6 rounded-lg shadow-md"
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <Image
-                src={tool.img}
-                alt={tool.name}
-                width={60}
-                height={60}
-                unoptimized
-                style={{
-                  maxWidth: "60px",
-                  maxHeight: "60px",
-                  objectFit: "contain"
-                }}
-              />
-              <p className="font-medium">{tool.name}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+        <LogoGrid logos={UiUX} />
+
     </div>
   );
 }

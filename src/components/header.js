@@ -35,7 +35,9 @@ export default function Header() {
         { label: "Web Development", href: "web-development" },
         { label: "UI/UX Development", href: "ui-ux-development" },
         { label: "App Development", href: "app-development" },
-        { label: "SEO Optimization", href: "seo-optimization" },
+        { label: "Shopify Development", href: "shopify-development" },
+        { label: "Maintenance & Support", href: "maintenance-support" },
+        { label: "Digital Marketing & SEO", href: "digital-marketing-seo" }
       ],
     },
     { href: "/projects", label: "Projects" },
@@ -92,7 +94,7 @@ export default function Header() {
                     </MenuHandler>
 
                     {/* Mega Menu */}
-                    <MenuList className="absolute left-0 top-0 mt-3 w-screen max-w-xl bg-background rounded-lg shadow-2xl z-50 p-6 border border-gray-100 dark:border-neutral-800">
+                    <MenuList className="absolute left-0 top-0 mt-3 w-screen max-w-2xl bg-background rounded-lg shadow-2xl z-50 p-6 border border-gray-100 dark:border-neutral-800">
                       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1">
                         {link.children.map((child, index) => (
                           <div key={index}>

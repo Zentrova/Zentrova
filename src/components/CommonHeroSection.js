@@ -22,7 +22,7 @@ export default function CustomHeroSection({
           className="object-cover opacity-70"
           unoptimized
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/70" />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/40 to-black/50" />
       </div>
 
       {/* Content */}
