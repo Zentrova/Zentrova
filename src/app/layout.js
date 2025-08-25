@@ -6,7 +6,7 @@ import Footer from "@/components/footer";
 import Header from "@/components/header";
 import "./globals.css";
 
-import '@wordpress/block-library/build-style/style.css';
+// import '@wordpress/block-library/build-style/style.css';
 import ChatBotLauncher from "@/components/ChatBotLauncher";
 import Loader from "@/components/Loader/Loader";
 import MainLoader from "@/components/MainLoader";

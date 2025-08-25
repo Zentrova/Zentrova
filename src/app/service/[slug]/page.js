@@ -9,8 +9,8 @@ import WebDevelopment from '@/components/services/WebDevelopment'
 import WorkInProgress from '@/components/WorkInProgress'
 import React from 'react'
 
-export default function ServicePage({ params }) {
-  const { slug } = params;
+export default async function ServicePage({ params }) {
+  const { slug } = await params;
 
   // Map slugs to components
   const serviceComponents = {
