@@ -8,7 +8,7 @@ export default function ServicesPage() {
   const [loading, setLoading] = useState(true);
 
   // Replace with your slug for the blog post you're using as service
-  const SLUG = 'ui-ux-design';
+  const SLUG = 'website-development';
 
   useEffect(() => {
     const fetchBlog = async () => {
@@ -27,6 +27,23 @@ export default function ServicesPage() {
     };
     fetchBlog();
   }, []);
+  useEffect(() => {
+  const map = {
+    container: "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6", // 👈 responsive grid layout
+    card: "p-6 bg-white dark:bg-zinc-900 rounded-lg shadow-md",        // 👈 card styling
+    title: "text-xl font-bold text-center text-primary mb-2",
+    // add more if needed
+  };
+
+  const elements = document.querySelectorAll("[data-style]");
+  elements.forEach((el) => {
+    const tailwind = map[el.getAttribute("data-style")];
+    if (tailwind) {
+      el.className = tailwind;
+    }
+  });
+}, []);
+
 
   if (loading) return <p className="text-center mt-10">Loading...</p>;
   if (!blog) return <p className="text-center mt-10 text-red-600">Service not found.</p>;

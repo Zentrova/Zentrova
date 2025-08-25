@@ -74,7 +74,7 @@ export default function PortfolioPage({ params }) {
     fetchBlogs();
   }, []);
   // Check if member exists
-  if (portfolio == "User not found") {
+  if (!portfolio) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
@@ -253,7 +253,7 @@ export default function PortfolioPage({ params }) {
   );
 
   const BlogCard = ({ blog }) => (
-  <Link href={`/projects/${blog?.slug}`} passHref>
+  <Link href={`/blog/${blog?.slug}`} passHref>
     <div className="group cursor-pointer rounded-xl overflow-hidden shadow-sm hover:shadow-xl border border-header hover:border-primary transition-all duration-500 transform hover:-translate-y-2">
       <div className="relative h-48 overflow-hidden">
         <Image
@@ -411,13 +411,13 @@ export default function PortfolioPage({ params }) {
             </div>
           </section>
 
-          {projects.length>0 && <section className="py-12 bg-background2">
+          {projects?.length>0 && <section className="py-12 bg-background2">
             <div className="max-w-6xl mx-auto px-6">
               <div className="flex items-center justify-between mb-8">
                 <h2 className="text-2xl font-bold">Featured Projects</h2>
               </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {projects.slice(0, 3).map((project, index) => (
+                  {projects?.slice(0, 3).map((project, index) => (
                     <ProjectCard key={index} project={project} />
                   ))}
                 </div>
@@ -429,7 +429,7 @@ export default function PortfolioPage({ params }) {
             </div>
           </section>}
 
-         { blogs.length>0 && <section className="py-12 bg-background2">
+         { blogs?.length>0 && <section className="py-12 bg-background2">
             <div className="max-w-6xl mx-auto px-6">
               <div className="flex items-center justify-between mb-8">
                 <h2 className="text-2xl font-bold">Must Read</h2>
@@ -455,7 +455,7 @@ export default function PortfolioPage({ params }) {
           <div className="max-w-6xl mx-auto px-6">
             <h2 className="text-2xl font-bold mb-8">All Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {projects.map((project, index) => (
+              {projects?.map((project, index) => (
                 <ProjectCard key={index} project={project} />
               ))}
             </div>
