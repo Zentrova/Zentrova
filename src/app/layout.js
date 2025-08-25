@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
   const isAuthLayout = pathname.startsWith("/auth");
   const isHideLayout = hideLayoutRoutes.includes(pathname) || isAuthLayout;
   return (
-    
+
     <html lang="en">
       <head>
         <title>Xentrova</title>
@@ -47,6 +47,14 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GEEZ3WVKH"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)}
+          gtag('js', new Date());
+
+          gtag('config', 'G-6GEEZ3WVKH');
+        </script>
       </head>
 
       <body className="min-h-screen flex flex-col">
@@ -64,14 +72,14 @@ export default function RootLayout({ children }) {
         />
         {!isHideLayout && <Header />}
         {!isHideLayout && <ChatBotLauncher />}
-        <MainLoader/>
+        <MainLoader />
 
-          {/* <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-white dark:bg-zinc-900"> */}
-            <Loader />
-          {/* </div> */}
+        {/* <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-white dark:bg-zinc-900"> */}
+        <Loader />
+        {/* </div> */}
         <BlogProvider>
           <main>
-          {children}</main>
+            {children}</main>
         </BlogProvider>
         {!isHideLayout && <Footer />}
       </body>
