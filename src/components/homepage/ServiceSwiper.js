@@ -1,8 +1,9 @@
-"use client";
+'use client';
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
+import "swiper/css/pagination";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -49,55 +50,54 @@ const services = [
 
 export default function ServiceSwiper() {
     return (
-        <section className="pt-5 md:pt-20 ">
+        <section className="py-12 md:py-20">
             <div className="text-center mb-12 px-4">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary">
                     What We Offer at <span className="text-primary">Xentrova</span>
-                </h2>
-                <p className="text-sm sm:text-base md:text-xl max-w-xl mx-auto mt-3 text-gray-600 dark:text-gray-300">
+                </h1>
+                <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto mt-4 text-gray-600 dark:text-gray-300">
                     Explore the full range of services we provide to elevate your digital presence.
                 </p>
             </div>
-            <div className="px-10 md:px-20">
+            <div className="px-4 sm:px-6 md:px-8">
                 <Swiper
-                    modules={[Autoplay]}
-                    spaceBetween={24}
+                    modules={[Autoplay, Pagination]}
+                    spaceBetween={30}
                     slidesPerView={1}
                     loop={true}
-                    speed={2000}
+                    speed={1500}
                     autoplay={{
-                        delay: 1000,
+                        delay: 2500,
                         disableOnInteraction: false,
-                        pauseOnMouseEnter: false,
                     }}
-                    allowTouchMove={false}
+                    pagination={{ clickable: true }}
                     breakpoints={{
-                        640: { slidesPerView: 1 },
-                        768: { slidesPerView: 3 },
-                        1024: { slidesPerView: 4 },
+                        640: { slidesPerView: 2, spaceBetween: 20 },
+                        768: { slidesPerView: 2, spaceBetween: 30 },
+                        1024: { slidesPerView: 3, spaceBetween: 40 },
+                        1280: { slidesPerView: 4, spaceBetween: 50 },
                     }}
-                    className="px-4"
+                    className="pb-12"
                 >
                     {services.map((service, index) => (
                         <SwiperSlide key={index}>
-                            <Link href={`/service/${service.href}`}>
-                                <div className="group overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border hover:border-primary h-full flex flex-col mb-10 min-h-[300px] md:min-h-[280px]">
-                                    <div className="relative w-full h-[280px] shrink-0">
+                            <Link href={`/service/${service.href}`} passHref>
+                                <article className="group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-transparent hover:border-primary h-full flex flex-col min-h-[320px] md:min-h-[350px]">
+                                    <div className="relative w-full h-[200px] sm:h-[220px] shrink-0">
                                         <Image
                                             src={service.image}
                                             alt={service.title}
                                             fill
                                             className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                            sizes="(max-width: 768px) 100vw, 33vw"
-                                            priority={index === 0}
-                                            unoptimized
+                                            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+                                            priority={index < 4} // Prioritize loading for first few slides
                                         />
                                     </div>
-                                    <div className="p-4 flex-1 flex flex-col">
-                                        <h3 className="text-lg font-semibold text-foreground">{service.title}</h3>
-                                        <p className="mt-1 text-sm text-muted-foreground line-clamp-1">{service.description}</p>
+                                    <div className="p-5 flex-1 flex flex-col">
+                                        <h2 className="text-lg font-bold text-foreground">{service.title}</h2>
+                                        <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{service.description}</p>
                                     </div>
-                                </div>
+                                </article>
                             </Link>
                         </SwiperSlide>
                     ))}

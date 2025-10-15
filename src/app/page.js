@@ -22,9 +22,9 @@ export default function Home() {
         <HomeProjects />
       </div>
       <HowItWorks />
-      <div className="bg-background2">
+      {/* <div className="bg-background2">
         <TeamSection />
-      </div>
+      </div> */}
       <FAQ />
     </div>
     </div >
