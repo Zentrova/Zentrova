@@ -54,12 +54,13 @@ export default function WebDevelopment() {
         title="Web Development Services"
         desc="We don’t just build websites — we create high-performing, scalable digital experiences that help you grow, engage customers, and stay ahead in a competitive market."
         img="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800"
+        alt="Team of developers working on a web project"
         ctcBtn
       />
 
       {/* What We Can Do */}
       <section className="py-20 max-w-7xl mx-auto px-6">
-        <motion.div
+        <motion.h2
           className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -67,7 +68,7 @@ export default function WebDevelopment() {
           viewport={{ once: true }}
         >
           What We Can Do for You
-        </motion.div>
+        </motion.h2>
 
         <div className="grid md:grid-cols-3 gap-8">
           {[
@@ -135,7 +136,7 @@ export default function WebDevelopment() {
       {/* Value Proposition */}
       <section className="py-20 bg-background2">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <motion.div
+          <motion.h2
             className="text-3xl md:text-4xl font-extrabold text-primary"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -143,7 +144,7 @@ export default function WebDevelopment() {
             viewport={{ once: true }}
           >
             The Value We Bring
-          </motion.div>
+          </motion.h2>
           <motion.div
             className="text-base md:text-xl max-w-3xl mx-auto mt-4 text-center mb-16"
             initial={{ opacity: 0 }}

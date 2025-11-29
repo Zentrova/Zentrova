@@ -31,8 +31,36 @@ export default function ContactUs() {
       path: "contact",
     },
     validationSchema,
-    onSubmit: (values) => {
-      console.log("Form submitted with values:", values);
+    onSubmit: async (values, { resetForm }) => {
+        try {
+            const formData = new FormData();
+            Object.keys(values).forEach(key => {
+                formData.append(key, values[key]);
+            });
+            if (selectedFile) {
+                formData.append("attachment", selectedFile);
+            }
+
+            const { success, error } = await httpRequest({
+                url: "contact",
+                method: "POST",
+                data: formData,
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+
+            if (success) {
+                toast.success("Thank you for contacting us! Our team will respond within 24 hours.");
+                resetForm();
+                setSelectedFile(null);
+            } else {
+                toast.error("Submission failed: " + error);
+            }
+        } catch (err) {
+            console.error("Form submission error:", err);
+            toast.error("An error occurred. Please try again.");
+        }
     },
   });
 
@@ -47,55 +75,6 @@ export default function ContactUs() {
     setSelectedFile(null);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const errors = await formik.validateForm();
-    formik.setTouched({
-      fullName: true,
-      email: true,
-      phone: true,
-      subject: true,
-      message: true,
-      termsAndPolicy: true,
-    });
-
-    if (Object.keys(errors).length > 0) return;
-
-    try {
-      const formData = new FormData();
-      formData.append("fullName", formik.values.fullName);
-      formData.append("email", formik.values.email);
-      formData.append("phone", formik.values.phone);
-      formData.append("subject", formik.values.subject);
-      formData.append("message", formik.values.message);
-      formData.append("termsAndPolicy", formik.values.termsAndPolicy);
-      if (selectedFile) {
-        formData.append("attachment", selectedFile);
-      }
-
-      const { success, data, error } = await httpRequest({
-        url: "contact",
-        method: "POST",
-        data: formData,
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-
-      if (success) {
-        toast.success("Thank you for contacting us! Our team will respond within 24 hours.");
-        formik.resetForm();
-        setSelectedFile(null);
-      } else {
-        toast.error("Submission failed: " + error);
-      }
-    } catch (err) {
-      console.error("Form submission error:", err);
-      toast.error("An error occurred. Please try again.");
-    }
-  };
-
   return (
     <div className="min-h-screen transition-colors duration-300">
       <CustomHeroSection
@@ -106,7 +85,7 @@ export default function ContactUs() {
       <section className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Left: Form */}
         <div className="md:col-span-2 w-full bg-white/80 dark:bg-white/5 backdrop-blur-md rounded-3xl shadow-xl p-6 sm:p-8 border border-gray-200 dark:border-white/10">
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <form onSubmit={formik.handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Full Name */}
             <div>
               <label className="block text-sm font-medium mb-1">Full Name *</label>
@@ -117,7 +96,7 @@ export default function ContactUs() {
                 className="w-full px-4 py-2 rounded-xl border border-header bg-background focus:ring-2 focus:ring-primary focus:outline-none"
               />
               {formik.touched.fullName && formik.errors.fullName && (
-                <p className="text-red-500 text-sm mt-1">{formik.errors.fullName}</p>
+                <p className="text-red-500 text-sm mt-1 break-words">{formik.errors.fullName}</p>
               )}
             </div>
 
@@ -131,7 +110,7 @@ export default function ContactUs() {
                 className="w-full px-4 py-2 rounded-xl border border-header bg-background focus:ring-2 focus:ring-primary focus:outline-none"
               />
               {formik.touched.email && formik.errors.email && (
-                <p className="text-red-500 text-sm mt-1">{formik.errors.email}</p>
+                <p className="text-red-500 text-sm mt-1 break-words">{formik.errors.email}</p>
               )}
             </div>
 
@@ -145,7 +124,7 @@ export default function ContactUs() {
                 className="w-full px-4 py-2 rounded-xl border border-header bg-background focus:ring-2 focus:ring-primary focus:outline-none"
               />
               {formik.touched.phone && formik.errors.phone && (
-                <p className="text-red-500 text-sm mt-1">{formik.errors.phone}</p>
+                <p className="text-red-500 text-sm mt-1 break-words">{formik.errors.phone}</p>
               )}
             </div>
 
@@ -159,12 +138,12 @@ export default function ContactUs() {
                 className="w-full px-4 py-2 rounded-xl border border-header bg-background focus:ring-2 focus:ring-primary focus:outline-none"
               />
               {formik.touched.subject && formik.errors.subject && (
-                <p className="text-red-500 text-sm mt-1">{formik.errors.subject}</p>
+                <p className="text-red-500 text-sm mt-1 break-words">{formik.errors.subject}</p>
               )}
             </div>
 
             {/* File Upload */}
-            <div className="col-span-1 sm:col-span-2">
+            <div className="col-span-1 md:col-span-2">
               <label className="block text-sm font-medium mb-2">Attach File (Optional)</label>
               <label className="flex items-center gap-3 px-4 py-2 border border-header rounded-xl bg-background hover:border-primary cursor-pointer transition">
                 <UploadCloud className="text-primary" />
@@ -189,7 +168,7 @@ export default function ContactUs() {
             </div>
 
             {/* Message */}
-            <div className="col-span-1 sm:col-span-2">
+            <div className="col-span-1 md:col-span-2">
               <label className="block text-sm font-medium mb-1">Message *</label>
               <textarea
                 rows={5}
@@ -198,32 +177,34 @@ export default function ContactUs() {
                 className="w-full px-4 py-3 rounded-xl border border-header bg-background focus:ring-2 focus:ring-primary focus:outline-none"
               />
               {formik.touched.message && formik.errors.message && (
-                <p className="text-red-500 text-sm mt-1">{formik.errors.message}</p>
+                <p className="text-red-500 text-sm mt-1 break-words">{formik.errors.message}</p>
               )}
             </div>
 
             {/* Terms */}
-            <div className="col-span-1 sm:col-span-2 flex items-start gap-2">
-              <input
-                type="checkbox"
-                className="h-4 w-4 accent-primary mt-1"
-                id="acceptTnC"
-                {...formik.getFieldProps("termsAndPolicy")}
-              />
-              <label htmlFor="acceptTnC" className="text-sm font-medium">
-                By submitting this form, I consent that Xentrova can process my data for the purpose of making me an offer for their services. Read our{" "}
-                <Link href="/terms-conditions" className="text-primary">Terms and Conditions</Link>{" "}
-                and{" "}
-                <Link href="/privacy-policy" className="text-primary">Privacy Policy</Link>.
-              </label>
+            <div className="col-span-1 md:col-span-2">
+                <div className="flex items-start gap-2">
+                    <input
+                        type="checkbox"
+                        className="h-4 w-4 accent-primary mt-1"
+                        id="acceptTnC"
+                        {...formik.getFieldProps("termsAndPolicy")}
+                    />
+                    <label htmlFor="acceptTnC" className="text-sm font-medium">
+                        By submitting this form, I consent that Xentrova can process my data for the purpose of making me an offer for their services. Read our{" "}
+                        <Link href="/terms-conditions" className="text-primary">Terms and Conditions</Link>{" "}
+                        and{" "}
+                        <Link href="/privacy-policy" className="text-primary">Privacy Policy</Link>.
+                    </label>
+                </div>
+                {formik.touched.termsAndPolicy && formik.errors.termsAndPolicy && (
+                    <p className="text-red-500 text-sm mt-1 break-words">{formik.errors.termsAndPolicy}</p>
+                )}
             </div>
-            {formik.touched.termsAndPolicy && formik.errors.termsAndPolicy && (
-              <p className="text-red-500 text-sm mt-1 col-span-2">{formik.errors.termsAndPolicy}</p>
-            )}
 
             {/* Submit Button */}
-            <div className="col-span-1 sm:col-span-2">
-              <button type="submit" className="w-full primaryBtn">
+            <div className="col-span-1 md:col-span-2">
+              <button type="submit" className="w-full primaryBtn" disabled={formik.isSubmitting}>
                 Submit Form
               </button>
             </div>
@@ -234,21 +215,21 @@ export default function ContactUs() {
         <div className="w-full">
           <div className="sticky top-36">
             <div className="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl p-6 sm:p-8 shadow-md text-gray-900 dark:text-white">
-              <h2 className="text-2xl font-bold mb-1">Prefer sending emails over filling forms?</h2>
+              <h2 className="text-xl md:text-2xl font-bold mb-1">Prefer sending emails over filling forms?</h2>
               <p className="text-sm text-gray-600 dark:text-gray-300 mb-8">Go ahead</p>
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-xl font-semibold mb-1">Projects</h3>
+                  <h3 className="text-lg md:text-xl font-semibold mb-1">Projects</h3>
                   <p className="text-sm mb-1">Got an idea? Tell us all about it!</p>
                   <a href="mailto:Xentrova.info@gmail.com" className="text-primary hover:underline">
-                    Xentrova.info@gmail.com
+                    Xentrova@gmail.com
                   </a>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-1">Questions</h3>
+                  <h3 className="text-lg md:text-xl font-semibold mb-1">Questions</h3>
                   <p className="text-sm mb-1">Need more info on how we work, what we do or pretty much anything else?</p>
                   <a href="mailto:Xentrova.info@gmail.com" className="text-primary hover:underline">
-                    Xentrova.info@gmail.com
+                    Xentrova@gmail.com
                   </a>
                 </div>
               </div>

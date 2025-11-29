@@ -63,24 +63,26 @@ const BlogsPage = () => {
         </div>
 
         {/* Filters */}
-        <div className="flex flex-wrap justify-center gap-4">
-          {categories.map((category) => (
-            <button
-              key={category.key}
-              onClick={() => setFilter(category.key)}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${filter === category.key ? 'primaryBtn' : 'SecondaryBtn'}`}
-            >
-              {category.label}
-            </button>
-          ))}
+        <div className="w-full overflow-hidden">
+          <div className="flex md:justify-center gap-4 overflow-x-auto pb-4 -mb-4">
+            {categories.map((category) => (
+              <button
+                key={category.key}
+                onClick={() => setFilter(category.key)}
+                className={`flex-shrink-0 px-6 py-3 rounded-full font-medium transition-all duration-300 ${filter === category.key ? 'primaryBtn' : 'SecondaryBtn'}`}
+              >
+                {category.label}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Blogs Grid */}
       <div className="max-w-7xl mx-auto px-6 pb-10">
-        {filteredBlogs.length > 0 ? filteredBlogs.map((blog, index) => (
-          <div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {filteredBlogs.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredBlogs.map((blog, index) => (
               <Link href={`/blog/${blog.slug}`} key={blog.ID}>
                 <article
                   className={`group relative backdrop-blur-sm rounded-2xl overflow-hidden border-2 hover:border-primary shadow-lg transition-all duration-500 cursor-pointer ${index % 2 === 0 ? 'animate-fade-in-up' : 'animate-fade-in-up delay-200'}`}
@@ -121,16 +123,18 @@ const BlogsPage = () => {
                   </div>
                 </article>
               </Link>
-            </div>
-            <div className='w-fit mx-auto mt-10'>
-              <button className='primaryBtn'>Load More <ChevronDown /></button>
-            </div>
+            ))}
           </div>
-        )) : (
+        ) : (
           <EmptyState
             title="No Blogs Available"
             message="New content is on the way. Stay connected for upcoming posts!"
           />
+        )}
+        {filteredBlogs.length > 0 && (
+          <div className='w-fit mx-auto mt-10'>
+            <button className='primaryBtn'>Load More <ChevronDown /></button>
+          </div>
         )}
       </div>
     </div>

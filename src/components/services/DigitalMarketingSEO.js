@@ -66,7 +66,7 @@ export default function DigitalMarketingSEO() {
 
             {/* Features First */}
             <section className="py-20 bg-background2">
-                <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12 text-center">
+                <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 text-center">
                     {[
                         { icon: <Search size={40} />, title: "SEO Optimization", desc: "Improve rankings with proven SEO tactics." },
                         { icon: <BarChart size={40} />, title: "PPC Campaigns", desc: "Maximize ROI with targeted paid ads." },
@@ -95,7 +95,7 @@ export default function DigitalMarketingSEO() {
             {marketingSections.map((section) => (
                 <section
                     key={section.id}
-                    className="py-20 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center"
+                    className="py-20 max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
                 >
                     {section.reverse && (
                         <motion.div initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true }}>
@@ -110,7 +110,7 @@ export default function DigitalMarketingSEO() {
                         </motion.div>
                     )}
                     <motion.div initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true }}>
-                        <h2 className="text-3xl font-bold mb-6">
+                        <h2 className="text-3xl sm:text-4xl font-bold mb-6">
                             <span className="text-primary">{section.highlight}</span> {section.title.replace(section.highlight, "")}
                         </h2>
                         <p className="text-gray-600 dark:text-gray-300 mb-4">{section.description1}</p>

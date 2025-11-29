@@ -78,7 +78,7 @@ export default function AppDevelopment() {
                     variants={fadeUp}
                     viewport={{ once: true }}
                 >
-                    <h2 className="text-3xl font-bold mb-6">
+                    <h2 className="text-3xl sm:text-4xl font-bold mb-6">
                         <span className="text-primary">Innovative Apps</span> – From Idea to Launch
                     </h2>
                     <p className="text-gray-600 dark:text-gray-300 mb-4">
@@ -111,7 +111,7 @@ export default function AppDevelopment() {
             <section className="py-20 bg-background2">
                 <div className="max-w-7xl mx-auto px-6">
                     <motion.h2
-                        className="text-3xl md:text-4xl font-extrabold text-center mb-12"
+                        className="text-3xl sm:text-4xl font-extrabold text-center mb-12"
                         initial="hidden"
                         whileInView="visible"
                         variants={fadeUp}
@@ -119,7 +119,7 @@ export default function AppDevelopment() {
                     >
                         Native App <span className="text-primary">Features</span>
                     </motion.h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                         {features.map((feature, i) => (
                             <motion.div
                                 key={i}
@@ -150,7 +150,7 @@ export default function AppDevelopment() {
                     variants={fadeUp}
                     viewport={{ once: true }}
                 >
-                    <h2 className="text-3xl font-bold mb-6">
+                    <h2 className="text-3xl sm:text-4xl font-bold mb-6">
                         <span className="text-primary">Your Vision</span> – Our App Development Expertise
                     </h2>
                     <p className="text-gray-600 dark:text-gray-300 mb-4">
@@ -203,7 +203,7 @@ export default function AppDevelopment() {
                         variants={fadeUp}
                         viewport={{ once: true }}
                     >
-                        <h3 className="text-3xl font-bold text-primary mb-4">
+                        <h3 className="text-3xl sm:text-4xl font-bold text-primary mb-4">
                             Custom-Built for Your Needs
                         </h3>
                         <p className="text-gray-600 dark:text-gray-300">

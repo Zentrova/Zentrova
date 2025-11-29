@@ -39,19 +39,6 @@ const shopifySections = [
     alt: "Shopify integrations",
     reverse: true,
   },
-  // {
-  //   id: 3,
-  //   title: "Optimize for Conversions",
-  //   highlight: "Optimize",
-  //   description1:
-  //     "We go beyond aesthetics—speed, SEO, and UX are built into every Shopify store we deliver. Our optimization process ensures more visitors turn into customers.",
-  //   description2:
-  //     "Better load times, mobile-first design, and streamlined checkout flows boost your sales and improve customer retention.",
-  //   image:
-  //     "https://images.unsplash.com/photo-1596568355357-0b0b3b2c7a1b?q=80&w=1200&auto=format&fit=crop",
-  //   alt: "Conversion optimization for Shopify",
-  //   reverse: false,
-  // },
 ];
 
 export default function ShopifyDevelopment() {
@@ -68,7 +55,7 @@ export default function ShopifyDevelopment() {
       {shopifySections.map((section) => (
         <section
           key={section.id}
-          className="py-20 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center"
+          className="py-20 max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
         >
           {section.reverse && (
             <motion.div initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true }}>
@@ -83,7 +70,7 @@ export default function ShopifyDevelopment() {
             </motion.div>
           )}
           <motion.div initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true }}>
-            <h2 className="text-3xl font-bold mb-6">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
               <span className="text-primary">{section.highlight}</span> {section.title.replace(section.highlight, "")}
             </h2>
             <p className="text-gray-600 dark:text-gray-300 mb-4">{section.description1}</p>
@@ -106,7 +93,7 @@ export default function ShopifyDevelopment() {
 
       {/* Features */}
       <section className="py-20 bg-background2">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12 text-center">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 text-center">
           {[
             { icon: <ShoppingCart size={40} />, title: "Custom Store Design", desc: "Branded, high-converting Shopify store designs." },
             { icon: <Layers size={40} />, title: "App Integrations", desc: "Power up your store with premium Shopify apps." },
