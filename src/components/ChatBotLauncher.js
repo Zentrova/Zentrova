@@ -11,7 +11,7 @@ export default function ChatBotLauncher() {
   const panelRef = useRef(null);
 
   // IMPORTANT: Replace with your WhatsApp number including country code (e.g., 911234567890)
-  const whatsappNumber = "YOUR_WHATSAPP_NUMBER";
+  const whatsappNumber = "+919417909883";
 
   // This effect runs only once when the component mounts
   useEffect(() => {

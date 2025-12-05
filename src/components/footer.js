@@ -34,6 +34,11 @@ const Footer = () => {
         { label: "Contact Us", href: "/contact" },
     ];
 
+    const legalLinks = [
+        { label: "Privacy Policy", href: "/privacy-policy" },
+        { label: "Terms & Conditions", href: "/terms-and-conditions" },
+    ];
+
     const contactInfo = [
         {
             icon: <Mail className="h-5 w-5" />,
@@ -47,12 +52,6 @@ const Footer = () => {
             href: "tel:+919417909883",
             ariaLabel: "Call us at +91 94179 09883",
         },
-        // {
-        //     icon: <MapPin className="h-5 w-5" />,
-        //     text: "123 Street, City, Country",
-        //     href: "#",
-        //     ariaLabel: "Our office location",
-        // },
     ];
 
     const FooterLink = ({ href, children, ariaLabel }) => (
@@ -101,44 +100,48 @@ const Footer = () => {
 
             <div className="relative z-10">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 md:pt-16">
-                    <div className="text-center md:text-left mb-8">
-                        <Link href="/" aria-label="Back to homepage">
-                            <Image
-                                src='/XentrovaLogo.svg'
-                                alt="Xentrova Logo"
-                                height={100}
-                                width={120}
-                                className="w-[120px] h-auto mx-auto md:mx-0"
-                            />
-                        </Link>
-                        <p className="text-gray-400 my-4 max-w-sm mx-auto md:mx-0">
-                            Xentrova is a premier digital agency specializing in UI/UX design, app development, and SEO-driven digital marketing to elevate your brand.
-                        </p>
-                        <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-                            {socialLinks.map(({ icon, href, label }) => (
-                                <a
-                                    key={label}
-                                    href={href}
-                                    className="transition-transform hover:scale-110"
-                                    aria-label={`Visit our ${label} page`}
-                                    rel="noopener noreferrer"
-                                    target="_blank"
-                                >
-                                    <span className="w-10 h-10 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-colors duration-300">
-                                        {icon}
-                                    </span>
-                                </a>
-                            ))}
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                        <div className="md:col-span-1">
+                            <Link href="/" aria-label="Back to homepage">
+                                <Image
+                                    src='/XentrovaLogo.svg'
+                                    alt="Xentrova Logo"
+                                    height={100}
+                                    width={120}
+                                    className="w-[120px] h-auto mx-auto md:mx-0"
+                                />
+                            </Link>
+                            <p className="text-gray-400 my-4 max-w-sm mx-auto md:mx-0">
+                                Xentrova is a premier digital agency specializing in UI/UX design, app development, and SEO-driven digital marketing to elevate your brand.
+                            </p>
+                            <div className="flex flex-wrap gap-3 justify-center md:justify-start">
+                                {socialLinks.map(({ icon, href, label }) => (
+                                    <a
+                                        key={label}
+                                        href={href}
+                                        className="transition-transform hover:scale-110"
+                                        aria-label={`Visit our ${label} page`}
+                                        rel="noopener noreferrer"
+                                        target="_blank"
+                                    >
+                                        <span className="w-10 h-10 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-colors duration-300">
+                                            {icon}
+                                        </span>
+                                    </a>
+                                ))}
+                            </div>
                         </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div className="md:hidden">
+                        
+                        {/* Mobile Accordion */}
+                        <div className="md:hidden col-span-1">
                             <AccordionSection title="Our Services">
                                 <ul className="space-y-3">{serviceLinks.map(({ label, href }) => <FooterLink key={label} href={href}>{label}</FooterLink>)}</ul>
                             </AccordionSection>
                             <AccordionSection title="Quick Links">
                                 <ul className="space-y-3">{quickLinks.map(({ label, href }) => <FooterLink key={label} href={href}>{label}</FooterLink>)}</ul>
+                            </AccordionSection>
+                            <AccordionSection title="Legal">
+                                <ul className="space-y-3">{legalLinks.map(({ label, href }) => <FooterLink key={label} href={href}>{label}</FooterLink>)}</ul>
                             </AccordionSection>
                             <AccordionSection title="Contact Us">
                                 <ul className="space-y-4 pt-2">
@@ -152,24 +155,29 @@ const Footer = () => {
                             </AccordionSection>
                         </div>
 
-                        <div className="hidden md:col-span-1 md:block">
-                            <h3 className="text-lg font-semibold text-white mb-4">Our Services</h3>
-                            <ul className="space-y-3">{serviceLinks.map(({ label, href }) => <FooterLink key={label} href={href}>{label}</FooterLink>)}</ul>
-                        </div>
-                        <div className="hidden md:col-span-1 md:block">
-                            <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
-                            <ul className="space-y-3">{quickLinks.map(({ label, href }) => <FooterLink key={label} href={href}>{label}</FooterLink>)}</ul>
-                        </div>
-                        <div className="hidden md:col-span-1 md:block">
-                            <h3 className="text-lg font-semibold text-white mb-4">Contact Us</h3>
-                            <ul className="space-y-4">
-                                {contactInfo.map(({ icon, text, href, ariaLabel }) => (
-                                    <li key={text} className="flex items-start">
-                                        <span className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center mt-1 mr-3 shrink-0">{icon}</span>
-                                        <a href={href} aria-label={ariaLabel} className="hover:text-primary transition-colors text-gray-400 break-all">{text}</a>
-                                    </li>
-                                ))}
-                            </ul>
+                        {/* Desktop Links */}
+                        <div className="hidden md:col-span-3 md:grid md:grid-cols-3 gap-8">
+                            <div>
+                                <h3 className="text-lg font-semibold text-white mb-4">Our Services</h3>
+                                <ul className="space-y-3">{serviceLinks.map(({ label, href }) => <FooterLink key={label} href={href}>{label}</FooterLink>)}</ul>
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
+                                <ul className="space-y-3">{quickLinks.map(({ label, href }) => <FooterLink key={label} href={href}>{label}</FooterLink>)}</ul>
+                                <h3 className="text-lg font-semibold text-white mb-4 mt-8">Legal</h3>
+                                <ul className="space-y-3">{legalLinks.map(({ label, href }) => <FooterLink key={label} href={href}>{label}</FooterLink>)}</ul>
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-semibold text-white mb-4">Contact Us</h3>
+                                <ul className="space-y-4">
+                                    {contactInfo.map(({ icon, text, href, ariaLabel }) => (
+                                        <li key={text} className="flex items-start">
+                                            <span className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center mt-1 mr-3 shrink-0">{icon}</span>
+                                            <a href={href} aria-label={ariaLabel} className="hover:text-primary transition-colors text-gray-400 break-all">{text}</a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
