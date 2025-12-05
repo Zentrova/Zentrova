@@ -50,6 +50,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+      <script type="text/javascript" src="https://cdn.ywxi.net/js/1.js" async></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
