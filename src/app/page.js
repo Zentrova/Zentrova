@@ -4,10 +4,6 @@ import HeroSection from "@/components/homepage/herosection";
 import HomeProjects from "@/components/homepage/HomeProjects";
 import HomeServices from "@/components/homepage/HomeServices";
 import HowItWorks from "@/components/homepage/howItWorks";
-import TeamSection from "@/components/homepage/teamSection";
-import MainLoader from "@/components/MainLoader";
-import Lottie from "lottie-react";
-import loaderAnimation from '@/../public/loaderAnimation.json'; // ✅ Adjust if needed
 import ServiceSwiper from "@/components/homepage/ServiceSwiper";
 
 export default function Home() {
@@ -27,6 +23,6 @@ export default function Home() {
       </div> */}
       <FAQ />
     </div>
-    </div >
+  </div >
   );
 }

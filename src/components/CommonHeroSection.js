@@ -8,7 +8,7 @@ import Link from 'next/link';
 export default function CustomHeroSection({
   title = '',
   desc = '',
-  img = '/bg.jpg',
+  img = '/cont.jpg',
   ctcBtn
 }) {
   return (

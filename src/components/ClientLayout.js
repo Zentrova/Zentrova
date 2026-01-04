@@ -22,10 +22,11 @@ export default function ClientLayout({ children }) {
         position="top-center"
         richColors
         expand
-        className="z-[9999]"
+        className="z-[9999] mt-[25vh]"
         toastOptions={{
           classNames: {
-            toast: 'rounded-xl shadow-xl border bg-white dark:bg-zinc-900 text-black dark:text-white p-4',
+            toast:
+              "rounded-2xl shadow-2xl border bg-white dark:bg-zinc-900 text-black dark:text-white p-5",
           },
         }}
       />
@@ -35,7 +36,7 @@ export default function ClientLayout({ children }) {
       <Loader />
       <BlogProvider>
         <ProjectProvider>
-        <main>{children}</main>
+          <main>{children}</main>
         </ProjectProvider>
       </BlogProvider>
       {!isHideLayout && <Footer />}

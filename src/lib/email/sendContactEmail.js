@@ -11,7 +11,8 @@ export async function sendContactEmails({
   attachments = [],
 }) {
   // Internal mail
-  await sendNotifi({
+  try {
+    await sendEmail({
     to: "contact@xentrova.in",
     subject: `New Contact: ${subject}`,
     html: contactNotificationTemplate({
@@ -24,11 +25,14 @@ export async function sendContactEmails({
     replyTo: email,
     attachments,
   });
-
   // User acknowledgment
-  await sendAck({
+  await sendEmail({
     to: email,
     subject: "Thanks for contacting Xentrova",
-    html: contactAcknowledgementTemplate({ name: fullName, subject }),
+    html: contactAcknowledgementTemplate({fullName, subject }),
   });
+    return { success: true };
+  } catch (error) { 
+    return { success: false, error: error.message};   
+  }
 }

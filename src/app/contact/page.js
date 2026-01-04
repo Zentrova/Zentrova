@@ -6,15 +6,22 @@ import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { httpRequest } from "@/utils/httpRequest";
-import { Toaster, toast } from "sonner";
-
+import { toast } from "sonner";
+import { showAlert } from "@/utils/sweetAlert";
+import useTheme from "@/hooks/useTheme";
 export default function ContactUs() {
+  const { theme } = useTheme();
   const [selectedFile, setSelectedFile] = useState(null);
 
   const validationSchema = Yup.object({
     fullName: Yup.string().required("Full name is required"),
     email: Yup.string().email("Invalid email").required("Email is required"),
-    phone: Yup.string().required("Phone number is required"),
+    phone: Yup.string()
+      .required("Phone number is required")
+      .matches(
+        /^[+]?[\d]{10,15}$/,
+        "Enter a valid phone number with country code"
+      ),
     subject: Yup.string().required("Subject is required"),
     message: Yup.string().required("Message is required"),
     termsAndPolicy: Yup.boolean().oneOf([true], "You must accept the terms"),
@@ -31,37 +38,60 @@ export default function ContactUs() {
       path: "contact",
     },
     validationSchema,
-    onSubmit: async (values, { resetForm }) => {
-        try {
-            const formData = new FormData();
-            Object.keys(values).forEach(key => {
-                formData.append(key, values[key]);
-            });
-            if (selectedFile) {
-                formData.append("attachment", selectedFile);
-            }
-            const res = await fetch("/api/contact", {
-              method: "POST",
-              body: formData,
-            });
+    onSubmit: async (values, { resetForm, setSubmitting }) => {
+      try {
+        const formData = new FormData();
+        Object.entries(values).forEach(([key, value]) => {
+          formData.append(key, value);
+        });
 
-            const { success, error } = await httpRequest({
-                url: "contact",
-                method: "POST",
-                data: formData,
-            });
-
-            if (success) {
-                toast.success("Thank you for contacting us! Our team will respond within 24 hours.");
-                resetForm();
-                setSelectedFile(null);
-            } else {
-                toast.error("Submission failed: " + error);
-            }
-        } catch (err) {
-                        toast.error("An error occurred. Please try again.");
+        if (selectedFile) {
+          formData.append("attachment", selectedFile);
         }
-    },
+
+        const [emailRes, dbRes] = await Promise.allSettled([
+          fetch("/api/contact", {
+            method: "POST",
+            body: formData,
+          }),
+          httpRequest({
+            url: "contact",
+            method: "POST",
+            data: formData,
+            headers: { "Content-Type": "multipart/form-data" },
+          }),
+        ]);
+        const emailOk =
+          emailRes.status === "fulfilled" && emailRes.value.ok;
+
+        const dbOk =
+          dbRes.status === "fulfilled" && dbRes.value.data.success;
+
+        if (dbOk) {
+          // toast.success(
+          //   "Thank you for contacting us! Our team will respond within 24 hours."
+          // );
+          await showAlert({
+            type: "success",
+            theme,
+            title: "Message Sent 🚀",
+            message:
+              `Thank you for contacting Xentrova!<br>
+      Our team will get back to you within 24 hours.`,
+          });
+          resetForm();
+          setSelectedFile(null);
+        } else {
+          toast.error(
+            "Your request was received but some services failed. Our team will review it."
+          );
+        }
+      } catch (err) {
+        toast.error("Something went wrong. Please try again.");
+      } finally {
+        setSubmitting(false);
+      }
+    }
   });
 
   const handleFileChange = (e) => {
@@ -86,8 +116,8 @@ export default function ContactUs() {
   return (
     <div className="min-h-screen transition-colors duration-300">
       <CustomHeroSection
-        title="Let's Collaborate"
-        desc="Have an idea or project in mind? Fill in the form and let’s build something amazing together."
+        title="Start Your Project With Us"
+        desc="We design, build, and scale digital experiences. Reach out and let’s discuss your vision."
       />
 
       <section className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -128,6 +158,10 @@ export default function ContactUs() {
               <input
                 type="tel"
                 placeholder="+91 98765 43210"
+                maxLength={15}
+                onInput={(e) => {
+                  e.target.value = e.target.value.replace(/[^0-9+]/g, "");
+                }}
                 {...formik.getFieldProps("phone")}
                 className="w-full px-4 py-2 rounded-xl border border-header bg-background focus:ring-2 focus:ring-primary focus:outline-none"
               />
@@ -158,7 +192,7 @@ export default function ContactUs() {
                 <span className="text-sm">
                   {selectedFile ? "Change file" : "Choose a file"}
                 </span>
-                <input type="file" className="hidden" onChange={handleFileChange} accept=".pdf,.doc,.docx,.ppt,.pptx"/>
+                <input type="file" className="hidden" onChange={handleFileChange} accept=".pdf,.doc,.docx,.ppt,.pptx" />
               </label>
               {selectedFile && (
                 <div className="flex items-center justify-between mt-3 bg-header px-4 py-2 rounded-lg">
@@ -191,29 +225,32 @@ export default function ContactUs() {
 
             {/* Terms */}
             <div className="col-span-1 md:col-span-2">
-                <div className="flex items-start gap-2">
-                    <input
-                        type="checkbox"
-                        className="h-4 w-4 accent-primary mt-1"
-                        id="acceptTnC"
-                        {...formik.getFieldProps("termsAndPolicy")}
-                    />
-                    <label htmlFor="acceptTnC" className="text-sm font-medium">
-                        By submitting this form, I consent that Xentrova can process my data for the purpose of making me an offer for their services. Read our{" "}
-                        <Link href="/terms-conditions" className="text-primary">Terms and Conditions</Link>{" "}
-                        and{" "}
-                        <Link href="/privacy-policy" className="text-primary">Privacy Policy</Link>.
-                    </label>
-                </div>
-                {formik.touched.termsAndPolicy && formik.errors.termsAndPolicy && (
-                    <p className="text-red-500 text-sm mt-1 break-words">{formik.errors.termsAndPolicy}</p>
-                )}
+              <div className="flex items-start gap-2">
+                <input
+                  type="checkbox"
+                  className="h-4 w-4 accent-primary mt-1"
+                  name="termsAndPolicy"
+                  id="acceptTnC"
+                  checked={formik.values.termsAndPolicy}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+                <label htmlFor="acceptTnC" className="text-sm font-medium">
+                  By submitting this form, I consent that Xentrova can process my data for the purpose of making me an offer for their services. Read our{" "}
+                  <Link href="/terms-conditions" className="text-primary">Terms and Conditions</Link>{" "}
+                  and{" "}
+                  <Link href="/privacy-policy" className="text-primary">Privacy Policy</Link>.
+                </label>
+              </div>
+              {formik.touched.termsAndPolicy && formik.errors.termsAndPolicy && (
+                <p className="text-red-500 text-sm mt-1 break-words">{formik.errors.termsAndPolicy}</p>
+              )}
             </div>
 
             {/* Submit Button */}
             <div className="col-span-1 md:col-span-2">
-              <button type="submit" className="w-full primaryBtn" disabled={formik.isSubmitting}>
-                Submit Form
+              <button type="submit" className="w-full primaryBtn" disabled={!formik.values.termsAndPolicy || formik.isSubmitting}>
+                {formik.isSubmitting ? "Submitting..." : "Submit Form"}
               </button>
             </div>
           </form>
@@ -245,7 +282,6 @@ export default function ContactUs() {
           </div>
         </div>
       </section>
-      <Toaster position="top-right" />
     </div>
   );
 }

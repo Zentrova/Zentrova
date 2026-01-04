@@ -8,12 +8,11 @@ export async function POST(req) {
     const fullName = formData.get("fullName");
     const email = formData.get("email");
     const phone = formData.get("phone");
-    const subject = formData.get("subject");
+    const subject = formData.get("subject") || 'From project contact form';
     const message = formData.get("message");
     const file = formData.get("attachment");
 
     let attachments = [];
-
     if (file && file.size > 0) {
       const buffer = Buffer.from(await file.arrayBuffer());
       attachments.push({
@@ -31,7 +30,6 @@ export async function POST(req) {
       message,
       attachments,
     });
-
     if (success) {
       return NextResponse.json({ success: true });
     } else {
@@ -41,6 +39,7 @@ export async function POST(req) {
       );
     }
   } catch (err) {
+    console.error("Error in /api/contact:", err);
     return NextResponse.json(
       { success: false, error: "An unexpected error occurred." },
       { status: 500 }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 export default function useTheme() {
   const getInitialTheme = () => {
@@ -12,8 +12,9 @@ export default function useTheme() {
 
   const [theme, setTheme] = useState(getInitialTheme);
 
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", theme === "dark");
+   useLayoutEffect(() => {
+    const root = document.documentElement;
+    root.classList.toggle("dark", theme === "dark");
     localStorage.setItem("theme", theme);
   }, [theme]);
 

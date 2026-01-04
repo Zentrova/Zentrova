@@ -35,8 +35,8 @@ const ProjectsPage = () => {
     <div className="min-h-screen">
       <div className='mb-10'>
         <CustomHeroSection
-          title='My Projects'
-          desc='Explore my portfolio of innovative solutions and technical excellence.'
+          title='Our Work'
+          desc='Digital solutions designed to solve real problems and deliver results.'
         />
       </div>
 
