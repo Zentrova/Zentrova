@@ -23,7 +23,7 @@ const marketingSections = [
             "We craft tailored SEO strategies to ensure your brand ranks higher in search results, driving consistent organic traffic.",
         description2:
             "From keyword research to on-page optimization and link building, we cover every aspect to maximize your visibility.",
-        image: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        image: "/services/seo-service.jpg",
         alt: "SEO strategy planning",
         reverse: false,
     },

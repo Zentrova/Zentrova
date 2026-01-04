@@ -4,7 +4,6 @@ import { useOnlineStatus } from "@/hooks/useOnlineStatus";
 
 const OfflineBanner = () => {
   const isOnline = useOnlineStatus();
-  console.log("isOnline",isOnline)
   if (isOnline) return null;
 
   return (

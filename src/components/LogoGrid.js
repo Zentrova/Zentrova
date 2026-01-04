@@ -19,7 +19,7 @@ export default function LogoGrid({ logos }) {
                 variants={fadeUp}
                 viewport={{ once: true }}
             >
-                Our Design Toolkit
+                Our Tech Stack
             </motion.h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 justify-center text-center">
                 {logos.map((tool, i) => (

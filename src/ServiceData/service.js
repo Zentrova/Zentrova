@@ -1,8 +1,11 @@
 export const UiUX = [
-    { name: "Figma", img: "/Services/Figma.png" },
+    { name: "Figma", img: "/services/Figma.png" },
     { name: "Adobe XD", img: "https://upload.wikimedia.org/wikipedia/commons/c/c2/Adobe_XD_CC_icon.svg" },
     { name: "Sketch", img: "https://upload.wikimedia.org/wikipedia/commons/5/59/Sketch_Logo.svg" },
-    { name: "Canva", img: "/Services/Canva.png" }
+    { name: "Canva", img: "/services/Canva.png" },
+    { name: "Threejs", img: "/services/three.png" },
+    { name:"Lottie animation", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Lottie_logo.svg/640px-Lottie_logo.svg.png" }
+
 ]
 
 export const webDev = [
@@ -15,6 +18,14 @@ export const webDev = [
     img: "https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg"
   },
   {
+    name: "Bootstrap",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/640px-Bootstrap_logo.svg.png"
+  },
+  {
+    name: "Tailwind",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/640px-Tailwind_CSS_Logo.svg.png"
+  },
+  {
     name: "JavaScript",
     img: "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
   },
@@ -24,20 +35,46 @@ export const webDev = [
   },
   {
     name: "Next.js",
-    img: "https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg"
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Next.js_wordmark.svg/640px-Next.js_wordmark.svg.png"
   },
   {
     name: "Node.js",
-    img: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg"
+    img: "/node.png"
+  },
+  {
+    name: "Nest.js",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/NestJS.svg/640px-NestJS.svg.png"
   },
   {
     name: "MongoDB",
-    img: "https://upload.wikimedia.org/wikipedia/commons/9/93/MongoDB_Logo.svg"
+    img: "/mongo.png"
+  },
+  {
+    name: "MySql",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Database-mysql.svg/640px-Database-mysql.svg.png"
+  },
+  {
+    name: "Php",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/640px-PHP-logo.svg.png"
+  },
+  {
+    name: "Laravel",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Laravel_logotype_min.svg/640px-Laravel_logotype_min.svg.png"
   },
   {
     name: "GitHub",
     img: "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
-  }
+  },
+  {
+    name:"AWS",
+    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/640px-Amazon_Web_Services_Logo.svg.png"
+  },
+  {
+    name:"Digitalocean",
+    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/DigitalOcean_logo.svg/640px-DigitalOcean_logo.svg.png"
+  },
+
+
 ];
 
 

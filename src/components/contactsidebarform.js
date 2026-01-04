@@ -37,7 +37,6 @@ export default function ContactSidebarForm() {
                     toast.error("Submission failed: " + error);
                 }
             } catch (err) {
-                console.error("Form submission error:", err);
                 toast.error("An error occurred. Please try again.");
             }
         },

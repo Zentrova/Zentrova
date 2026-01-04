@@ -17,7 +17,6 @@ export const BlogProvider = ({ children }) => {
       const data = await res.json();
       setBlogs(data.posts || []);
     } catch (error) {
-      console.error("Error fetching blogs:", error);
     } finally {
       setLoading(false);
     }

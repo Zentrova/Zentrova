@@ -5,48 +5,46 @@ import CaseStudyContent from '@/components/project/CaseStudyContent';
 import TeamContent from '@/components/project/teamContent';
 import Tabs from '@/components/project/tabs';
 import Header from '@/components/project/header';
-import { useParams } from 'next/navigation';
-import { httpRequest } from '@/utils/httpRequest';
+import { useParams, notFound } from 'next/navigation';
+import { useProject } from '@/context/projectContext'; // Import the useProject hook
+
 export default function ProjectPreview() {
   const [activeTab, setActiveTab] = useState('overview');
-  const [projectDetail,setProjectDetail]=useState({});
-  const [projectOverview,setProjectOverview]=useState({});
+  const [projectDetail, setProjectDetail] = useState({});
+  const [projectOverview, setProjectOverview] = useState({});
   const params = useParams();
-  const slug=params.slug;
+  const slug = params.slug;
+  const { project, proLoading } = useProject(); // Use the project context
+
+  useEffect(() => {
+    if (!proLoading) {
+      const selectedProject = project.find((p) => p.wpSlug === slug);
+
+      if (selectedProject) {
+        setProjectOverview(selectedProject);
+        // Assuming you still need to fetch additional project details
+        projectContent(slug);
+      } else {
+        notFound();
+      }
+    }
+  }, [proLoading, project, slug]);
+
   const projectContent = async (slug) => {
     try {
       const result = await fetch(
         `${process.env.NEXT_PUBLIC_WP_API_BASE}/posts/slug:${slug}`
       );
       if (!result.ok) {
-        throw new Error("Blog not found");
+        setProjectDetail({}); // Set empty object if not found
+        return;
       }
-      
-    const data = await result.json();
-    setProjectDetail(data)
+      const data = await result.json();
+      setProjectDetail(data);
     } catch (error) {
-      console.error("Error fetching blog:", error.message);
-       return null;
+      setProjectDetail({}); // Set empty object on error
     }
-  }
-  const project= async(slug)=>{
-    try {
-      const response= await httpRequest({
-        url:`project/${slug}`,
-        method:'get',
-      }
-      )
-      if(response?.success===true){
-        setProjectOverview(response?.data)
-      }
-    } catch (error) {
-      console.error("Error fetching project detail:", error.message);
-      return null;
-    }
-
-
-  }
-
+  };
 
   const sections = [
     {
@@ -62,20 +60,14 @@ export default function ProjectPreview() {
     },
     // Add more if needed
   ];
-  useEffect(()=>{
-    if(slug){
-      projectContent(slug)
-      project(slug)
-    }
-  },[])
 
   return (
     <div>
-      <Header project={projectOverview} wpData={projectDetail}/>
+      <Header project={projectOverview} wpData={projectDetail} />
       <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
       <div className="max-w-7xl mx-auto px-6 py-12">
         {activeTab === 'overview' && <OverviewContent project={projectOverview} />}
-        {activeTab === 'case-study' && <CaseStudyContent sections={sections} project={projectDetail}/>}
+        {activeTab === 'case-study' && <CaseStudyContent sections={sections} project={projectDetail} />}
         {activeTab === 'team' && <TeamContent project={projectOverview} />}
       </div>
     </div>

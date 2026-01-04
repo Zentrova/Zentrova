@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import CustomHeroSection from "@/components/CommonHeroSection";
 import { UploadCloud, X } from "lucide-react";
 import Link from "next/link";
@@ -40,14 +40,15 @@ export default function ContactUs() {
             if (selectedFile) {
                 formData.append("attachment", selectedFile);
             }
+            const res = await fetch("/api/contact", {
+              method: "POST",
+              body: formData,
+            });
 
             const { success, error } = await httpRequest({
                 url: "contact",
                 method: "POST",
                 data: formData,
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                },
             });
 
             if (success) {
@@ -58,8 +59,7 @@ export default function ContactUs() {
                 toast.error("Submission failed: " + error);
             }
         } catch (err) {
-            console.error("Form submission error:", err);
-            toast.error("An error occurred. Please try again.");
+                        toast.error("An error occurred. Please try again.");
         }
     },
   });
@@ -67,7 +67,15 @@ export default function ContactUs() {
   const handleFileChange = (e) => {
     const file = e.target.files?.[0];
     if (file) {
-      setSelectedFile(file);
+      const allowedExtensions = ["pdf", "doc", "docx", "ppt", "pptx"];
+      const fileExtension = file.name.split('.').pop().toLowerCase();
+      if (allowedExtensions.includes(fileExtension)) {
+        setSelectedFile(file);
+      } else {
+        toast.error("Invalid file type. Allowed formats: PDF, DOC, DOCX, PPT, PPTX.");
+        e.target.value = null;
+        setSelectedFile(null);
+      }
     }
   };
 
@@ -150,7 +158,7 @@ export default function ContactUs() {
                 <span className="text-sm">
                   {selectedFile ? "Change file" : "Choose a file"}
                 </span>
-                <input type="file" className="hidden" onChange={handleFileChange} />
+                <input type="file" className="hidden" onChange={handleFileChange} accept=".pdf,.doc,.docx,.ppt,.pptx"/>
               </label>
               {selectedFile && (
                 <div className="flex items-center justify-between mt-3 bg-header px-4 py-2 rounded-lg">
@@ -221,15 +229,15 @@ export default function ContactUs() {
                 <div>
                   <h3 className="text-lg md:text-xl font-semibold mb-1">Projects</h3>
                   <p className="text-sm mb-1">Got an idea? Tell us all about it!</p>
-                  <a href="mailto:Xentrova.info@gmail.com" className="text-primary hover:underline">
-                    Xentrova@gmail.com
+                  <a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`} className="text-primary hover:underline">
+                    {process.env.NEXT_PUBLIC_EMAIL}
                   </a>
                 </div>
                 <div>
                   <h3 className="text-lg md:text-xl font-semibold mb-1">Questions</h3>
                   <p className="text-sm mb-1">Need more info on how we work, what we do or pretty much anything else?</p>
-                  <a href="mailto:Xentrova.info@gmail.com" className="text-primary hover:underline">
-                    Xentrova@gmail.com
+                  <a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`} className="text-primary hover:underline">
+                    {process.env.NEXT_PUBLIC_EMAIL}
                   </a>
                 </div>
               </div>

@@ -42,15 +42,15 @@ const Footer = () => {
     const contactInfo = [
         {
             icon: <Mail className="h-5 w-5" />,
-            text: "Xentrova@gmail.com",
-            href: "mailto:Xentrova@gmail.com",
-            ariaLabel: "Email us at Xentrova@gmail.com",
+            text: process.env.NEXT_PUBLIC_EMAIL,
+            href: `mailto:${process.env.NEXT_PUBLIC_EMAIL}`,
+            ariaLabel: `Email us at ${process.env.NEXT_PUBLIC_EMAIL}`,
         },
         {
             icon: <Phone className="h-5 w-5" />,
-            text: "+91 94179 09883",
-            href: "tel:+919417909883",
-            ariaLabel: "Call us at +91 94179 09883",
+            text: process.env.NEXT_PUBLIC_CONTACT_NUMBER,
+            href: `tel:${process.env.NEXT_PUBLIC_CONTACT_NUMBER}`,
+            ariaLabel: `Call us at ${process.env.NEXT_PUBLIC_CONTACT_NUMBER}`,
         },
     ];
 
@@ -184,7 +184,7 @@ const Footer = () => {
 
                 <div className="bg-black/30 mt-8 py-4 border-t border-gray-800">
                     <p className="text-center text-gray-500 text-sm">
-                        &copy; {currentYear} Xentrova. All rights reserved.
+                        &copy; {2025} Xentrova. All rights reserved.
                     </p>
                 </div>
             </div>

@@ -78,10 +78,8 @@ export default function BlogPreview() {
       }
       
     const data = await result.json();
-    console.log("dataa",data)
     setBlogDetail(data)
     } catch (error) {
-      console.error("Error fetching blog:", error.message);
        return null;
     }
   }

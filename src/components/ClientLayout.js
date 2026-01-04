@@ -7,6 +7,7 @@ import ChatBotLauncher from '@/components/ChatBotLauncher';
 import Loader from '@/components/Loader/Loader';
 import MainLoader from '@/components/MainLoader';
 import { BlogProvider } from '@/context/BlogContext';
+import { ProjectProvider } from '@/context/projectContext';
 import { Toaster } from 'sonner';
 
 export default function ClientLayout({ children }) {
@@ -33,7 +34,9 @@ export default function ClientLayout({ children }) {
       <MainLoader />
       <Loader />
       <BlogProvider>
+        <ProjectProvider>
         <main>{children}</main>
+        </ProjectProvider>
       </BlogProvider>
       {!isHideLayout && <Footer />}
     </>

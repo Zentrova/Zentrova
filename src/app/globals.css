@@ -308,7 +308,7 @@ html {
 }
 
 .icon--sun {
-  transform: scale(0);
+  transform: scale(1);
   color: yellow;
 }
 

@@ -22,7 +22,7 @@ const shopifySections = [
     description2:
       "Whether launching a new store or upgrading an existing one, we manage everything—design, setup, optimization, and mobile responsiveness.",
     image:
-      "/Services/shopify-1.jpg",
+      "/services/shopify.png",
     alt: "Shopify store development",
     reverse: false,
   },
@@ -35,7 +35,7 @@ const shopifySections = [
     description2:
       "From third-party apps to custom-built Shopify apps, we ensure smooth, reliable connections to your essential tools.",
     image:
-      "/Services/shopify-2.jpg",
+      "/services/shopify-2.jpg",
     alt: "Shopify integrations",
     reverse: true,
   },

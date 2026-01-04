@@ -65,7 +65,7 @@ export default function AppDevelopment() {
             <CustomHeroSection
                 title="Tailored Native App Solutions"
                 desc="Xentrova delivers bespoke mobile experiences that fully leverage the unique strengths of iOS and Android ecosystems."
-                img="/native.jpg"
+                img="/services/android-dash.jpg"
                 ctcBtn
             />
 
@@ -189,7 +189,7 @@ export default function AppDevelopment() {
                         viewport={{ once: true }}
                     >
                         <Image
-                            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop"
+                            src="/services/android-service.jpg"
                             alt="Custom App Solutions"
                             width={500}
                             height={350}

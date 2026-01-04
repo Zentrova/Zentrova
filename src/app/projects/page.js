@@ -6,10 +6,12 @@ import { filterBlogs } from '@/utils/filterBlogs';
 import { ChevronDown, Tag } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { useProject } from '@/context/projectContext';
 
 const ProjectsPage = () => {
   const [hoveredProject, setHoveredProject] = useState(null);
   const [filter, setFilter] = useState('');
+  const { project, proLoading } = useBlogs();
   const { blogs, loading } = useBlogs();
   const router = useRouter();
 
@@ -18,7 +20,7 @@ const ProjectsPage = () => {
     category: filter
   });
 
-  if (loading) return <p>Loading...</p>;
+  if (loading && proLoading) return <p>Loading...</p>;
 
   const categories = [
     { key: '', label: 'All Projects' },

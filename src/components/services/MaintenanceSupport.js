@@ -73,7 +73,7 @@ export default function MaintenanceSupport() {
                 </motion.div>
                 <motion.div initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true }}>
                     <Image
-                        src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200"
+                        src="/services/maintenance-service.jpg"
                         alt="Maintenance & Support"
                         width={500}
                         height={350}

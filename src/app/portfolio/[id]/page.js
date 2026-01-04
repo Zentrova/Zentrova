@@ -32,8 +32,6 @@ export default function PortfolioPage({ params }) {
 
       if (response.success) {
         setPortfolio(response.data.data);
-        console.log("port", response.data.data.experience)
-        console.log("data fetched successfully", response);
       } else {
         console.warn("Data was not fetched successfully");
       }

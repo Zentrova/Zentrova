@@ -9,30 +9,30 @@ export default function HomeProjects() {
     const mockProjects = [
         {
             id: '1',
-            title: 'NeoTech Brand Identity',
-            image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80',
-            category: 'Branding & Design',
+            title: 'Tourato: Crafting a Global Travel & Tourism Brand',
+            image: '/projects/Touratu.png',
+            category: 'Branding & Full-Stack Development',
             description:
-                'We crafted a complete brand identity for NeoTech — including logo, visual system, brand guidelines, and digital assets. The result: a futuristic tech brand ready for global recognition.',
-            slug: 'neotech-brand-identity',
+                "From a futuristic logo and comprehensive brand guidelines to a seamless full-stack website, we built Tourato's entire brand identity. Our work has positioned this travel and tourism tech brand for success on the global stage.",
+            slug: 'tourato-travel-agency',
         },
         {
             id: '2',
-            title: 'E-commerce Web App',
-            image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80',
-            category: 'Full Stack Development',
+            title: 'BiBiHealth: Driving Growth for a Mental Health Clinic',
+            image: '/projects/BiBiHealth.png',
+            category: 'Digital Marketing & SEO Strategy',
             description:
-                'Built a robust, scalable, and visually appealing shopping platform with custom admin panel, payment integrations, and personalized shopping experiences.',
-            slug: 'ecommerce-web-app',
+                'We developed a robust digital marketing and SEO strategy for BiBiHealth, a mental health clinic. Our focus on user-friendly design and targeted content led to increased appointment bookings and a stronger online presence.',
+            slug: 'clinic-appointment-app',
         },
         {
             id: '3',
-            title: 'Social Media Launch Campaign',
-            image: 'https://images.unsplash.com/photo-1518773553398-650c184e0bb3?auto=format&fit=crop&w=800&q=80',
-            category: 'Marketing & Design',
+            title: 'MedStream: Connecting Doctors and Sellers',
+            image: '/projects/MedStream.png',
+            category: 'Full-Stack Platform Development',
             description:
-                'Designed and executed a high-impact social media campaign for a fashion startup. Includes storyboards, reels, and viral post design templates.',
-            slug: 'social-campaign',
+                'We engineered a high-impact social platform for MedStream, connecting doctors with medical sellers. The platform includes secure appointment scheduling, integrated payments, and real-time chat features to facilitate seamless coordination.',
+            slug: 'doctor-seller-coordination',
         },
     ];
 

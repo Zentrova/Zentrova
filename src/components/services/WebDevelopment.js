@@ -75,7 +75,7 @@ export default function WebDevelopment() {
             {
               title: 'Custom Website Development',
               desc: 'From concept to launch, we create tailored websites that align perfectly with your business goals and brand identity.',
-              img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800',
+              img: '/services/custom-website.jpg',
             },
             {
               title: 'High-Performance E-Commerce',
@@ -85,7 +85,7 @@ export default function WebDevelopment() {
             {
               title: 'Scalable Web Applications',
               desc: 'Interactive, data-driven applications with intuitive interfaces and robust backends for SaaS, dashboards, and portals.',
-              img: 'https://images.unsplash.com/photo-1556155092-490a1ba16284?w=800',
+              img: '/services/scalable.jpg',
             },
             {
               title: 'Responsive & Mobile-First Design',
@@ -95,7 +95,7 @@ export default function WebDevelopment() {
             {
               title: 'SEO & Speed Optimization',
               desc: 'Optimized architecture, clean code, and fast loading times for better rankings and improved user experience.',
-              img: 'https://images.unsplash.com/photo-1505691723518-36a5ac3be353?w=800',
+              img: '/services/seo.jpg',
             },
             {
               title: 'Ongoing Maintenance & Support',

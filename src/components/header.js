@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import useTheme from "@/hooks/useTheme";
 import {
@@ -7,7 +7,7 @@ import {
     MenuList,
 } from "@material-tailwind/react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDownIcon, MenuIcon, Moon, Sun, SunIcon, X } from "lucide-react";
+import { ChevronDownIcon, MenuIcon,Phone,Mail, Moon, Sun, SunIcon, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -21,7 +21,7 @@ export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 2);
+        const onScroll = () => setScrolled(window.scrollY > 50);
         window.addEventListener("scroll", onScroll);
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
@@ -51,6 +51,22 @@ export default function Header() {
             className={`sticky top-0 w-full z-50 transition-all duration-300  
       ${scrolled && pathname === "/" ? "fixed top-6" : ""}`}
         >
+            {/* Informational Bar */}
+            <div
+                className={`bg-primary text-white overflow-hidden transition-all duration-300 ease-in-out ${scrolled ? 'max-h-0 py-0' : 'max-h-12 py-2'
+                    } px-4 md:px-20`}
+            >
+                <div className="container mx-auto flex justify-between items-center text-sm">
+                    <a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`} className="flex items-center gap-2">
+                        <Mail className="h-5 w-5" />
+                        <span>{process.env.NEXT_PUBLIC_EMAIL}</span>
+                    </a>
+                    <a href={`tel:${process.env.NEXT_PUBLIC_CONTACT_NUMBER}`} className="flex items-center gap-2">
+                        <Phone className="h-5 w-5" />
+                        <span>{process.env.NEXT_PUBLIC_CONTACT_NUMBER}</span>
+                    </a>
+                </div>
+            </div>
             <div
                 className={`mx-auto flex justify-between items-center px-6 py-4 transition-all duration-300 
         ${scrolled && pathname === "/"
@@ -185,7 +201,7 @@ export default function Header() {
                             animate={{ x: 0 }}
                             exit={{ x: "100%" }}
                             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                            className="fixed top-0 right-0 w-72 h-full bg-white dark:bg-neutral-900 p-6 shadow-2xl"
+                            className="fixed top-0 right-0 w-72 h-full bg-white dark:bg-neutral-900 p-6 shadow-2xl flex flex-col"
                             onClick={(e) => e.stopPropagation()}
                         >
                             <div className="flex justify-between items-center mb-6">
@@ -196,7 +212,7 @@ export default function Header() {
                             </div>
 
                             {/* Mobile Nav */}
-                            <nav className="flex flex-col gap-2 mt-4">
+                            <nav className="flex flex-col gap-2 mt-4 flex-grow">
                                 {navLinks.map((link, idx) => {
                                     const isActive =
                                         link.href === "/"
@@ -259,6 +275,29 @@ export default function Header() {
                                     );
                                 })}
                             </nav>
+
+                            {/* Dark Mode Toggle */}
+                            <div className="mt-auto">
+                                <label htmlFor="switch-mobile" className="toggle">
+                                    <input
+                                        type="checkbox"
+                                        className="input"
+                                        id="switch-mobile"
+                                        checked={theme === "dark"}
+                                        onChange={toggleTheme}
+                                        aria-label="Toggle dark mode"
+                                    />
+                                    {theme === "light" ? (
+                                        <div className="icon icon--moon">
+                                            <Moon className="h-5 w-5" />
+                                        </div>
+                                    ) : (
+                                        <div className="icon icon--sun">
+                                            <SunIcon className="h-5 w-5" />
+                                        </div>
+                                    )}
+                                </label>
+                            </div>
                         </motion.div>
                     </motion.div>
                 )}

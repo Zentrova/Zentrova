@@ -11,38 +11,38 @@ const services = [
     {
         title: "Web Development",
         description: "Creating fast, responsive, and modern websites.",
-        image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800',
+        image: '/services/website-swiper.jpg',
         href: "web-development"
     },
     {
         title: "UI/UX Development",
         description: "Designing intuitive user interfaces and experiences.",
-        image: "https://images.unsplash.com/photo-1541462608143-67571c6738dd?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        image: "/services/ui-ux.jpg",
         href: "ui-ux-development"
     },
     {
         title: "App Development",
         description: "Building cross-platform mobile applications.",
-        image: "/native.jpg",
+        image: "/services/app-development.jpg",
         href: "app-development"
     },
     {
         title: "Shopify Development",
         description: "Custom Shopify stores tailored for your brand.",
-        image: "https://images.unsplash.com/photo-1502951682449-e5b93545d46e?q=80&w=1073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        image: "/services/shopify.png",
         href: "shopify-development"
     },
     {
         title: "Maintenance & Support",
         description: "Ensuring reliability and performance post-launch.",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1115&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        image: "/services/maintenance-support.jpg",
         href: "maintenance-support"
 
     },
     {
         title: "Digital Marketing & SEO",
         description: "Creating targeted campaigns that convert and improve SEO.",
-        image: "https://images.unsplash.com/photo-1508830524289-0adcbe822b40?q=80&w=1200&auto=format&fit=crop",
+        image: "/services/digital-seo.jpg",
         href: "digital-marketing-seo"
     },
 

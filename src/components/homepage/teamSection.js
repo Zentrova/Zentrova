@@ -65,9 +65,7 @@ export default function TeamSection() {
 
       if (response.success) {
         setTeamData(response.data.data);
-        console.log("data fetched successfully", response);
       } else {
-        console.warn("Data was not fetched successfully");
       }
     } catch (error) {
       console.error("API Error:", error);
