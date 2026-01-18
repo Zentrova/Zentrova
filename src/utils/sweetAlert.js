@@ -24,7 +24,7 @@ export const showAlert = ({
     customClass: {
       popup: "rounded-2xl shadow-2xl p-6 max-w-md",
     },
-    width: "50%",
+    width: "90%",
     preConfirm: () => {
       // Do nothing, just close
     },
