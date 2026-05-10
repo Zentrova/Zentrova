@@ -1,6 +1,7 @@
 'use client';
 
-import { Instagram, Facebook, Twitter, Linkedin, Phone, Mail, MapPin, ChevronRight } from "lucide-react";
+import { Instagram, Facebook, Twitter, Linkedin, Phone, Mail,HandHelping, MapPin, ChevronRight } from "lucide-react";
+import moment from "moment";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -13,18 +14,18 @@ const Footer = () => {
     }, []);
 
     const socialLinks = [
-        { icon: <Instagram className="h-5 w-5" />, href: "#", label: "Instagram" },
+        { icon: <Instagram className="h-5 w-5" />, href: "https://www.instagram.com/xentrova/", label: "Instagram" },
         { icon: <Facebook className="h-5 w-5" />, href: "#", label: "Facebook" },
-        { icon: <Twitter className="h-5 w-5" />, href: "#", label: "Twitter" },
-        { icon: <Linkedin className="h-5 w-5" />, href: "#", label: "LinkedIn" },
+        { icon: <Linkedin className="h-5 w-5" />, href: "https://www.linkedin.com/company/xentrova/", label: "LinkedIn" },
     ];
 
     const serviceLinks = [
-        { label: "UI/UX Design", href: "/services/ui-ux-design" },
-        { label: "App Development", href: "/services/app-development" },
-        { label: "Shopify Development", href: "/services/shopify-development" },
-        { label: "Digital Marketing & SEO", href: "/services/digital-marketing-seo" },
-        { label: "Maintenance & Support", href: "/services/maintenance-support" },
+        { label: "UI/UX Design", href: "/service/ui-ux-design" },
+        { label: "Custom websites", href: "/service/web-development" },
+        { label: "Android & IOS Apps ", href: "/service/app-development" },
+        { label: "Shopify store", href: "/service/shopify-development" },
+        { label: "Digital Marketing & SEO", href: "/service/digital-marketing-seo" },
+        { label: "Maintenance & Support", href: "/service/maintenance-support" },
     ];
 
     const quickLinks = [
@@ -42,10 +43,17 @@ const Footer = () => {
     const contactInfo = [
         {
             icon: <Mail className="h-5 w-5" />,
-            text: process.env.NEXT_PUBLIC_EMAIL,
-            href: `mailto:${process.env.NEXT_PUBLIC_EMAIL}`,
-            ariaLabel: `Email us at ${process.env.NEXT_PUBLIC_EMAIL}`,
+            text: process.env.NEXT_PUBLIC_CONTACT_EMAIL,
+            href: `mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`,
+            ariaLabel: `Email us at ${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`,
         },
+         {
+            icon: <HandHelping className="h-5 w-5" />,
+            text: process.env.NEXT_PUBLIC_SUPPORT_EMAIL,
+            href: `mailto:${process.env.NEXT_PUBLIC_SUPPORT_EMAIL}`,
+            ariaLabel: `Email us at ${process.env.NEXT_PUBLIC_SUPPORT_EMAIL}`,
+        },
+
         {
             icon: <Phone className="h-5 w-5" />,
             text: process.env.NEXT_PUBLIC_CONTACT_NUMBER,
@@ -112,7 +120,7 @@ const Footer = () => {
                                 />
                             </Link>
                             <p className="text-gray-400 my-4 max-w-sm mx-auto md:mx-0">
-                                Xentrova is a premier digital agency specializing in UI/UX design, app development, and SEO-driven digital marketing to elevate your brand.
+                                Xentrova is a premier digital agency specializing in web development, app development, UI/UX design and SEO-driven digital marketing to elevate your brand.
                             </p>
                             <div className="flex flex-wrap gap-3 justify-center md:justify-start">
                                 {socialLinks.map(({ icon, href, label }) => (
@@ -184,7 +192,7 @@ const Footer = () => {
 
                 <div className="bg-black/30 mt-8 py-4 border-t border-gray-800">
                     <p className="text-center text-gray-500 text-sm">
-                        &copy; {2025} Xentrova. All rights reserved.
+                        &copy; {2025 + '-' + moment().format('yyyy')} Xentrova. All rights reserved.
                     </p>
                 </div>
             </div>

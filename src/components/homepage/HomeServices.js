@@ -4,27 +4,26 @@ import Image from "next/image";
 
 export default function HomeServices() {
     const ourServices = [
-        "Web Development",
-        "UI/UX Development",
-        "App Development",
-        "Shopify Development",
-        "Maintenance & Support",
-        "Digital Marketing & SEO",
-        "Landing Page Design",
-        "E-commerce Website Development",
-        "Custom Web Applications",
-        "React.js Development",
-        "Next.js Development",
-        "Node.js Backend",
-        "API Integration",
-        "CMS Integration (e.g., WordPress, Sanity)",
-        "SEO Optimization",
-        "Performance Optimization",
-        "Website Maintenance",
-        "Web Hosting Setup",
-        "Version Control (Git/GitHub)",
-        "Deployment (Vercel, Netlify, AWS)",
-    ];
+  "Custom Software Solutions",
+  "Website Development for Businesses",
+  "Mobile App Development",
+  "SaaS Platform Development",
+  "Startup Product Development",
+  "Business Automation Systems",
+  "E-commerce Solutions",
+  "School & Institute Management Systems",
+  "Healthcare & Appointment Platforms",
+  "CRM & ERP Solutions",
+  "Dashboard & Admin Panel Development",
+  "UI/UX Design for Better Conversions",
+  "Scalable Web Applications",
+  "API & System Integrations",
+  "Cloud-Based Solutions",
+  "Performance & Speed Optimization",
+  "Ongoing Maintenance & Support",
+  "Digital Growth & SEO",
+  "Custom Solutions for Any Industry",
+];
 
     const minSpeed = 3;
     const speed =  ourServices.length * minSpeed  ;

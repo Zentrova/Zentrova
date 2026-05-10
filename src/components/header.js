@@ -21,7 +21,8 @@ export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 50);
+        const onScroll = () => setScrolled(window.scrollY > 0);
+        console.log('scroll',window.scrollY);
         window.addEventListener("scroll", onScroll);
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
@@ -53,13 +54,13 @@ export default function Header() {
         >
             {/* Informational Bar */}
             <div
-                className={`bg-primary text-white overflow-hidden transition-all duration-300 ease-in-out ${scrolled ? 'max-h-0 py-0' : 'max-h-12 py-2'
+                className={`bg-primary text-white overflow-hidden transition-all duration-500 ease-in-out ${scrolled ? 'max-h-0 py-0' : 'max-h-12 py-2'
                     } px-4 md:px-20`}
             >
                 <div className="container mx-auto flex justify-between items-center text-sm">
-                    <a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`} className="flex items-center gap-2">
+                    <a href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`} className="flex items-center gap-2">
                         <Mail className="h-5 w-5" />
-                        <span>{process.env.NEXT_PUBLIC_EMAIL}</span>
+                        <span>{process.env.NEXT_PUBLIC_CONTACT_EMAIL}</span>
                     </a>
                     <a href={`tel:${process.env.NEXT_PUBLIC_CONTACT_NUMBER}`} className="flex items-center gap-2">
                         <Phone className="h-5 w-5" />

@@ -14,7 +14,7 @@ export async function sendContactEmails({
   try {
     await sendEmail({
     to: "contact@xentrova.in",
-    subject: `New Contact: ${subject}`,
+    subject: `${fullName.charAt(0).toUpperCase() + fullName.slice(1).toLowerCase()} - ${subject}`,
     html: contactNotificationTemplate({
       fullName,
       email,

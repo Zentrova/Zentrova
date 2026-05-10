@@ -131,7 +131,7 @@ const BlogsPage = () => {
             message="New content is on the way. Stay connected for upcoming posts!"
           />
         )}
-        {filteredBlogs.length > 0 && (
+        {filteredBlogs.length > 6 && (
           <div className='w-fit mx-auto mt-10'>
             <button className='primaryBtn'>Load More <ChevronDown /></button>
           </div>

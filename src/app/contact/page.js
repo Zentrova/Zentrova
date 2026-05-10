@@ -249,7 +249,7 @@ export default function ContactUs() {
 
             {/* Submit Button */}
             <div className="col-span-1 md:col-span-2">
-              <button type="submit" className="w-full primaryBtn" disabled={!formik.values.termsAndPolicy || formik.isSubmitting}>
+              <button type="submit" className="w-full primaryBtn" disabled={formik.isSubmitting}>
                 {formik.isSubmitting ? "Submitting..." : "Submit Form"}
               </button>
             </div>
@@ -266,15 +266,15 @@ export default function ContactUs() {
                 <div>
                   <h3 className="text-lg md:text-xl font-semibold mb-1">Projects</h3>
                   <p className="text-sm mb-1">Got an idea? Tell us all about it!</p>
-                  <a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`} className="text-primary hover:underline">
-                    {process.env.NEXT_PUBLIC_EMAIL}
+                  <a href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`} className="text-primary hover:underline">
+                    {process.env.NEXT_PUBLIC_CONTACT_EMAIL}
                   </a>
                 </div>
                 <div>
                   <h3 className="text-lg md:text-xl font-semibold mb-1">Questions</h3>
                   <p className="text-sm mb-1">Need more info on how we work, what we do or pretty much anything else?</p>
-                  <a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`} className="text-primary hover:underline">
-                    {process.env.NEXT_PUBLIC_EMAIL}
+                  <a href={`mailto:${process.env.NEXT_PUBLIC_SUPPORT_EMAIL}`} className="text-primary hover:underline">
+                    {process.env.NEXT_PUBLIC_SUPPORT_EMAIL}
                   </a>
                 </div>
               </div>

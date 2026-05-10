@@ -15,9 +15,9 @@ const TeamContent = ({ project }) => (
                 <h4 className="font-semibold">{member?.name}</h4>
                 <p className="text-primary text-sm">{member?.skills}</p>
               </div>
-              <Link href={`/portfolio/${member?.name.toLowerCase()}`} className="text-primary">
+              {/* <Link href={`/portfolio/${member?.name.toLowerCase()}`} className="text-primary">
                 <ExternalLink className="w-5 h-5" />
-              </Link>
+              </Link> */}
             </div>
           </div>
         ))}

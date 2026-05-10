@@ -31,7 +31,7 @@ export function contactAcknowledgementTemplate({
           <h2 style="margin:0 0 12px 0; color:#111827;">
             Thank you for reaching out,
               <span style="color:#16a34a; font-weight:600;">
-    ${fullName}
+    ${fullName.charAt(0).toUpperCase() + fullName.slice(1).toLowerCase()}
   </span>.
  
           </h2>

@@ -38,7 +38,7 @@ const ContentLayout = ({ sections, activeId, sectionRefs, blog }) => {
           />
 
           {/* Recommended Reads */}
-          {relatedBlogs.length > 0 && (
+          {/* {relatedBlogs.length > 0 && (
             <div className="mt-10 p-4 sm:p-6 rounded-xl border shadow backdrop-blur-xl">
               <h3 className="text-base sm:text-lg font-semibold mb-3">Recommended Reads</h3>
               <div className="flex flex-wrap gap-2">
@@ -54,7 +54,7 @@ const ContentLayout = ({ sections, activeId, sectionRefs, blog }) => {
                 ))}
               </div>
             </div>
-          )}
+          )} */}
         </div>
       </div>
 

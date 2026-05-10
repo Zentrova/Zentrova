@@ -30,7 +30,7 @@ export function contactNotificationTemplate({
           <!-- Contact Details -->
           <tr>
             <td style="padding:24px; color:#374151; font-size:15px; line-height:1.6;">
-              <p><strong>Full Name:</strong> ${fullName}</p>
+              <p><strong>Full Name:</strong> ${fullName.charAt(0).toUpperCase() + fullName.slice(1).toLowerCase()}</p>
               <p><strong>Email:</strong> <a href="mailto:${email}" style="color:#16a34a; text-decoration:none;">${email}</a></p>
               <p><strong>Phone:</strong> <a href="tel:${phone}" style="color:#16a34a; text-decoration:none;">${phone}</a></p>
               <p><strong>Subject:</strong> ${subject}</p>

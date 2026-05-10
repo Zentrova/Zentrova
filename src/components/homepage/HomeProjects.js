@@ -32,7 +32,7 @@ export default function HomeProjects() {
             category: 'Full-Stack Platform Development',
             description:
                 'We engineered a high-impact social platform for MedStream, connecting doctors with medical sellers. The platform includes secure appointment scheduling, integrated payments, and real-time chat features to facilitate seamless coordination.',
-            slug: 'doctor-seller-coordination',
+            slug: 'medstream-healthcare-communication-platform',
         },
     ];
 
