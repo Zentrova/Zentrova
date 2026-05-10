@@ -1,6 +1,8 @@
 import { Inter } from "next/font/google";
 import ClientLayout from "@/components/ClientLayout";
 import Script from "next/script";
+import { GoogleTagManager } from '@next/third-parties/google'
+
 
 import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
@@ -83,25 +85,8 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning   data-scroll-behavior="smooth">
+      <GoogleTagManager gtmId={process.env.NEXT_GOOGLE_TAG_MANGER} />
       <head>
-
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-P42D54YE4B"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-
-            function gtag() {
-              dataLayer.push(arguments);
-            }
-
-            gtag('js', new Date());
-
-            gtag('config', 'G-P42D54YE4B');
-          `}
-        </Script>
         <Script id="theme-script" strategy="beforeInteractive">
           {`
             (function () {
