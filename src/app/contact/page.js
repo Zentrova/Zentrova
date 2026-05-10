@@ -237,7 +237,7 @@ export default function ContactUs() {
                 />
                 <label htmlFor="acceptTnC" className="text-sm font-medium">
                   By submitting this form, I consent that Xentrova can process my data for the purpose of making me an offer for their services. Read our{" "}
-                  <Link href="/terms-conditions" className="text-primary">Terms and Conditions</Link>{" "}
+                  <Link href="/terms-and-conditions" className="text-primary">Terms and Conditions</Link>{" "}
                   and{" "}
                   <Link href="/privacy-policy" className="text-primary">Privacy Policy</Link>.
                 </label>

@@ -42,8 +42,14 @@ const servicesMetadata = {
   },
 };
 
+export async function generateStaticParams() {
+  return Object.keys(servicesMetadata).map((slug) => ({
+    slug,
+  }));
+}
+
 export async function generateMetadata({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
   const metadata = servicesMetadata[slug] || {
     title: 'Service Not Found | Xentrova',
     description: 'The requested service could not be found.',

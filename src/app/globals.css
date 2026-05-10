@@ -1,10 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /* @layer utilities {
   .wp-block-post-content.min-h-screen {
     @apply p-0 md:px-0 lg:px-0;

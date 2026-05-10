@@ -11,8 +11,8 @@ export default function HeroSection() {
       {/* Background Image */}
       <Image
         src="/heroBg.png"
-        layout="fill"
-        objectFit="cover"
+        fill
+        style={{ objectFit: "cover" }}
         className="absolute top-0 left-0 w-full h-full -z-10"
         unoptimized
         alt="Background"
@@ -45,7 +45,7 @@ export default function HeroSection() {
           transition={{ delay: 0.6, duration: 0.8 }}
           className="mt-4 text-base sm:text-lg md:text-xl"
         >
-        At <span className="font-semibold">Xentrova</span>, we design and build powerful web applications, Android/iOS apps, Shopify stores, and SEO strategies — all at affordable prices, tailored to help your business scale.
+          At <span className="font-semibold">Xentrova</span>, we design and build powerful web applications, Android/iOS apps, Shopify stores, and SEO strategies — all at affordable prices, tailored to help your business scale.
 
         </motion.p>
 

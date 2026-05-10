@@ -1,6 +1,6 @@
 'use client';
 
-import { Instagram, Facebook, Twitter, Linkedin, Phone, Mail,HandHelping, MapPin, ChevronRight } from "lucide-react";
+import { Instagram, Facebook, Twitter, Linkedin, Phone, Mail, HandHelping, MapPin, ChevronRight } from "lucide-react";
 import moment from "moment";
 import Image from "next/image";
 import Link from "next/link";
@@ -47,7 +47,7 @@ const Footer = () => {
             href: `mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`,
             ariaLabel: `Email us at ${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`,
         },
-         {
+        {
             icon: <HandHelping className="h-5 w-5" />,
             text: process.env.NEXT_PUBLIC_SUPPORT_EMAIL,
             href: `mailto:${process.env.NEXT_PUBLIC_SUPPORT_EMAIL}`,
@@ -98,8 +98,8 @@ const Footer = () => {
         <footer className="relative bg-gray-900 text-gray-300 w-full overflow-hidden">
             <Image
                 src="/heroBg.png"
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: "cover" }}
                 className="absolute top-0 left-0 w-full h-full -z-10 opacity-5"
                 unoptimized
                 alt="Footer background"
@@ -116,7 +116,8 @@ const Footer = () => {
                                     alt="Xentrova Logo"
                                     height={100}
                                     width={120}
-                                    className="w-[120px] h-auto mx-auto md:mx-0"
+                                    className="h-auto mx-auto md:mx-0"
+                                    priority
                                 />
                             </Link>
                             <p className="text-gray-400 my-4 max-w-sm mx-auto md:mx-0">
@@ -139,7 +140,7 @@ const Footer = () => {
                                 ))}
                             </div>
                         </div>
-                        
+
                         {/* Mobile Accordion */}
                         <div className="md:hidden col-span-1">
                             <AccordionSection title="Our Services">

@@ -14,7 +14,6 @@ export const ProjectProvider = ({ children }) => {
       const data = await res.json();
       setProject(data.data || []);
     } catch (error) {
-      console.error("Error fetching blogs:", error);
     } finally {
       setProLoading(false);
     }

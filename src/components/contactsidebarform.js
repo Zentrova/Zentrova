@@ -72,7 +72,6 @@ export default function ContactSidebarForm() {
                   );
                 }
               } catch (err) {
-                console.error("Contact form submission error:", err);
                 toast.error("Something went wrong. Please try again.");
               } finally {
                 setSubmitting(false);

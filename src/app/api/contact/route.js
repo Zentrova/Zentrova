@@ -39,7 +39,6 @@ export async function POST(req) {
       );
     }
   } catch (err) {
-    console.error("Error in /api/contact:", err);
     return NextResponse.json(
       { success: false, error: "An unexpected error occurred." },
       { status: 500 }

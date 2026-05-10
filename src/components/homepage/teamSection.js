@@ -68,7 +68,6 @@ export default function TeamSection() {
       } else {
       }
     } catch (error) {
-      console.error("API Error:", error);
     }
   };
 

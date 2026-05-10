@@ -14,15 +14,15 @@ export default function Home() {
       <div className="bg-background">
         <ServiceSwiper />
         <HomeServices />
-      <div className="bg-background2">
-        <HomeProjects />
-      </div>
-      <HowItWorks />
-      {/* <div className="bg-background2">
+        <div className="bg-background2">
+          <HomeProjects />
+        </div>
+        <HowItWorks />
+        {/* <div className="bg-background2">
         <TeamSection />
       </div> */}
-      <FAQ />
-    </div>
-  </div >
+        <FAQ />
+      </div>
+    </div >
   );
 }

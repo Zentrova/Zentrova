@@ -7,7 +7,7 @@ import {
     MenuList,
 } from "@material-tailwind/react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDownIcon, MenuIcon,Phone,Mail, Moon, Sun, SunIcon, X } from "lucide-react";
+import { ChevronDownIcon, MenuIcon, Phone, Mail, Moon, Sun, SunIcon, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -19,10 +19,14 @@ export default function Header() {
     const [scrolled, setScrolled] = useState(false);
     const [servicesOpen, setServicesOpen] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 0);
-        console.log('scroll',window.scrollY);
         window.addEventListener("scroll", onScroll);
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
@@ -83,6 +87,7 @@ export default function Header() {
                         height={100}
                         width={100}
                         className="w-[120px] h-auto"
+                        priority
                     />
                 </Link>
 
@@ -165,7 +170,7 @@ export default function Header() {
                             onChange={toggleTheme}
                             aria-label="Toggle dark mode"
                         />
-                        {theme === "light" ? (
+                        {mounted && (theme === "light" ? (
                             <div className="icon icon--moon">
                                 <Moon className="h-5 w-5" />
                             </div>
@@ -173,7 +178,7 @@ export default function Header() {
                             <div className="icon icon--sun">
                                 <SunIcon className="h-5 w-5" />
                             </div>
-                        )}
+                        ))}
                     </label>
                 </div>
 
@@ -206,7 +211,7 @@ export default function Header() {
                             onClick={(e) => e.stopPropagation()}
                         >
                             <div className="flex justify-between items-center mb-6">
-                                <Image src="/XentrovaLogo.svg" alt="Xentrova Logo" width={100} height={100} className="w-[100px]" />
+                                <Image src="/XentrovaLogo.svg" alt="Xentrova Logo" width={100} height={100} className="w-[100px] h-auto"  priority/>
                                 <button onClick={() => setIsMenuOpen(false)} className="text-gray-700 dark:text-white" aria-label="Close mobile menu">
                                     <X className="w-6 h-6" />
                                 </button>
