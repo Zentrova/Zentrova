@@ -18,7 +18,14 @@ export const metadata = {
     "software development company",
     "custom software development",
     "SaaS platform development",
+    "AI automation",
+    "artificial intelligence solutions", // ADD
+    "business automation software",     // ADD
+    "custom web application development", // ADD
+    "CRM development",                
     "startup software development",
+    "iOS app development",              // ADD
+    "Android app development",
     "enterprise software development",
     "appointment booking systems",
     "full stack development team",
@@ -43,9 +50,9 @@ export const metadata = {
   openGraph: {
     type: "website",
     url: "https://www.xentrova.in",
-    title: "Xentrova | Scalable Software, SaaS & App Development",
+    title: "Xentrova | AI Automation, Custom Software & App Development",
     description:
-      "Xentrova is a digital technology agency helping startups and businesses build scalable, secure, and high-performance web & mobile products.",
+      "Xentrova builds AI-powered automation systems, custom websites, mobile apps, SaaS platforms and CRM solutions for startups and businesses worldwide.",
     siteName: "Xentrova",
     images: [
       {
@@ -63,7 +70,7 @@ export const metadata = {
     title: "Xentrova | Scalable Software, SaaS & App Development",
     description:
       "Xentrova is a digital technology agency helping startups and businesses build scalable, secure, and high-performance web & mobile products.",
-    images: ["https://www.xentrova.in/twitter-image.png"],
+    images: ["https://www.xentrova.in/og-image.png"],
   },
   icons: {
     icon: "/favicon.ico",

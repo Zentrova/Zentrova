@@ -19,11 +19,11 @@ export const webDev = [
   },
   {
     name: "Bootstrap",
-    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/640px-Bootstrap_logo.svg.png"
+    img: "../services/bootstrap.webp"
   },
   {
     name: "Tailwind",
-    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/640px-Tailwind_CSS_Logo.svg.png"
+    img: "../services/tailwind.png"
   },
   {
     name: "JavaScript",
@@ -35,7 +35,7 @@ export const webDev = [
   },
   {
     name: "Next.js",
-    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Next.js_wordmark.svg/640px-Next.js_wordmark.svg.png"
+    img: "../services/next.webp"
   },
   {
     name: "Node.js",
@@ -43,7 +43,7 @@ export const webDev = [
   },
   {
     name: "Nest.js",
-    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/NestJS.svg/640px-NestJS.svg.png"
+    img: "../services/nest.jfif"
   },
   {
     name: "MongoDB",
@@ -51,15 +51,15 @@ export const webDev = [
   },
   {
     name: "MySql",
-    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Database-mysql.svg/640px-Database-mysql.svg.png"
+    img: "../services/sql.jfif"
   },
   {
     name: "Php",
-    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/640px-PHP-logo.svg.png"
+    img: "../services/php.png"
   },
   {
     name: "Laravel",
-    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Laravel_logotype_min.svg/640px-Laravel_logotype_min.svg.png"
+    img: "../services/laravel.png"
   },
   {
     name: "GitHub",
@@ -67,11 +67,11 @@ export const webDev = [
   },
   {
     name:"AWS",
-    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/640px-Amazon_Web_Services_Logo.svg.png"
+    img:"../services/aws.jfif"
   },
   {
     name:"Digitalocean",
-    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/DigitalOcean_logo.svg/640px-DigitalOcean_logo.svg.png"
+    img:"../services/digitalocean.png"
   },
 
 
