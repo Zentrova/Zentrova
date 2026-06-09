@@ -56,7 +56,7 @@ export const metadata = {
     siteName: "Xentrova",
     images: [
       {
-        url: "/og-image.png",
+        url: "https://www.xentrova.in/og-image.png",
         width: 1200,
         height: 630,
         alt: "Xentrova | Scalable Software, SaaS & App Development",
