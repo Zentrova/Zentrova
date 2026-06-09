@@ -35,7 +35,7 @@ const services = [
     {
         title: "Maintenance & Support",
         description: "Ensuring reliability and performance post-launch.",
-        image: "/services/maintenance-support.jpg",
+        image: "/services/maintenance-service.jpg",
         href: "maintenance-support"
 
     },
